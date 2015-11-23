@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>n4-test</title>
     </head>
     <body>
         <div class="container">
