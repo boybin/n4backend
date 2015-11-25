@@ -12,7 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/rent', function () {
+    return view('rent.index');
+});
+
+Route::get('/hotel', function () {
+    return view('hotel.index');
 });
 
 Route::get('test','TestController@index');
