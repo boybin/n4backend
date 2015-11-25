@@ -13,10 +13,13 @@
 <body>
   <!-- Put nav here -->
   @yield('nav')
+  
+  @section('content')
   <div class="container">
     <div ng-view>
     </div>
   </div>
+  @show
 
   <script src="node_modules/head/js/head.load.min.js"></script>
   <script src="prejs/boot.js"></script>
