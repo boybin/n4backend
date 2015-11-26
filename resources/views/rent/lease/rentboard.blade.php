@@ -9,7 +9,7 @@
     <div class='img-container'>
       <div class='img-text-warning' ng-if="building.warn"><span ng-bind="building.warn"></span></div>
       <div class='img-text'><span ng-bind="building.title"></span></div>
-      <a href="#">
+      <a href="/rent/lease/roomboard">
       <img src='@{{building.img}}'/>
       </a>
     </div>

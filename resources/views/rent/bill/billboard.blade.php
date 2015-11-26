@@ -1,6 +1,6 @@
 @extends("rent.index")
 
-@section("title","租赁大厅")
+@section("title","收费大厅")
 
 @section("content")
 <div class="jumbbotron" ng-controller="BillboardCtrl as billboard">
@@ -9,7 +9,7 @@
     <div class='img-container'>
       <div class='img-text-warning' ng-if="building.warn"><span ng-bind="building.warn"></span></div>
       <div class='img-text'><span ng-bind="building.title"></span></div>
-      <a href="#">
+      <a href="/rent/bill/roomboard">
       <img src='@{{building.img}}'/>
       </a>
     </div>

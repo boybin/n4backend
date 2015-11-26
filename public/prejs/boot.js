@@ -22,10 +22,13 @@ head.load(
 
   {file:'prejs/src/rent/lease/Lease.js'},
   {file:'prejs/src/rent/lease/Controllers/LeaseBoard.js'},
+  {file:'prejs/src/rent/lease/Controllers/LRoomBoard.js'},
 
   {file:'prejs/src/rent/building/Building.js'},
   {file:'prejs/src/rent/building/Controllers/BuildingBoard.js'},
+  {file:'prejs/src/rent/building/Controllers/BRoomBoard.js'},
 
   {file:'prejs/src/rent/bill/Bill.js'},
+  {file:'prejs/src/rent/bill/Controllers/BiRoomBoard.js'},
   {file:'prejs/src/rent/bill/Controllers/BillBoard.js'}
 );
