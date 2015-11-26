@@ -15,8 +15,17 @@ head.load(
   {file:'prejs/src/rent/rent.js'},
   {file:'prejs/src/rent/app/App.js'},
   {file:'prejs/src/rent/app/Controllers/MainController.js'},
+  {file:'prejs/src/rent/app/Models/BillModel.js'},
+  {file:'prejs/src/rent/app/Models/LeaseModel.js'},
   {file:'prejs/src/rent/app/Models/BuildingModel.js'},
 
+
   {file:'prejs/src/rent/lease/Lease.js'},
-  {file:'prejs/src/rent/lease/Controllers/LeaseBoard.js'}
+  {file:'prejs/src/rent/lease/Controllers/LeaseBoard.js'},
+
+  {file:'prejs/src/rent/building/Building.js'},
+  {file:'prejs/src/rent/building/Controllers/BuildingBoard.js'},
+
+  {file:'prejs/src/rent/bill/Bill.js'},
+  {file:'prejs/src/rent/bill/Controllers/BillBoard.js'}
 );

@@ -3,6 +3,8 @@
   var rentModule = angular.module('Rent', [
     'ngRoute',
     'Rent.Common',
+    'Rent.Bill',
+    'Rent.Building',
     'Rent.Lease',
     'angular-storage',
     'angular.filter',
@@ -12,7 +14,8 @@
     'AngularPrint'
   ]);
 
-  rentModule.config(function($routeProvider) {
+/*
+  rentModule.config(function($routeProvider, $locationProvider) {
     $routeProvider
     //route for the home page
       .when('/rent/lease/rentboard', {
@@ -25,7 +28,10 @@
         redirectTo: '/rent/lease/rentboard'
           // redirectTo: '/login'
       });
+
+      $locationProvider.html5Mode(true);
   });
+  */
 
   rentModule.run(
     function($rootScope, $location, $http, store) {

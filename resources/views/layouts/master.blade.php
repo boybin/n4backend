@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn" @yield('ng-app')>
+<html lang="cn" ng-app="@yield('ng-app')">
 
 <head>
     <base href="/">
@@ -11,23 +11,27 @@
     <link rel="stylesheet" href="node_modules/ui-select/dist/select.min.css">
     <link rel="stylesheet" href="node_modules/angularPrint/angularPrint.css">
     <link rel="stylesheet" href="precss/app.css">
-    @yield('style')
+    <script src="node_modules/head/js/head.load.min.js"></script>
+    <script src="prejs/boot.js"></script>
+    @section("stylesection")
+    @show
     <!-- <link rel="stylesheet" href="<% elixir('css/all.css') %>"/> -->
 </head>
 
-<body @yield('ng-main-ctrl')>
+<body ng-controller="MainCtrl as main">
   <!-- Put nav here -->
   <div class="container">
-    @yield('nav')
-    @yield('status')
-    @yield('content')
+    @section('nav')
+    @show
+    @section('status')
+    @show
+    @section('content')
+    @show
   </div>
 
-  <script src="node_modules/head/js/head.load.min.js"></script>
-  <script src="prejs/boot.js"></script>
-
   @yield('modalSection')
-  @yield('scriptSection')
+  @section("scriptsection")
+  @show
 </body>
 
 </html>
