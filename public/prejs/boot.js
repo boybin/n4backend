@@ -10,6 +10,7 @@ head.load(
   {file:'node_modules/ui-select/dist/select.min.js'},
   {file:'node_modules/bootstrap/dist/js/bootstrap.min.js'},
   {file:'node_modules/underscore/underscore-min.js'},
+  {file:'node_modules/satellizer/satellizer.min.js'},
 
 
   {file:'prejs/src/rent/rent.js'},

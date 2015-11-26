@@ -11,6 +11,7 @@
     'ui.select',
     'ngSanitize',
     'ui.bootstrap',
+    'satellizer',
     'AngularPrint'
   ]);
 
