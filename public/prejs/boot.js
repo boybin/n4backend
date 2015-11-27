@@ -16,6 +16,8 @@ head.load(
   {file:'prejs/src/rent/rent.js'},
   {file:'prejs/src/rent/app/App.js'},
   {file:'prejs/src/rent/app/Controllers/MainController.js'},
+  {file:'prejs/src/rent/app/Controllers/AuthController.js'},
+  {file:'prejs/src/rent/app/Controllers/UserController.js'},
   {file:'prejs/src/rent/app/Models/BillModel.js'},
   {file:'prejs/src/rent/app/Models/LeaseModel.js'},
   {file:'prejs/src/rent/app/Models/BuildingModel.js'},

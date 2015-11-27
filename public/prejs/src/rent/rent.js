@@ -15,24 +15,26 @@
     'AngularPrint'
   ]);
 
-/*
-  rentModule.config(function($routeProvider, $locationProvider) {
-    $routeProvider
-    //route for the home page
-      .when('/rent/lease/rentboard', {
-        templateUrl: '/rent/lease/rentboard',
-        controller: 'RentboardCtrl',
-        controllerAs: 'rentboard',
-        activeTab: 'rentboard'
+  rentModule.config(function($routeProvider, $locationProvider, $authProvider) {
+    $authProvider.loginUrl = '/api/authenticate';
+/*    $routeProvider
+      .when('/auth', {
+        templateUrl: '/auth/login',
+        controller: 'AuthController',
+        controllerAs: 'auth'
+      })
+      .when('users',{
+        templateUrl: '../views/userView.html',
+        controller: 'UserController',
+        controllerAs: 'user'
       })
       .otherwise({
-        redirectTo: '/rent/lease/rentboard'
-          // redirectTo: '/login'
+        redirectTo: '/auth'
       });
+      */
 
       $locationProvider.html5Mode(true);
   });
-  */
 
   rentModule.run(
     function($rootScope, $location, $http, store) {

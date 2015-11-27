@@ -30,6 +30,12 @@ Route::get('/hotel/{module}/{action}',function ($module, $action){
   return view(join('.',['hotel', $module, $action]));
 });
 
+Route::get('/auth/login', function () {
+    return view('auth.login');
+});
+Route::get('/auth/users', function () {
+    return view('auth.users');
+});
 
 Route::group(['prefix' => 'api'], function()
 {
