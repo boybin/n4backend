@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Building extends Model
 {
-    protected $table = 'buildings';
-    //
+    use SoftDeletes;
+
+    protected $fillable = ['user_id', 'name', 'desc','rooms_count'];
+
     public function rooms() {
       return $this->hasMany('App\Room');
     }

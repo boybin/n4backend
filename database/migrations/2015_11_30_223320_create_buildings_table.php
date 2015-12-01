@@ -18,6 +18,7 @@ class CreateBuildingsTable extends Migration
             $table->string('name')->uinique();
             $table->string('desc')->nullable();
             $table->integer('rooms_count', false, true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

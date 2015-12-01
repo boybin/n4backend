@@ -37,6 +37,7 @@ $factory->define(App\Room::class, function (Faker\Generator $faker) {
     ];
 });
 
+/*
 $factory->define(App\Contract::class, function (Faker\Generator $faker) {
     return [
     ];
@@ -51,3 +52,4 @@ $factory->define(App\FeeRecord::class, function (Faker\Generator $faker) {
     return [
     ];
 })
+*/

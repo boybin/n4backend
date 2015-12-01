@@ -18,6 +18,7 @@ class CreateFeeMetasTable extends Migration
             $table->tinyInteger('type');
             $table->decimal('fee');
             $table->tinyInteger('alert');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

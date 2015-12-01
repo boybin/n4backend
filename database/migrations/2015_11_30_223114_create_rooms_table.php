@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->string('desc');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
