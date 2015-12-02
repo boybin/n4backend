@@ -41,6 +41,7 @@ Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
+    Route::resource('rent/building','BuildingController');
 });
 // Using different syntax for Blade to avoid conflicts with AngularJS.
 // You are well-advised to go without any Blade at all.
