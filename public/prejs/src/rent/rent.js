@@ -2,6 +2,7 @@
   'use strict';
   var rentModule = angular.module('Rent', [
     'ngRoute',
+    'ngResource',
     'Rent.Common',
     'Rent.Bill',
     'Rent.Building',

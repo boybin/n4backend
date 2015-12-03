@@ -6,6 +6,7 @@ head.load(
   {file:'node_modules/angular-filter/dist/angular-filter.min.js'},
   {file:'node_modules/angular-sanitize/angular-sanitize.min.js'},
   {file:'node_modules/angularPrint/angularPrint.js'},
+  {file:'node_modules/angular-resource/angular-resource.min.js'},
   {file:'node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js'},
   {file:'node_modules/ui-select/dist/select.min.js'},
   {file:'node_modules/bootstrap/dist/js/bootstrap.min.js'},
