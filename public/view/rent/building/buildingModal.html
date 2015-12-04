@@ -1,0 +1,39 @@
+<!--
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">基本信息</h3>
+      </div>
+      <div class="panel-body">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="buildingModal.cancel()">取消</button>
+          <button type="button" class="btn btn-default" ng-click="buildingModal.save()">保存</button>
+        </div>
+      </div>
+    </div>
+</div>
+-->
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="buildingModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">楼栋基本信息</h4>
+    </div>
+    <div class="modal-body">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">楼栋编号</span>
+        <input type="text" ng-model="buildingModal.building.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">房间数量</span>
+        <input type="text" ng-model="buildingModal.building.rooms_count" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">楼栋描述</span>
+        <input type="text" ng-model="buildingModal.building.desc" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="buildingModal.cancel()">关闭</button>
+      <button type="button" class="btn btn-primary" ng-click="buildingModal.save()">保存</button>
+    </div>
+</div>

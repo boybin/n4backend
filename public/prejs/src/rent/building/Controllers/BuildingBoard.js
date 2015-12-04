@@ -8,7 +8,18 @@ angular.module('Rent.Building')
       // console.log(BuildingModel.restResource);
       BuildingModel.restResource.getList().then(function(buildings){
         buildboard.AllBuildings = buildings;
-      })
+      });
+
+      buildboard.openmodal = function(aBuilding) {
+          $uibModal.open({
+            templateUrl: "/view/rent/building/buildingModal.html",
+            controller: "BuildingModalCtrl",
+            controllerAs: "buildingModal",
+            resolve: {
+              building:aBuilding
+            }
+          });
+      };
 /*
       var test = BuildingModel.restResource.one(1).get().then(function(aa){
           console.log(aa);
@@ -21,3 +32,15 @@ angular.module('Rent.Building')
       */
 
     });
+
+    angular.module('Rent.Building')
+      .controller('BuildingModalCtrl',
+        function($uibModalInstance, building) {
+          var buildingModal = this;
+          buildingModal.building = building;
+
+          buildingModal.cancel = function(){
+            $uibModalInstance.close();
+          }
+        }
+      )

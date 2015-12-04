@@ -11,6 +11,11 @@
     margin: 5px;
 }
 
+.img-container img:hover {
+    opacity: 0.4;
+}
+
+
 .img-text {
     top: 70%;
     width: 100px;
