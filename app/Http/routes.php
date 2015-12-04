@@ -23,6 +23,10 @@ Route::get('/hotel', function () {
     return view('hotel.index');
 });
 
+Route::get('/rent/building/{id}/roomboard',function (){
+  return view(join('.',['rent', 'building', 'roomboard']));
+});
+
 Route::get('/rent/{module}/{action}',function ($module, $action){
   return view(join('.',['rent', $module, $action]));
 });
@@ -41,7 +45,11 @@ Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::resource('rent/building','BuildingController');
+    // Route::resource('rent/building','BuildingController');
+    Route::group(['prefix' => 'rent'], function() {
+      Route::resource('buildings', 'BuildingController');
+      Route::resource('buildings.rooms', 'BuildingRoomController');
+    });
 });
 // Using different syntax for Blade to avoid conflicts with AngularJS.
 // You are well-advised to go without any Blade at all.

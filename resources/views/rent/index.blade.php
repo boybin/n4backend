@@ -114,6 +114,7 @@
     </div>
   </div>
   @yield("content")
+  <div ui-view></div>
   </div>
 
   <script src="node_modules/head/js/head.load.min.js"></script>

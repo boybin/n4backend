@@ -1,7 +1,9 @@
 angular.module('Rent.Common')
     .service('BuildingModel',
-        function ($http) {
+        function (Restangular) {
             var service = this;
+            service.restResource = Restangular.service('buildings');
+
             service.AllBuildings = function(){
                 return [
                   {id:'1',number:'1',title:'1#楼',img:'images/Building-green.png'},
@@ -31,4 +33,5 @@ angular.module('Rent.Common')
                 {id:'10',number:'10',title:'205室',img:'images/Apartment-green.png'}
               ];
         };
-        });
+
+      });

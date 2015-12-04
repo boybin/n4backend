@@ -1,8 +1,7 @@
 angular.module('Rent.Common')
     .controller('MainCtrl',
-      function ($scope, $rootScope, $route, store, BuildingModel) {
+      function ($scope, $rootScope, store, BuildingModel) {
         //Tab hightlight
-        $scope.$route = $route;
         var main = this;
         main.AllRoomsStatus = BuildingModel.AllBuildings();
 

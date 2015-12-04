@@ -4,6 +4,7 @@
 
 @section("content")
 <div class="jumbbotron" ng-controller="BRoomboardCtrl as roomboard">
+  <span ng-init="building_id = 1"/>
   <div class="row">
   <div class="col-md-2" ng-repeat="room in roomboard.AllRooms">
     <div class='img-container'>

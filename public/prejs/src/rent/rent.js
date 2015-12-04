@@ -1,8 +1,8 @@
 (function() {
   'use strict';
   var rentModule = angular.module('Rent', [
-    'ngRoute',
-    'ngResource',
+    // 'ngRoute',
+    // 'ngResource',
     'Rent.Common',
     'Rent.Bill',
     'Rent.Building',
@@ -12,29 +12,34 @@
     'ui.select',
     'ngSanitize',
     'ui.bootstrap',
+    'ui.router',
     'satellizer',
-    'AngularPrint'
+    'AngularPrint',
+    'restangular'
   ]);
 
-  rentModule.config(function($routeProvider, $locationProvider, $authProvider) {
+  rentModule.config(function($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, RestangularProvider) {
     $authProvider.loginUrl = '/api/authenticate';
-/*    $routeProvider
-      .when('/auth', {
-        templateUrl: '/auth/login',
-        controller: 'AuthController',
-        controllerAs: 'auth'
-      })
-      .when('users',{
-        templateUrl: '../views/userView.html',
-        controller: 'UserController',
-        controllerAs: 'user'
-      })
-      .otherwise({
-        redirectTo: '/auth'
-      });
-      */
+    RestangularProvider.setBaseUrl('/api/rent');
+    $urlRouterProvider.otherwise("/rent");
 
-      $locationProvider.html5Mode(true);
+    $stateProvider
+        .state('rent', {
+          url: "/rent",
+          templateUrl: "/view/rent/default.html"
+        })
+        .state('buildingboard', {
+          url: "/rent/building/buildingboard",
+          templateUrl: "/view/rent/building/buildingboard.html",
+          controller:"BuildboardCtrl as buildboard"
+        })
+        .state('roomboard', {
+          url:"/rent/building/{building_id}/roomboard",
+          templateUrl:"/view/rent/building/roomboard.html",
+          controller:"BRoomboardCtrl as roomboard"
+        })
+
+    $locationProvider.html5Mode(true);
   });
 
   rentModule.run(
