@@ -15,7 +15,8 @@
     'ui.router',
     'satellizer',
     'AngularPrint',
-    'restangular'
+    'restangular',
+    'xeditable'
   ]);
 
   rentModule.config(function($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, RestangularProvider) {
@@ -43,7 +44,9 @@
   });
 
   rentModule.run(
-    function($rootScope, $location, $http, store) {
+    function($rootScope, $location, $http, store, editableOptions) {
+      editableOptions.theme = 'bs3';
+
       $rootScope.globals = store.get('globals') || {};
       if ($rootScope.globals && $rootScope.globals.currentUser) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.token;

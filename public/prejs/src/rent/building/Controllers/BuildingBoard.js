@@ -37,10 +37,45 @@ angular.module('Rent.Building')
       .controller('BuildingModalCtrl',
         function($uibModalInstance, building) {
           var buildingModal = this;
-          buildingModal.building = building;
+          buildingModal.building = building.clone();
 
           buildingModal.cancel = function(){
             $uibModalInstance.close();
-          }
+          };
+
+          buildingModal.save = function(){
+            building.name = buildingModal.building.name;
+            building.rooms_count = buildingModal.building.rooms_count;
+            building.desc = buildingModal.building.desc;
+            building.save();
+            $uibModalInstance.close();
+          };
+
+          buildingModal.delete = function(){
+              building.remove();
+              $uibModalInstance.close();
+          };
         }
-      )
+      );
+/*
+      angular.module('Rent.Building')
+        .controller('BuildingModalAddCtrl',
+          function($uibModalInstance, building) {
+            var buildingModal = this;
+            buildingModal.newBuilding = {};
+
+            buildingModal.cancel = function(){
+              $uibModalInstance.close();
+            };
+
+            buildingModal.save = function(){
+              building.name = buildingModal.building.name;
+              building.rooms_count = buildingModal.building.rooms_count;
+              building.desc = buildingModal.building.desc;
+              building.save();
+              $uibModalInstance.close();
+            };
+
+        }
+        );
+*/

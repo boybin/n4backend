@@ -3,12 +3,14 @@
   <div class="col-md-2" ng-repeat="building in buildboard.AllBuildings">
     <div class='img-container'>
       <div class='img-text-warning' ng-if="building.warn"><span ng-bind="building.warn"></span></div>
+      <!-- <div class='img-text-warning'><span>aaa</span></div> -->
+      <div class='img-text-edit'><span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="buildboard.openmodal(building)"></span></div>
       <div class='img-text'><span ng-bind="building.name"></span></div>
-      <!-- <a href="/rent/building/{{building.id}}/roomboard"> -->
+      <a href="/rent/building/{{building.id}}/roomboard">
       <!-- <a href="#" ng-click="buildboard.openmodal(building)"> -->
       <!-- <img src='@{{building.img}}'/> -->
         <img src='images/Building-green.png'/>
-      <!-- </a> -->
+      </a>
     </div>
   </div>
   </div>
