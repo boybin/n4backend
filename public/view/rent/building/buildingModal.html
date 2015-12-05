@@ -6,21 +6,24 @@
     <div class="modal-body">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">楼栋编号</span>
-        <a href="#" editable-text="buildingModal.building.name">{{ buildingModal.building.name || 'empty' }}</a>
-        <!-- <input type="text" ng-model="buildingModal.building.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1"> -->
+        <!-- <a href="#" editable-text="buildingModal.building.name">{{ buildingModal.building.name || 'empty' }}</a> -->
+        <input type="text" ng-model="buildingModal.building.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">房间数量</span>
+        <!-- <a href="#" editable-text="buildingModal.building.rooms_count">{{ buildingModal.building.rooms_count || 'empty' }}</a> -->
         <input type="text" ng-model="buildingModal.building.rooms_count" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">楼栋描述</span>
-        <input type="text" ng-model="buildingModal.building.desc" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+          <!-- <a href="#" editable-textarea="buildingModal.building.desc" e-rows="7" e-cols="20"> -->
+            <!-- <pre>{{ buildingModal.building.desc || 'no description' }}</pre> -->
+          <!-- </a> -->
+        <input type="text" ng-model="buildingModal.building.desc" class="form-control" aria-describedby="basic-addon1">
       </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" ng-click="buildingModal.cancel()">关闭</button>
       <button type="button" class="btn btn-primary" ng-click="buildingModal.save()">保存</button>
-      <button type="button" class="btn btn-danger" ng-click="buildingModal.delete()">删除</button>
     </div>
 </div>

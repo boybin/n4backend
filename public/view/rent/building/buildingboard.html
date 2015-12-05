@@ -1,10 +1,20 @@
 <div class="jumbbotron">
   <div class="row">
+  <div class="col-md-2">
+    <div class='img-container'>
+      <a href="#" ng-click="buildboard.openAddModal(buildboard.AllBuildings)">
+        <img src='images/plus.png'/>
+      </a>
+      <div class='img-text'><span>点击添加新楼</span></div>
+    </div>
+  </div>
   <div class="col-md-2" ng-repeat="building in buildboard.AllBuildings">
     <div class='img-container'>
       <div class='img-text-warning' ng-if="building.warn"><span ng-bind="building.warn"></span></div>
       <!-- <div class='img-text-warning'><span>aaa</span></div> -->
-      <div class='img-text-edit'><span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="buildboard.openmodal(building)"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="buildboard.openmodal(building)"></span>
+        <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="buildboard.deleteBuilding(building)"></span></div>
       <div class='img-text'><span ng-bind="building.name"></span></div>
       <a href="/rent/building/{{building.id}}/roomboard">
       <!-- <a href="#" ng-click="buildboard.openmodal(building)"> -->

@@ -1,0 +1,24 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="buildingAddModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">楼栋基本信息</h4>
+    </div>
+    <div class="modal-body">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">楼栋编号</span>
+        <input type="text" ng-model="buildingAddModal.newbuilding.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">房间数量</span>
+        <input type="text" ng-model="buildingAddModal.newbuilding.rooms_count" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">楼栋描述</span>
+        <input type="text" ng-model="buildingAddModal.newbuilding.desc" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="buildingAddModal.cancel()">关闭</button>
+      <button type="button" class="btn btn-primary" ng-click="buildingAddModal.save()">保存</button>
+    </div>
+</div>

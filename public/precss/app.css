@@ -34,9 +34,9 @@
 .img-text-edit {
     top: 10%;
     width: 100px;
-    height: 30px;
+    height: 20px;
     position: absolute;
-    background-color: #FFF;
+    background-color: #F5F5F5;
     display: none;
     text-align: center;
 }
