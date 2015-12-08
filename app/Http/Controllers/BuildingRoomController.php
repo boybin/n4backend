@@ -89,8 +89,6 @@ class BuildingRoomController extends Controller
     public function destroy($buildingId, $roomId)
     {
         //
-        echo "delete";
-        echo $buildingId;
-        echo $roomId;
+        return Room::destroy($roomId);
     }
 }
