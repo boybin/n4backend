@@ -3,9 +3,6 @@ angular.module('Rent.Building')
     function($uibModal, BuildingModel) {
       var buildboard = this;
       //当前的房间板块显示的数据
-      // buildboard.AllBuildings = BuildingModel.AllBuildings();
-      // var b = BuildingModel.restResource.get(1);
-      // console.log(BuildingModel.restResource);
       var allBuildings;
       BuildingModel.restResource.getList().then(function(buildings){
         buildboard.AllBuildings = buildings;
@@ -28,6 +25,11 @@ angular.module('Rent.Building')
             templateUrl: "/view/rent/building/buildingAddModal.html",
             controller: "BuildingAddModalCtrl",
             controllerAs: "buildingAddModal",
+            resolve: {
+              buildings: function(){
+                return buildboard.AllBuildings;
+              }
+            }
           });
       };
 
@@ -39,7 +41,6 @@ angular.module('Rent.Building')
               buildboard.AllBuildings.splice(index, 1);
             }
           });
-
         }
       };
 /*
@@ -77,7 +78,7 @@ angular.module('Rent.Building')
 
     angular.module('Rent.Building')
         .controller('BuildingAddModalCtrl',
-          function($uibModalInstance) {
+          function($uibModalInstance, buildings) {
             var buildingAddModal = this;
             buildingAddModal.newbuilding = {name:"", rooms_count:0, desc:""};
 
@@ -86,6 +87,10 @@ angular.module('Rent.Building')
             };
 
             buildingAddModal.save = function(){
+              buildings.post(buildingAddModal.newbuilding).then(function(building){
+                buildings.push(building);
+              });
+
               $uibModalInstance.close();
             };
           }
