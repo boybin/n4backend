@@ -1,8 +1,6 @@
 (function() {
   'use strict';
   var rentModule = angular.module('Rent', [
-    // 'ngRoute',
-    // 'ngResource',
     'Rent.Common',
     'Rent.Bill',
     'Rent.Building',
@@ -15,8 +13,8 @@
     'ui.router',
     'satellizer',
     'AngularPrint',
-    'restangular',
-    'xeditable'
+    'restangular'
+    // 'xeditable'
   ]);
 
   rentModule.config(function($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, RestangularProvider) {
@@ -44,9 +42,8 @@
   });
 
   rentModule.run(
-    function($rootScope, $location, $http, store, editableOptions) {
-      editableOptions.theme = 'bs3';
-
+    function($rootScope, $location, $http, store/*, editableOptions*/) {
+      // editableOptions.theme = 'bs3';
       $rootScope.globals = store.get('globals') || {};
       if ($rootScope.globals && $rootScope.globals.currentUser) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.token;

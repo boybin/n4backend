@@ -26,27 +26,31 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li ng-class="{active:main.isRentBoard()}">
           <a href="/rent/lease/rentboard">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 出租大厅
             <!-- <span class="badge" ng-bind="main.AllRoomsStatus.rentable"></span> -->
             <span class="badge">19</span>
           </a>
         </li>
-        <li class="dropdown">
+        <!-- <li ng-class="{'active':buildboard.$state.includes('buildingboard')}"> -->
+        <li class="dropdown" ng-class="{active:main.isBuilding()}">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-home" aria-hidden="true">楼房管理</span>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
+            <!-- <li><a href="/rent/building/buildingboard">房屋大厅</a></li> -->
             <li><a href="/rent/building/buildingboard">房屋大厅</a></li>
+            <!--
             <li role="separator" class="divider"></li>
             <li><a href="#/addBuild">添加楼栋</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#/addRoom">添加房屋</a></li>
+            -->
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown" ng-class="{active:main.isRent()}">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">出租管理</span>
             <span class="caret"></span>
@@ -57,7 +61,7 @@
             <li><a href="#/roommanage">出租大厅</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown" ng-class="{active:main.isFee()}">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-yen" aria-hidden="true">收费管理</span>
             <span class="caret"></span>

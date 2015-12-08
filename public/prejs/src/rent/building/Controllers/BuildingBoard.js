@@ -43,17 +43,6 @@ angular.module('Rent.Building')
           });
         }
       };
-/*
-      var test = BuildingModel.restResource.one(1).get().then(function(aa){
-          console.log(aa);
-      });
-      console.log(test);
-
-      BuildingModel.restResource.post({user_id:"4",name:"思思号楼",desc:"测试测试",rooms_count:44}).then(function(bb){
-          console.log(bb);
-      });
-      */
-
     });
 
     angular.module('Rent.Building')
