@@ -11,7 +11,16 @@ angular.module('Rent.Building')
       })
 
       roomboard.openAddRoomModal = function() {
-
+        $uibModal.open({
+          templateUrl: "/view/rent/building/addRoomModal.html",
+          controller: "RoomAddModalCtrl",
+          controllerAs: "addRoomModal",
+          resolve: {
+            rooms: function(){
+              return roomboard.AllRooms;
+            }
+          }
+        });
       };
 
       roomboard.deleteRoom = function(aRoom) {
@@ -25,24 +34,32 @@ angular.module('Rent.Building')
         }
       }
 
-      roomboard.editRoomModal = function() {
-
+      roomboard.openEditRoomModal = function(aRoom) {
+        $uibModal.open({
+          templateUrl: "/view/rent/building/editRoomModal.html",
+          controller: "RoomEditModalCtrl",
+          controllerAs: "editRoomModal",
+          resolve: {
+            room:aRoom
+          }
+        });
       }
 
-    });
+  });
 
 angular.module('Rent.Building')
-    .controller('RoomModalCtrl',
+    .controller('RoomEditModalCtrl',
       function($uibModalInstance, room) {
-        var roomModal = this;
-        roomModal.room = room.clone();
+        var editRoomModal = this;
+        editRoomModal.room = room.clone();
 
-        roomModal.cancel = function(){
+        editRoomModal.cancel = function(){
           $uibModalInstance.close();
         };
 
-        roomModal.save = function(){
-          room.name = roomModal.room.name;
+        editRoomModal.save = function(){
+          room.name = editRoomModal.room.name;
+          room.desc = editRoomModal.room.desc;
           room.save();
           $uibModalInstance.close();
         };
@@ -52,16 +69,20 @@ angular.module('Rent.Building')
 angular.module('Rent.Building')
     .controller('RoomAddModalCtrl',
       function($uibModalInstance, rooms) {
-        var roomModal = this;
+        var addRoomModal = this;
+        addRoomModal.newRoom = {name:"", desc:""};
 
-        roomModal.cancel = function(){
-        $uibModalInstance.close();
-      };
+        addRoomModal.cancel = function(){
+          $uibModalInstance.close();
+        };
 
-      roomModal.save = function(){
-        room.name = roomModal.room.name;
-        room.save();
-        $uibModalInstance.close();
-      };
+        addRoomModal.save = function(){
+          rooms.post(addRoomModal.newRoom).then(function(aRoom) {
+            console.log(aRoom);
+            rooms.push(aRoom);
+          });
+
+          $uibModalInstance.close();
+        };
     }
   );

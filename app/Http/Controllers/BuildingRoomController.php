@@ -41,7 +41,13 @@ class BuildingRoomController extends Controller
     public function store(Request $request, $buildingId)
     {
         //
-        echo $buildingId;
+        $room = new Room($request->all());
+        $room->building_id = $buildingId;
+        if (!$room->save()) {
+          abort(500, 'Could not save room');
+        }
+
+        return $room;
     }
 
     /**
@@ -78,6 +84,15 @@ class BuildingRoomController extends Controller
     public function update(Request $request, $buildingId, $roomId)
     {
         //
+        $room = Room::find($roomId);
+        $input = $request->all();
+        $room->fill($input);
+
+        if (!$room->save()) {
+          abort(500, 'Could not save building');
+        }
+
+        return $room;
     }
 
     /**

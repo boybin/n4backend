@@ -2,7 +2,7 @@
   <div class="row">
   <div class="col-md-2">
     <div class='img-container'>
-      <a href="#" ng-click="roomboard.openAddModal()">
+      <a href="#" ng-click="roomboard.openAddRoomModal()">
         <img src='images/plus.png'/>
       </a>
       <div class='img-text'><span>为<span ng-bind=""></span>添加房间</span></div>
@@ -12,10 +12,10 @@
     <div class='img-container'>
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
       <div class='img-text-edit'>
-        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="roomboard.openmodal(building)"></span>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="roomboard.openEditRoomModal(room)"></span>
         <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="roomboard.deleteRoom(room)"></span></div>
       <div class='img-text'><span ng-bind="room.name"></span></div>
-      <a href="#">
+      <a href="#" ng-click="roomboard.openEditRoomModal(room)">
       <!-- <img src='@{{room.img}}'/> -->
       <img src='/images/Apartment-green.png'/>
       </a>
