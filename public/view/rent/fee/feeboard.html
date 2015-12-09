@@ -1,0 +1,24 @@
+<div class="jumbbotron">
+  <div class="row">
+  <div class="col-md-2">
+    <div class='img-container'>
+      <a href="#" ng-click="feemetaboard.openAddModal()">
+        <img src='images/plus.png'/>
+      </a>
+      <div class='img-text'><span>点击添加新楼</span></div>
+    </div>
+  </div>
+  <div class="col-md-2" ng-repeat="fee in feeboard.AllFees">
+    <div class='img-container'>
+      <div class='img-text-warning' ng-if="fee.warn"><span ng-bind="fee.warn"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="feeboard.openmodal(fee)"></span>
+        <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="feeboard.deletefee(fee)"></span></div>
+      <div class='img-text'><span ng-bind="fee.name"></span></div>
+      <a href="">
+        <img src='images/Building-green.png'/>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>

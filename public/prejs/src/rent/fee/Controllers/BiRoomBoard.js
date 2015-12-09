@@ -1,4 +1,4 @@
-angular.module('Rent.Bill')
+angular.module('Rent.Fee')
   .controller('BiRoomboardCtrl',
     function($uibModal, BuildingModel) {
       var biroomboard = this;

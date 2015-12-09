@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="addFeeMetaModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">费用基础信息</h4>
+    </div>
+    <div class="modal-body">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">费用名称</span>
+        <input type="text" ng-model="addFeeMetaModal.newFeeMeta.name" class="form-control" placeholder="费用名称" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">费用金额</span>
+        <input type="text" ng-model="addFeeMetaModal.newFeeMeta.fee" class="form-control" placeholder="费用金额" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">费用类别</span>
+        <div class="btn-group">
+          <label class="btn btn-default sm" ng-model="addFeeMetaModal.newFeeMeta.type" uib-btn-radio="1">年付</label>
+          <label class="btn btn-default sm" ng-model="addFeeMetaModal.newFeeMeta.type" uib-btn-radio="2">季度付</label>
+          <label class="btn btn-default sm" ng-model="addFeeMetaModal.newFeeMeta.type" uib-btn-radio="3">月付</label>
+        </div>
+      </div>
+      <div class="input-group">
+        <!-- <span class="input-group-addon" id="basic-addon1">是否预警提示</span> -->
+        <button type="button" class="btn btn-default sm" ng-model="addFeeMetaModal.newFeeMeta.alert" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          是否预警提示
+        </button>
+        <!-- <input type="text" ng-model="addFeeMetaModal.newFeeMeta.alert" class="form-control" placeholder="是否预警提示" aria-describedby="basic-addon1"> -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="addFeeMetaModal.cancel()">关闭</button>
+      <button type="button" class="btn btn-primary" ng-click="addFeeMetaModal.save()">保存</button>
+    </div>
+</div>

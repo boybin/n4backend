@@ -1,0 +1,24 @@
+<div class="jumbbotron">
+  <div class="row">
+  <div class="col-md-2">
+    <div class='img-container'>
+      <a href="#" ng-click="feemetaboard.openAddFeeMetaModal()">
+        <img src='images/plus.png'/>
+      </a>
+      <div class='img-text'><span>添加新费用项目</span></div>
+    </div>
+  </div>
+  <div class="col-md-2" ng-repeat="feemeta in feemetaboard.feeMetas">
+    <div class='img-container'>
+      <div class='img-text-warning' ng-if="feemeta.warn"><span ng-bind="feemeta.warn"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="feemetaboard.openEditFeeMetaModal(feemeta)"></span>
+        <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="feemetaboard.deleteFeeMeta(feemeta)"></span></div>
+      <div class='img-text'><span ng-bind="feemeta.name"></span></div>
+      <a href="">
+        <img src='images/Building-green.png'/>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>

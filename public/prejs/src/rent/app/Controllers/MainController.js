@@ -16,15 +16,11 @@ angular.module('Rent.Common')
           return false;
         }
         main.isFee = function () {
-          return false;
+          return ($state.includes("feemetaboard")
+                    ||$state.includes("feeboard"));
         }
         //---------------------------------//
 
         main.AllRoomsStatus = BuildingModel.AllBuildings();
 
-/*        RoomModel.AllRoomsStatus()
-                .then(function (allRoomStatus) {
-                  main.allRoomStatus = allRoomStatus;
-                });
-                */
     });

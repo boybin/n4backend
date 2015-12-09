@@ -22,7 +22,7 @@ head.load(
   {file:'prejs/src/rent/app/Controllers/MainController.js'},
   {file:'prejs/src/rent/app/Controllers/AuthController.js'},
   {file:'prejs/src/rent/app/Controllers/UserController.js'},
-  {file:'prejs/src/rent/app/Models/BillModel.js'},
+  {file:'prejs/src/rent/app/Models/FeeModel.js'},
   {file:'prejs/src/rent/app/Models/LeaseModel.js'},
   {file:'prejs/src/rent/app/Models/BuildingModel.js'},
 
@@ -35,7 +35,9 @@ head.load(
   {file:'prejs/src/rent/building/Controllers/BuildingBoard.js'},
   {file:'prejs/src/rent/building/Controllers/BRoomBoard.js'},
 
-  {file:'prejs/src/rent/bill/Bill.js'},
-  {file:'prejs/src/rent/bill/Controllers/BiRoomBoard.js'},
-  {file:'prejs/src/rent/bill/Controllers/BillBoard.js'}
+  {file:'prejs/src/rent/fee/Fee.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeeMetaBoard.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeeBoard.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeeBoard.js'}
+
 );

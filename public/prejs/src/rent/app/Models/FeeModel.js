@@ -1,7 +1,9 @@
 angular.module('Rent.Common')
-    .service('BillModel',
-        function ($http) {
+    .service('FeeModel',
+        function (Restangular) {
             var service = this;
+            service.restResource = Restangular.service('feemetas');
+
             service.AllBuildings = function(){
                 return [
                   {id:'1',number:'1',title:'1#楼',img:'images/Building-green.png',warn:'3户欠费'},
@@ -31,4 +33,4 @@ angular.module('Rent.Common')
                 {id:'10',number:'10',title:'205室',img:'images/Apartment-green.png'}
               ];
         };
-        });
+    });

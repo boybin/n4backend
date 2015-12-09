@@ -49,6 +49,7 @@ Route::group(['prefix' => 'api'], function()
     Route::group(['prefix' => 'rent'], function() {
       Route::resource('buildings', 'BuildingController');
       Route::resource('buildings.rooms', 'BuildingRoomController');
+      Route::resource('feemetas', 'FeeMetaController');
     });
 });
 // Using different syntax for Blade to avoid conflicts with AngularJS.

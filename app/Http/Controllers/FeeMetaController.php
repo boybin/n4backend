@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\FeeMeta;
 
 class FeeMetaController extends Controller
 {
@@ -16,7 +17,7 @@ class FeeMetaController extends Controller
      */
     public function index()
     {
-        //
+      return FeeMeta::all();
     }
 
     /**
@@ -37,7 +38,12 @@ class FeeMetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $feeMeta = new FeeMeta($request->all());
+      if (!$feeMeta->save()) {
+        abort(500, 'Could not save feeMeta');
+      }
+
+      return $feeMeta;
     }
 
     /**
@@ -48,7 +54,7 @@ class FeeMetaController extends Controller
      */
     public function show($id)
     {
-        //
+      return FeeMeta::find($id);
     }
 
     /**
@@ -71,7 +77,15 @@ class FeeMetaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $feeMeta = FeeMeta::find($id);
+      $input = $request->all();
+      $feeMeta->fill($input);
+
+      if (!$feeMeta->save()) {
+        abort(500, 'Could not save fee meta');
+      }
+
+      return $feeMeta;
     }
 
     /**
@@ -82,6 +96,6 @@ class FeeMetaController extends Controller
      */
     public function destroy($id)
     {
-        //
+      return FeeMeta::destroy($id);
     }
 }

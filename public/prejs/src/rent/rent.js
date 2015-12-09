@@ -2,7 +2,7 @@
   'use strict';
   var rentModule = angular.module('Rent', [
     'Rent.Common',
-    'Rent.Bill',
+    'Rent.Fee',
     'Rent.Building',
     'Rent.Lease',
     'angular-storage',
@@ -36,6 +36,16 @@
           url:"/rent/building/{building_id}/roomboard",
           templateUrl:"/view/rent/building/roomboard.html",
           controller:"BRoomboardCtrl as roomboard"
+        })
+        .state('feemetaboard', {
+          url:"/rent/fee/feemetaboard",
+          templateUrl:"/view/rent/fee/feemetaboard.html",
+          controller:"FeeMetaboardCtrl as feemetaboard"
+        })
+        .state('feeboard', {
+          url:"/rent/fee/feeboard",
+          templateUrl:"/view/rent/fee/feeboard.html",
+          controller:"FeeboardCtrl as feeboard"
         })
 
     $locationProvider.html5Mode(true);
