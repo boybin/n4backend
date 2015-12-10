@@ -14,13 +14,14 @@ class CreateFeeRecordsTable extends Migration
     {
         Schema::create('fee_records', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('room_id');
+            $table->unsignedInteger('fee_plan_id');
+            $table->unsignedInteger('rent_id');
             $table->unsignedInteger('building_id');
+            $table->unsignedInteger('room_id');
             $table->unsignedInteger('fee_meta_id');
             $table->string('fee_name');
+            $table->string('payor');
             $table->decimal('inc_fee');
-            $table->decimal('sum_fee');
-            $table->boolean('full_fill');
             $table->softDeletes();
             $table->timestamps();
         });

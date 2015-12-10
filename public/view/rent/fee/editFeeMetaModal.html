@@ -21,11 +21,32 @@
         </div>
       </div>
       <div class="input-group">
-        <!-- <span class="input-group-addon" id="basic-addon1">是否预警提示</span> -->
+        <span class="input-group-addon" id="basic-addon1">预警提示设置</span>
         <!-- <input type="text" ng-model="editFeeMetaModal.newFeeMeta.alert" class="form-control" placeholder="是否预警提示" aria-describedby="basic-addon1"> -->
         <button type="button" class="btn btn-default sm" ng-model="editFeeMetaModal.newFeeMeta.alert" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
           是否预警提示
         </button>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费开始日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="editFeeMetaModal.newFeeMeta.fee_start_date" is-open="editFeeMetaModal.startOpen" min-date="editFeeMetaModal.minDate" max-date="editFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="editFeeMetaModal.openStartCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费截止日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="editFeeMetaModal.newFeeMeta.fee_end_date" is-open="editFeeMetaModal.endOpen" min-date="editFeeMetaModal.minDate" max-date="editFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="editFeeMetaModal.openEndCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费警告日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="editFeeMetaModal.newFeeMeta.fee_alert_date" is-open="editFeeMetaModal.alertOpen" min-date="editFeeMetaModal.minDate" max-date="editFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="editFeeMetaModal.openAlertCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
       </div>
     </div>
     <div class="modal-footer">

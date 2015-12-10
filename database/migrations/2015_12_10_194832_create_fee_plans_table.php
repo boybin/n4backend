@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeeMetasTable extends Migration
+class CreateFeePlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,18 @@ class CreateFeeMetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('fee_metas', function (Blueprint $table) {
+        Schema::create('fee_plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->tinyInteger('type');
+            $table->unsignedInteger('feemeta_id');
+            $table->unsignedInteger('rent_id');
+            $table->unsignedInteger('room_id');
+            $table->unsignedInteger('building_id');
+            $table->string('fee_name');
             $table->decimal('fee');
-            $table->tinyInteger('alert');
             $table->date('fee_start_date');
             $table->date('fee_end_date');
             $table->date('fee_alert_date');
+            $table->tinyInteger('status');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +36,6 @@ class CreateFeeMetasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('fee_metas');
+        Schema::drop('fee_plans');
     }
 }
