@@ -1,8 +1,9 @@
 angular.module('Rent.Lease')
-  .controller('RentboardCtrl',
+  .controller('LeaseboardCtrl',
     function($uibModal, LeaseModel) {
-      var rentboard = this;
-      //当前的房间板块显示的数据
-      rentboard.AllBuildings = LeaseModel.AllBuildings();
-      rentboard.test = "aaa";
+      var leaseboard = this;
+      console.log("yes");
+      LeaseModel.restResource.getList().then(function(buildings){
+        leaseboard.AllBuildings = buildings;
+      });
     });

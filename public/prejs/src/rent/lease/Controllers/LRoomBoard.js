@@ -1,7 +1,12 @@
 angular.module('Rent.Lease')
   .controller('LRoomboardCtrl',
-    function($uibModal, LeaseModel) {
-      var lroomboard = this;
-      //当前的房间板块显示的数据
-      lroomboard.AllRooms = LeaseModel.AllRooms();
+    function($uibModal, $stateParams, LeaseModel) {
+      var leaseroomboard = this;
+      
+      LeaseModel.restResource
+        .one($stateParams.building_id)
+        .getList("rooms")
+        .then(function(rooms){
+          leaseroomboard.AllRooms = rooms;
+      })
     });

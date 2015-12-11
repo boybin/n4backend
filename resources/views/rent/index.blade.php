@@ -56,7 +56,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/rent/lease/rentboard">出租大厅</a></li>
+            <li><a href="/rent/lease/leaseboard">出租大厅</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#/roommanage">出租大厅</a></li>
           </ul>

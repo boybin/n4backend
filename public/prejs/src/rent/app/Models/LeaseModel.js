@@ -1,7 +1,9 @@
 angular.module('Rent.Common')
     .service('LeaseModel',
-        function ($http) {
+        function (Restangular) {
             var service = this;
+            service.restResource = Restangular.service('rentbuildings');
+
             service.AllBuildings = function(){
                 return [
                   {id:'1',number:'1',title:'1#楼',img:'images/Building-green.png',warn:'16户未出租'},

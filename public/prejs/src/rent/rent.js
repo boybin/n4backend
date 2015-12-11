@@ -47,6 +47,16 @@
           templateUrl:"/view/rent/fee/feeboard.html",
           controller:"FeeboardCtrl as feeboard"
         })
+        .state('leaseboard', {
+          url:"/rent/lease/leaseboard",
+          templateUrl:"/view/rent/lease/rentbuildings.html",
+          controller:"LeaseboardCtrl as leaseboard"
+        })
+        .state('leaseroomboard', {
+          url:"/rent/lease/{building_id}/leaseroomboard",
+          templateUrl:"/view/rent/lease/rentrooms.html",
+          controller:"LRoomboardCtrl as leaseroomboard"
+        })
 
     $locationProvider.html5Mode(true);
   });

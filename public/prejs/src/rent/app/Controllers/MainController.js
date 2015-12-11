@@ -13,7 +13,8 @@ angular.module('Rent.Common')
           return ($state.includes("rent"));
         }
         main.isRent = function() {
-          return false;
+          return ($state.includes("leaseboard")
+                    ||$state.includes("leaseroomboard"));
         }
         main.isFee = function () {
           return ($state.includes("feemetaboard")

@@ -1,0 +1,17 @@
+<div class="jumbbotron">
+  <div class="row">
+  <div class="col-md-2" ng-repeat="room in leaseroomboard.AllRooms">
+    <div class='img-container'>
+      <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="lroomboard.openEditRoomModal(room)"></span>
+      </div>
+      <div class='img-text'><span ng-bind="room.name"></span></div>
+      <a href="#" ng-click="lroomboard.openEditRoomModal(room)">
+      <!-- <img src='@{{room.img}}'/> -->
+      <img src='/images/Apartment-green.png'/>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
