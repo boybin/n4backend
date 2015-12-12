@@ -21,6 +21,17 @@ angular.module('Rent.Lease')
         });
       }
 
+      leaseroomboard.viewSignModal = function(aRoom){
+        $uibModal.open({
+          templateUrl: "/view/rent/lease/viewSignRoomModal.html",
+          controller: "LeaseViewRoomSignModalCtrl",
+          controllerAs: "leaseViewRoomSignModal",
+          resolve: {
+            room:aRoom
+          }
+        });
+      }
+
 
     });
 
@@ -62,9 +73,7 @@ angular.module('Rent.Lease')
       leaseRoomSignModal.cancel = function(){
         $uibModalInstance.close();
       };
-
       leaseRoomSignModal.save = function(){
-        console.log(leaseRoomSignModal.room.contract);
         LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
           leaseRoomSignModal.room.contract = aContract;
         });
@@ -72,3 +81,31 @@ angular.module('Rent.Lease')
       }
     }
   );
+
+angular.module('Rent.Lease')
+  .controller('LeaseViewRoomSignModalCtrl',
+    function($uibModalInstance, room, LeaseModel) {
+      var leaseViewRoomSignModal = this;
+      leaseViewRoomSignModal.room = room;
+
+      leaseViewRoomSignModal.startOpen = false;
+      leaseViewRoomSignModal.openStartCal = function($event) {
+        leaseViewRoomSignModal.startOpen = true;
+      }
+      leaseViewRoomSignModal.endOpen = false;
+      leaseViewRoomSignModal.openEndCal = function($event) {
+        leaseViewRoomSignModal.endOpen = true;
+      }
+
+      leaseViewRoomSignModal.cancel = function(){
+        $uibModalInstance.close();
+      };
+
+      leaseViewRoomSignModal.save = function(){
+        // LeaseModel.contractRestResource.post(leaseViewRoomSignModal.room.contract).then(function(aContract){
+          // leaseViewRoomSignModal.room.contract = aContract;
+        // });
+        $uibModalInstance.close();
+      }
+    }
+);
