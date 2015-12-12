@@ -19,14 +19,14 @@ angular.module('Rent.Lease')
     });
 
 
-    angular.module('Rent.Lease')
-      .controller('LeaseBuildingDetailModalCtrl',
-        function($uibModalInstance, building) {
-          var leaseBuildingModal = this;
-          leaseBuildingModal.building = building;
+angular.module('Rent.Lease')
+  .controller('LeaseBuildingDetailModalCtrl',
+    function($uibModalInstance, building) {
+      var leaseBuildingModal = this;
+      leaseBuildingModal.building = building;
 
-          leaseBuildingModal.close = function(){
-            $uibModalInstance.close();
-          };
-        }
-      );
+      leaseBuildingModal.close = function(){
+        $uibModalInstance.close();
+      };
+    }
+  );

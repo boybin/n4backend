@@ -9,5 +9,5 @@ class Contract extends Model
 {
     use SoftDeletes;
     //
-    protected $guarded = ['rent_fee'];
+    protected $guarded = ['id'];
 }

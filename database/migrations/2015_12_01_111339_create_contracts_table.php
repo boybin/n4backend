@@ -17,9 +17,10 @@ class CreateContractsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('building_id');
-            $table->decimal('rent_fee');
             $table->string('building_name');
             $table->string('room_name');
+            $table->string('contractor_name');
+            $table->string('contractor_number');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->string('id_number');

@@ -5,10 +5,10 @@
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
       <div class='img-text-edit'>
         <!-- <span class="pull-right glyphicon glyphicon-user clickable_space" ng-click="lroomboard.openEditRoomModal(room)"></span> -->
-        <span class="pull-right glyphicon glyphicon-book clickable_space" ng-click="lroomboard.openEditRoomModal(room)"></span>
+        <span class="pull-right glyphicon glyphicon-book clickable_space" ng-click="leaseroomboard.openSignModal(room)"></span>
       </div>
       <div class='img-text'><span ng-bind="room.name"></span></div>
-      <a href="#" ng-click="lroomboard.openEditRoomModal(room)">
+      <a href="#" ng-click="leaseroomboard.openEditRoomModal(room)">
       <!-- <img src='@{{room.img}}'/> -->
       <img src='/images/Apartment-green.png'/>
       </a>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Contract;
+
 class ContractController extends Controller
 {
     /**
@@ -37,7 +39,12 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contract = new Contract($request->all());
+        if (!$contract->save()) {
+          abort(500, 'Could not save contract');
+        }
+
+        return $contract;
     }
 
     /**
