@@ -24,7 +24,7 @@ class RentBuildingRoomController extends Controller
          $today = new \DateTime('today');
          foreach ($rooms as &$room) {
            $contract = Contract::where('room_id',$room['id'])
-                                 ->where('start_time' , '<=', $today)
+                                //  ->where('start_time' , '<=', $today)
                                  ->where('end_time', '>=' , $today)
                                  ->get();
            if ($contract->count()>0) {

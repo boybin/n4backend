@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Room;
 use App\Building;
+use App\Contract;
 
 class RentBuildingController extends Controller
 {
@@ -17,7 +19,21 @@ class RentBuildingController extends Controller
      */
     public function index()
     {
-        return Building::all();
+        $buildings = Building::all();
+
+        $today = new \DateTime('today');
+        foreach ($buildings as &$building) {
+          $roomsCount = Room::where("building_id", $building['id'])->count();
+          $contractsCount = Contract::where('building_id',$building['id'])
+                                ->where('end_time', '>=' , $today)
+                                ->count();
+
+          $building['contractsNumber'] = $contractsCount;
+          $building['emptyNumber'] = $roomsCount - $contractsCount;
+          $building['rooms_count'] = $roomsCount;
+        }
+
+        return $buildings;
     }
 
 }

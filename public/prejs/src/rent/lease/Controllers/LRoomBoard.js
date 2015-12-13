@@ -74,9 +74,13 @@ angular.module('Rent.Lease')
         $uibModalInstance.close();
       };
       leaseRoomSignModal.save = function(){
-        LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
-          leaseRoomSignModal.room.contract = aContract;
-        });
+        if(confirm("确定租户信息?")) {
+            LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
+            leaseRoomSignModal.room.contract = aContract;
+            leaseRoomSignModal.room.hasContract = true;
+          });
+        }
+
         $uibModalInstance.close();
       }
     }
@@ -101,11 +105,11 @@ angular.module('Rent.Lease')
         $uibModalInstance.close();
       };
 
-      leaseViewRoomSignModal.save = function(){
+      // leaseViewRoomSignModal.save = function(){
         // LeaseModel.contractRestResource.post(leaseViewRoomSignModal.room.contract).then(function(aContract){
           // leaseViewRoomSignModal.room.contract = aContract;
         // });
-        $uibModalInstance.close();
-      }
+        // $uibModalInstance.close();
+      // }
     }
 );

@@ -5,16 +5,29 @@
     </div>
     <div class="modal-body">
       <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">楼栋编号</span>
-        <input type="text" ng-model="leaseBuildingModal.building.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1">
+        <span class="input-group-addon" id="basic-addon1">楼栋编号</span> &nbsp;
+        <span class="label label-info" ng-bind="leaseBuildingModal.building.name"></span>
+        <!-- <input type="text" ng-model="leaseBuildingModal.building.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">房间数量</span>
-        <input type="text" ng-model="leaseBuildingModal.building.rooms_count" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1">
+        <span class="input-group-addon" id="basic-addon1">房间数量</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseBuildingModal.building.rooms_count"></span>
+        <!-- <input type="text" ng-model="leaseBuildingModal.building.rooms_count" class="form-control" placeholder="房间数量" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">楼栋描述</span>
-        <input type="text" ng-model="leaseBuildingModal.building.desc" class="form-control" placeholder="楼栋描述" aria-describedby="basic-addon1">
+        <span class="input-group-addon" id="basic-addon1">楼栋描述</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseBuildingModal.building.desc"></span>
+        <!-- <input type="text" ng-model="leaseBuildingModal.building.desc" class="form-control" placeholder="楼栋描述" aria-describedby="basic-addon1"> -->
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">租出去的数量</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseBuildingModal.building.contractsNumber"></span>
+        <!-- <input type="text" ng-model="leaseBuildingModal.building.contractsNumber" class="form-control" placeholder="租出去的数量" aria-describedby="basic-addon1"> -->
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">空置数量</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseBuildingModal.building.emptyNumber"></span>
+        <!-- <input type="text" ng-model="leaseBuildingModal.building.emptyNumber" class="form-control" placeholder="空置的数量" aria-describedby="basic-addon1"> -->
       </div>
     </div>
     <div class="modal-footer">
