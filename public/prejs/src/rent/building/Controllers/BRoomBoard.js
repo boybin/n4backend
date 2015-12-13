@@ -8,7 +8,13 @@ angular.module('Rent.Building')
         .getList("rooms")
         .then(function(rooms){
           roomboard.AllRooms = rooms;
-      })
+      });
+
+      var building = BuildingModel.restResource
+        .one($stateParams.building_id)
+        .get().then(function(aBuilding){
+          roomboard.building = aBuilding;
+        });
 
       roomboard.openAddRoomModal = function() {
         $uibModal.open({

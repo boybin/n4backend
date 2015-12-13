@@ -36,4 +36,15 @@ class RentBuildingController extends Controller
         return $buildings;
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+      return Building::find($id);
+    }
+
 }

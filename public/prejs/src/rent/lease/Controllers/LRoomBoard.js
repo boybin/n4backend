@@ -8,7 +8,14 @@ angular.module('Rent.Lease')
         .getList("rooms")
         .then(function(rooms){
           leaseroomboard.AllRooms = rooms;
-      })
+      });
+
+      LeaseModel.restResource
+        .one($stateParams.building_id)
+        .get()
+        .then(function(aBuilding){
+          leaseroomboard.building = aBuilding;
+        })
 
       leaseroomboard.openSignModal = function(aRoom){
         $uibModal.open({
