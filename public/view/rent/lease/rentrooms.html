@@ -9,8 +9,8 @@
       </div>
       <div class='img-text'><span ng-bind="room.name"></span></div>
       <a href="#" ng-click="leaseroomboard.openEditRoomModal(room)">
-      <!-- <img src='@{{room.img}}'/> -->
-      <img src='/images/Apartment-green.png'/>
+      <img ng-if="room.hasContract" src='/images/Apartment-red.png'/>
+      <img ng-if="!room.hasContract" src='/images/Apartment-purple.png'/>
       </a>
     </div>
   </div>
