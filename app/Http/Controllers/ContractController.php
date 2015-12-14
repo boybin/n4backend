@@ -89,6 +89,6 @@ class ContractController extends Controller
      */
     public function destroy($id)
     {
-        //
+      return Contract::destroy($id);
     }
 }

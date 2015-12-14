@@ -121,6 +121,16 @@ angular.module('Rent.Lease')
       leaseViewRoomSignModal.cancel = function(){
         $uibModalInstance.close();
       };
+      leaseViewRoomSignModal.removeContract = function(){
+        if(confirm("终止该租户合同? 此操作不可回滚")) {
+          LeaseModel.contractRestResource.one(room.contract['id']).remove().then(function(){
+            room['hasContract'] = 0;
+            delete room['contract'];
+          });
+        }
+
+        $uibModalInstance.close();
+      }
 
     }
 );
