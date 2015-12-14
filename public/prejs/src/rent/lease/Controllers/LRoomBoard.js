@@ -23,7 +23,10 @@ angular.module('Rent.Lease')
           controller: "LeaseRoomSignModalCtrl",
           controllerAs: "leaseRoomSignModal",
           resolve: {
-            room:aRoom
+            room: function(){
+              aRoom['building'] = leaseroomboard.building;
+              return aRoom;
+            }
           }
         });
       }
@@ -34,7 +37,10 @@ angular.module('Rent.Lease')
           controller: "LeaseViewRoomSignModalCtrl",
           controllerAs: "leaseViewRoomSignModal",
           resolve: {
-            room:aRoom
+            room: function(){
+              aRoom['building'] = leaseroomboard.building;
+              return aRoom;
+            }
           }
         });
       }
@@ -87,8 +93,8 @@ angular.module('Rent.Lease')
       leaseRoomSignModal.save = function(){
         if(confirm("确定租户信息?")) {
             LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
-            leaseRoomSignModal.room.contract = aContract;
-            leaseRoomSignModal.room.hasContract = true;
+            leaseRoomSignModal.room['contract'] = aContract;
+            leaseRoomSignModal.room['hasContract'] = 1;
           });
         }
 
@@ -116,11 +122,5 @@ angular.module('Rent.Lease')
         $uibModalInstance.close();
       };
 
-      // leaseViewRoomSignModal.save = function(){
-        // LeaseModel.contractRestResource.post(leaseViewRoomSignModal.room.contract).then(function(aContract){
-          // leaseViewRoomSignModal.room.contract = aContract;
-        // });
-        // $uibModalInstance.close();
-      // }
     }
 );

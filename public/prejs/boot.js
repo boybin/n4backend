@@ -29,6 +29,7 @@ head.load(
 
   {file:'prejs/src/rent/lease/Lease.js'},
   {file:'prejs/src/rent/lease/Controllers/LeaseBoard.js'},
+  {file:'prejs/src/rent/lease/Controllers/RentRoomsBoard.js'},
   {file:'prejs/src/rent/lease/Controllers/LRoomBoard.js'},
 
   {file:'prejs/src/rent/building/Building.js'},

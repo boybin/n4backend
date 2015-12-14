@@ -12,7 +12,7 @@ class Building extends Model
     protected $fillable = ['user_id', 'name', 'desc','rooms_count'];
 
     public function rooms() {
-      return $this->hasMany('App\Room');
+      return $this->hasMany('App\Room','building_id');
     }
 
     public function user() {

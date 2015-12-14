@@ -10,11 +10,13 @@ angular.module('Rent.Common')
                     ||$state.includes("roomboard"));
         }
         main.isRentBoard = function(){
-          return ($state.includes("rent"));
+          return ($state.includes("rentroomsboard"));
         }
         main.isRent = function() {
           return ($state.includes("leaseboard")
-                    ||$state.includes("leaseroomboard"));
+                    ||$state.includes("leaseroomboard")
+                    // ||$state.includes("rentroomsboard")
+                  );
         }
         main.isFee = function () {
           return ($state.includes("feemetaboard")

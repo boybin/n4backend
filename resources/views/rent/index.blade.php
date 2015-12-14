@@ -27,7 +27,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li ng-class="{active:main.isRentBoard()}">
-          <a href="/rent/lease/rentboard">
+          <a href="/rent/lease/rentroomsboard">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 出租房屋大厅
             <!-- <span class="badge" ng-bind="main.AllRoomsStatus.rentable"></span> -->
             <span class="badge">19</span>
@@ -58,7 +58,7 @@
           <ul class="dropdown-menu">
             <li><a href="/rent/lease/leaseboard">出租楼栋大厅</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/lease/leaseroomboard">出租房屋大厅</a></li>
+            <li><a href="/rent/lease/rentroomsboard">出租房屋大厅</a></li>
           </ul>
         </li>
         <li class="dropdown" ng-class="{active:main.isFee()}">

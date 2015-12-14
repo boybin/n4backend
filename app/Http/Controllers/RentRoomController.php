@@ -10,22 +10,19 @@ use App\Http\Controllers\Controller;
 use App\Room;
 use App\Contract;
 
-class RentBuildingRoomController extends Controller
+class RentRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($buildingId)
+    public function index()
     {
-        //  $rooms = Room::with("building")
-         $rooms = Room::where('building_id',$buildingId)
-                    ->get();
+         $rooms = Room::with("building")->get();
          $today = new \DateTime('today');
          foreach ($rooms as &$room) {
            $contract = Contract::where('room_id',$room['id'])
-                                //  ->where('start_time' , '<=', $today)
                                  ->where('end_time', '>=' , $today)
                                  ->get();
            if ($contract->count()>0) {

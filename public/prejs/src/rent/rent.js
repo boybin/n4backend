@@ -57,6 +57,11 @@
           templateUrl:"/view/rent/lease/rentrooms.html",
           controller:"LRoomboardCtrl as leaseroomboard"
         })
+        .state('rentroomsboard', {
+          url:"/rent/lease/rentroomsboard",
+          templateUrl:"/view/rent/lease/rentroomsboard.html",
+          controller:"RentRoomsboardCtrl as rentroomsboard"
+        })
 
     $locationProvider.html5Mode(true);
   });

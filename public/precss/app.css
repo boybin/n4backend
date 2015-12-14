@@ -21,6 +21,16 @@
     text-align: center;
 }
 
+.img-text-board {
+    top: 70%;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    background-color: #EEEEEE;
+    display: block;
+    text-align: center;
+}
+
 .img-text-warning {
     top: 10%;
     width: 100px;

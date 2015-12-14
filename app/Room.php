@@ -12,7 +12,7 @@ class Room extends Model
     protected $fillable = ['building_id', 'user_id', 'name', 'desc'];
 
     public function building() {
-      return $this->belongsTo('App\Building');
+      return $this->belongsTo('App\Building','building_id');
     }
 
     public function user() {
