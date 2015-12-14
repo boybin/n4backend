@@ -39,6 +39,10 @@ angular.module('Rent.Lease')
         });
       }
 
+      leaseroomboard.filterContractStatus = "";
+      leaseroomboard.filterStatus = function(status){
+        leaseroomboard.filterContractStatus = status;
+      }
 
     });
 

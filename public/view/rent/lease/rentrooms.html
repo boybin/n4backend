@@ -1,12 +1,15 @@
 <div>
   <ol class="breadcrumb">
     <li><a href="/rent/lease/leaseboard">出租楼栋大厅</a></li>
-    <li><a href="/rent/lease/{{leaseroomboard.building.id}}/leaseroomboard"><span ng-bind="leaseroomboard.building.name"></span></a></li>
+    <li><a href="#" ng-click="leaseroomboard.filterStatus('')"><span ng-bind="leaseroomboard.building.name"></span></a></li>
+    <li><a href="#" ng-click="leaseroomboard.filterStatus('')">所有</a></li>
+    <li><a href="#" ng-click="leaseroomboard.filterStatus(1)">已租</a></li>
+    <li><a href="#" ng-click="leaseroomboard.filterStatus(0)">空置</a></li>
   </ol>
 </div>
 <div class="jumbbotron">
   <div class="row">
-  <div class="col-md-2" ng-repeat="room in leaseroomboard.AllRooms">
+  <div class="col-md-2" ng-repeat="room in leaseroomboard.AllRooms|filterBy:['hasContract']:leaseroomboard.filterContractStatus">
     <div class='img-container'>
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
       <div class='img-text-edit'>

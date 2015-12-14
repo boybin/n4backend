@@ -28,10 +28,10 @@ class RentBuildingRoomController extends Controller
                                  ->where('end_time', '>=' , $today)
                                  ->get();
            if ($contract->count()>0) {
-             $room['hasContract'] = true;
+             $room['hasContract'] = 1;
              $room['contract'] = $contract[0];
            } else {
-             $room['hasContract'] = false;
+             $room['hasContract'] = 0;
            }
          }
 

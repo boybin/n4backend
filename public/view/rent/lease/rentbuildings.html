@@ -1,6 +1,13 @@
+<div>
+  <ol class="breadcrumb">
+    <li><a href="#" ng-click="leaseboard.filterStatus('')">所有</a></li>
+    <li><a href="#" ng-click="leaseboard.filterStatus(1)">有房</a></li>
+    <li><a href="#" ng-click="leaseboard.filterStatus(0)">已满</a></li>
+  </ol>
+</div>
 <div class="jumbbotron">
   <div class="row">
-    <div class="col-md-2" ng-repeat="building in leaseboard.AllBuildings">
+    <div class="col-md-2" ng-repeat="building in leaseboard.AllBuildings| filterBy:['hasEmptyRoom']:leaseboard.filterHasEmptyRoom">
       <div class='img-container'>
         <div class='img-text-warning' ng-if="building.warn"><span ng-bind="building.warn"></span></div>
         <!-- <div class='img-text-warning'><span>aaa</span></div> -->
@@ -10,8 +17,8 @@
         <div class='img-text'><span ng-bind="building.name"></span></div>
         <a href="/rent/lease/{{building.id}}/leaseroomboard">
         <!-- <a href="#" ng-click="buildboard.openmodal(building)"> -->
-        <!-- <img src='@{{building.img}}'/> -->
-          <img src='images/Building-purple.png'/>
+          <img ng-if="building.emptyNumber > 0" src='images/Building-purple-available.png'/>
+          <img ng-if="building.emptyNumber == 0" src='images/Building-purple-full.png'/>
         </a>
       </div>
     </div>

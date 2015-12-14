@@ -16,6 +16,11 @@ angular.module('Rent.Lease')
           }
         });
       }
+
+      leaseboard.filterHasEmptyRoom = "";
+      leaseboard.filterStatus = function(status){
+        leaseboard.filterHasEmptyRoom = status;
+      }
     });
 
 

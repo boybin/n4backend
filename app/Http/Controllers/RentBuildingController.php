@@ -31,6 +31,11 @@ class RentBuildingController extends Controller
           $building['contractsNumber'] = $contractsCount;
           $building['emptyNumber'] = $roomsCount - $contractsCount;
           $building['rooms_count'] = $roomsCount;
+          if ($building['emptyNumber'] > 0) {
+            $building['hasEmptyRoom'] = 1;
+          } else {
+            $building['hasEmptyRoom'] = 0;
+          }
         }
 
         return $buildings;
