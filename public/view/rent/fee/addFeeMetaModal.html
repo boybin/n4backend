@@ -42,7 +42,7 @@
           </span>
       </div>
       <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">收费警告日期</span>
+          <span class="input-group-addon" id="basic-addon1">提醒开始日期</span>
           <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="addFeeMetaModal.newFeeMeta.fee_alert_date" is-open="addFeeMetaModal.alertOpen" min-date="addFeeMetaModal.minDate" max-date="addFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="addFeeMetaModal.openAlertCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -51,6 +51,6 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" ng-click="addFeeMetaModal.cancel()">关闭</button>
-      <button type="button" class="btn btn-primary" ng-click="addFeeMetaModal.save()">保存</button>
+      <button type="button" class="btn btn-primary" ng-click="addFeeMetaModal.save()">添加费用</button>
     </div>
 </div>

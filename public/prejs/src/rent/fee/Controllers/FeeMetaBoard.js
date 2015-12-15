@@ -48,7 +48,7 @@ angular.module('Rent.Fee')
   .controller('AddFeeMetaModalCtrl',
     function($uibModalInstance, feeMetas) {
       var addFeeMetaModal = this;
-      addFeeMetaModal.newFeeMeta = {name:"",type:0, fee:0, alert:1};
+      addFeeMetaModal.newFeeMeta = {name:"",type:1, fee:0, alert:1};
       var tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       var afterTomorrow = new Date();
@@ -79,9 +79,11 @@ angular.module('Rent.Fee')
       };
 
       addFeeMetaModal.save = function(){
-        feeMetas.post(addFeeMetaModal.newFeeMeta).then(function(feeMeta){
-            feeMetas.push(feeMeta);
-        });
+        if(confirm("确定添加该费用")) {
+          feeMetas.post(addFeeMetaModal.newFeeMeta).then(function(feeMeta){
+              feeMetas.push(feeMeta);
+          });
+        }
         $uibModalInstance.close();
       };
     }
@@ -115,14 +117,17 @@ angular.module('Rent.Fee')
       };
 
       editFeeMetaModal.save = function(){
-        feeMeta.name = editFeeMetaModal.newFeeMeta.name;
-        feeMeta.fee = editFeeMetaModal.newFeeMeta.fee;
-        feeMeta.type = editFeeMetaModal.newFeeMeta.type;
-        feeMeta.alert = editFeeMetaModal.newFeeMeta.alert;
-        feeMeta.fee_start_date = editFeeMetaModal.newFeeMeta.fee_start_date;
-        feeMeta.fee_end_date = editFeeMetaModal.newFeeMeta.fee_end_date;
-        feeMeta.fee_alert_date = editFeeMetaModal.newFeeMeta.fee_alert_date;
-        feeMeta.save();
+        if (confirm("确认修改费用信息")) {
+          feeMeta.name = editFeeMetaModal.newFeeMeta.name;
+          feeMeta.fee = editFeeMetaModal.newFeeMeta.fee;
+          feeMeta.type = editFeeMetaModal.newFeeMeta.type;
+          feeMeta.alert = editFeeMetaModal.newFeeMeta.alert;
+          feeMeta.fee_start_date = editFeeMetaModal.newFeeMeta.fee_start_date;
+          feeMeta.fee_end_date = editFeeMetaModal.newFeeMeta.fee_end_date;
+          feeMeta.fee_alert_date = editFeeMetaModal.newFeeMeta.fee_alert_date;
+          feeMeta.save();
+        }
+
         $uibModalInstance.close();
       };
     }
