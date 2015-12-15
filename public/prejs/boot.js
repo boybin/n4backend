@@ -26,6 +26,7 @@ head.load(
   {file:'prejs/src/rent/app/Models/FeeModel.js'},
   {file:'prejs/src/rent/app/Models/LeaseModel.js'},
   {file:'prejs/src/rent/app/Models/BuildingModel.js'},
+  {file:'prejs/src/rent/app/Services/CommonUtilService.js'},
 
 
   {file:'prejs/src/rent/lease/Lease.js'},

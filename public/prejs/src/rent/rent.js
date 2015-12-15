@@ -68,9 +68,11 @@
   });
 
   rentModule.run(
-    function($rootScope, $location, $http, store/*, editableOptions*/) {
+    function($rootScope, $location, $http, store, CommonUtilService/*, editableOptions*/) {
       // editableOptions.theme = 'bs3';
       $rootScope.globals = store.get('globals') || {};
+      $rootScope.rentCommonUtils = CommonUtilService;
+      
       if ($rootScope.globals && $rootScope.globals.currentUser) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.token;
       }

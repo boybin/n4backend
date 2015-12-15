@@ -74,21 +74,23 @@ angular.module('Rent.Building')
 
 angular.module('Rent.Building')
     .controller('RoomAddModalCtrl',
-      function($uibModalInstance, rooms) {
+      function($uibModalInstance, $scope, rooms) {
         var addRoomModal = this;
         addRoomModal.newRoom = {name:"", desc:""};
 
         addRoomModal.cancel = function(){
-          $uibModalInstance.close();
+            $uibModalInstance.close();
         };
 
         addRoomModal.save = function(){
-          rooms.post(addRoomModal.newRoom).then(function(aRoom) {
-            console.log(aRoom);
-            rooms.push(aRoom);
-          });
+          var addRoomForm = $scope['addRoomForm'];
+          if ($scope.rentCommonUtils.validateForm($scope, addRoomForm) && confirm("添加房间?")) {
+            rooms.post(addRoomModal.newRoom).then(function(aRoom) {
+              rooms.push(aRoom);
+            });
 
-          $uibModalInstance.close();
+            $uibModalInstance.close();
+          }
         };
     }
   );
