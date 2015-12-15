@@ -3,7 +3,7 @@
       <button type="button" class="close" aria-hidden="true" ng-click="leaseRoomSignModal.cancel()">&times;</button>
       <h4 class="modal-title" id="myModalLabel">房间基本信息</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" ng-form="signRoomForm">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">所在楼栋</span> &nbsp;
         <span class="label label-info" ng-bind="leaseRoomSignModal.room.building.name"></span>
@@ -16,25 +16,37 @@
         <span class="input-group-addon" id="basic-addon1">房间描述</span> &nbsp;
         <span class="label label-info" ng-bind="leaseRoomSignModal.room.desc"></span>
       </div>
-      <div class="input-group">
+      <div class="input-group" ng-class="{'has-error':signRoomForm.name.$touched && signRoomForm.name.$invalid}">
         <span class="input-group-addon" id="basic-addon1">租房人姓名</span>
-        <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_name" class="form-control" aria-describedby="basic-addon1">
+        <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_name" class="form-control" aria-describedby="basic-addon1" name="name" required>
+        <span ng-messages="signRoomForm.name.$error" ng-show="signRoomForm.name.$touched">
+          <span ng-message="required">*租房人姓名必须填写</span>
+        </span>
       </div>
-      <div class="input-group">
+      <div class="input-group" ng-class="{'has-error':signRoomForm.idNumber.$touched && signRoomForm.idNumber.$invalid}">
         <span class="input-group-addon" id="basic-addon1">身份证号码</span>
-        <input type="text" ng-model="leaseRoomSignModal.room.contract.id_number" class="form-control" aria-describedby="basic-addon1">
+        <input type="text" ng-model="leaseRoomSignModal.room.contract.id_number" class="form-control" aria-describedby="basic-addon1" name="idNumber" required>
+        <span ng-messages="signRoomForm.idNumber.$error" ng-show="signRoomForm.idNumber.$touched">
+          <span ng-message="required">*租房人身份证号码必须填写</span>
+        </span>
       </div>
-      <div class="input-group">
+      <div class="input-group" ng-class="{'has-error':signRoomForm.phone.$touched && signRoomForm.phone.$invalid}">
         <span class="input-group-addon" id="basic-addon1">电话号码</span>
-        <input type="text" ng-model="leaseRoomSignModal.room.contract.phone" class="form-control" aria-describedby="basic-addon1">
+        <input type="text" ng-model="leaseRoomSignModal.room.contract.phone" class="form-control" aria-describedby="basic-addon1" name="phone" required>
+        <span ng-messages="signRoomForm.phone.$error" ng-show="signRoomForm.phone.$touched">
+          <span ng-message="required">*电话号码必须填写</span>
+        </span>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">家庭住址</span>
         <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_location" class="form-control" aria-describedby="basic-addon1">
       </div>
-      <div class="input-group">
+      <div class="input-group" ng-class="{'has-error':signRoomForm.contractorNumber.$touched && signRoomForm.contractorNumber.$invalid}">
         <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>
-        <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_number" class="form-control" aria-describedby="basic-addon1">
+        <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_number" class="form-control" aria-describedby="basic-addon1" name="contractorNumber" required>
+        <span ng-messages="signRoomForm.contractorNumber.$error" ng-show="signRoomForm.contractorNumber.$touched">
+          <span ng-message="required">*纸质合同必须填写</span>
+        </span>
       </div>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">合同开始日期</span>

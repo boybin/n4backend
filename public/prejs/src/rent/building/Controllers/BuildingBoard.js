@@ -47,7 +47,7 @@ angular.module('Rent.Building')
 
     angular.module('Rent.Building')
       .controller('BuildingModalCtrl',
-        function($uibModalInstance, building) {
+        function($uibModalInstance, $scope, building) {
           var buildingModal = this;
           buildingModal.building = building.clone();
 
@@ -56,18 +56,21 @@ angular.module('Rent.Building')
           };
 
           buildingModal.save = function(){
-            building.name = buildingModal.building.name;
-            building.rooms_count = buildingModal.building.rooms_count;
-            building.desc = buildingModal.building.desc;
-            building.save();
-            $uibModalInstance.close();
+            var editBuildingForm = $scope['editBuildingForm'];
+            if ($scope.rentCommonUtils.validateForm($scope, editBuildingForm) && confirm("编辑楼?")) {
+              building.name = buildingModal.building.name;
+              building.rooms_count = buildingModal.building.rooms_count;
+              building.desc = buildingModal.building.desc;
+              building.save();
+              $uibModalInstance.close();
+            }
           };
         }
       );
 
     angular.module('Rent.Building')
         .controller('BuildingAddModalCtrl',
-          function($uibModalInstance, buildings) {
+          function($uibModalInstance, $scope, buildings) {
             var buildingAddModal = this;
             buildingAddModal.newbuilding = {name:"", rooms_count:0, desc:""};
 
@@ -76,11 +79,14 @@ angular.module('Rent.Building')
             };
 
             buildingAddModal.save = function(){
-              buildings.post(buildingAddModal.newbuilding).then(function(building){
-                buildings.push(building);
-              });
+              var addBuildingForm = $scope['addBuildingForm'];
+              if ($scope.rentCommonUtils.validateForm($scope, addBuildingForm) && confirm("添加楼?")) {
+                buildings.post(buildingAddModal.newbuilding).then(function(building){
+                  buildings.push(building);
+                });
 
-              $uibModalInstance.close();
+                $uibModalInstance.close();
+              }
             };
           }
       );

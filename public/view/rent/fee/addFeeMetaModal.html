@@ -3,14 +3,21 @@
       <button type="button" class="close" aria-hidden="true" ng-click="addFeeMetaModal.cancel()">&times;</button>
       <h4 class="modal-title" id="myModalLabel">费用基础信息</h4>
     </div>
-    <div class="modal-body">
-      <div class="input-group">
+    <div class="modal-body" ng-form="addFeeMetaForm">
+      <div class="input-group" ng-class="{'has-error':addFeeMetaForm.name.$touched && addFeeMetaForm.name.$invalid}">
         <span class="input-group-addon" id="basic-addon1">费用名称</span>
-        <input type="text" ng-model="addFeeMetaModal.newFeeMeta.name" class="form-control" placeholder="费用名称" aria-describedby="basic-addon1">
+        <input type="text" ng-model="addFeeMetaModal.newFeeMeta.name" class="form-control" placeholder="费用名称" aria-describedby="basic-addon1" name="name" required>
+        <span ng-messages="addFeeMetaForm.name.$error" ng-show="addFeeMetaForm.name.$touched">
+          <span ng-message="required">*费用名称必填</span>
+        </span>
       </div>
-      <div class="input-group">
+      <div class="input-group" ng-class="{'has-error':addFeeMetaForm.amount.$touched && addFeeMetaForm.amount.$invalid}">
         <span class="input-group-addon" id="basic-addon1">费用金额</span>
-        <input type="text" ng-model="addFeeMetaModal.newFeeMeta.fee" class="form-control" placeholder="费用金额" aria-describedby="basic-addon1">
+        <input type="number" ng-model="addFeeMetaModal.newFeeMeta.fee" class="form-control" placeholder="费用金额" aria-describedby="basic-addon1" name="amount" required>
+        <span ng-messages="addFeeMetaModal.amount.$error" ng-show="addFeeMetaModal.amount.$touched">
+          <span ng-message="required">*费用数额必填</span>
+          <span ng-message="number">*必须为数字</span>
+        </span>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">费用类别</span>
@@ -36,14 +43,14 @@
       </div>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">收费截止日期</span>
-          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="addFeeMetaModal.newFeeMeta.fee_end_date" is-open="addFeeMetaModal.endOpen" min-date="addFeeMetaModal.minDate" max-date="addFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="addFeeMetaModal.newFeeMeta.fee_end_date" is-open="addFeeMetaModal.endOpen" min-date="addFeeMetaModal.newFeeMeta.fee_start_date" max-date="addFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="addFeeMetaModal.openEndCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
       </div>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">提醒开始日期</span>
-          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="addFeeMetaModal.newFeeMeta.fee_alert_date" is-open="addFeeMetaModal.alertOpen" min-date="addFeeMetaModal.minDate" max-date="addFeeMetaModal.maxDate" ng-required="true" close-text="Close" />
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="addFeeMetaModal.newFeeMeta.fee_alert_date" is-open="addFeeMetaModal.alertOpen" min-date="addFeeMetaModal.newFeeMeta.fee_start_date" max-date="addFeeMetaModal.newFeeMeta.fee_end_date" ng-required="true" close-text="Close" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="addFeeMetaModal.openAlertCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>

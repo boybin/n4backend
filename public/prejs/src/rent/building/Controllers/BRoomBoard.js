@@ -55,7 +55,7 @@ angular.module('Rent.Building')
 
 angular.module('Rent.Building')
     .controller('RoomEditModalCtrl',
-      function($uibModalInstance, room) {
+      function($uibModalInstance, $scope, room) {
         var editRoomModal = this;
         editRoomModal.room = room.clone();
 
@@ -64,10 +64,13 @@ angular.module('Rent.Building')
         };
 
         editRoomModal.save = function(){
-          room.name = editRoomModal.room.name;
-          room.desc = editRoomModal.room.desc;
-          room.save();
-          $uibModalInstance.close();
+          var editRoomForm = $scope['editRoomForm'];
+          if ($scope.rentCommonUtils.validateForm($scope, editRoomForm) && confirm("修改房间?")) {
+            room.name = editRoomModal.room.name;
+            room.desc = editRoomModal.room.desc;
+            room.save();
+            $uibModalInstance.close();
+          }
         };
       }
     );

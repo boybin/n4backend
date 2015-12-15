@@ -46,13 +46,13 @@ angular.module('Rent.Fee')
 
 angular.module('Rent.Fee')
   .controller('AddFeeMetaModalCtrl',
-    function($uibModalInstance, feeMetas) {
+    function($uibModalInstance, $scope, feeMetas) {
       var addFeeMetaModal = this;
       addFeeMetaModal.newFeeMeta = {name:"",type:1, fee:0, alert:1};
       var tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       var afterTomorrow = new Date();
-      afterTomorrow.setDate(tomorrow.getDate() + 2);
+      afterTomorrow.setDate(tomorrow.getDate() + 365);
 
       addFeeMetaModal.newFeeMeta.fee_start_date = tomorrow;
       addFeeMetaModal.newFeeMeta.fee_end_date = afterTomorrow;
@@ -79,12 +79,13 @@ angular.module('Rent.Fee')
       };
 
       addFeeMetaModal.save = function(){
-        if(confirm("确定添加该费用")) {
+        var addFeeMetaForm = $scope['addFeeMetaForm'];
+        if ($scope.rentCommonUtils.validateForm($scope, addFeeMetaForm) && confirm("确定添加该费用?")) {
           feeMetas.post(addFeeMetaModal.newFeeMeta).then(function(feeMeta){
               feeMetas.push(feeMeta);
           });
+          $uibModalInstance.close();
         }
-        $uibModalInstance.close();
       };
     }
 );
@@ -92,7 +93,7 @@ angular.module('Rent.Fee')
 
 angular.module('Rent.Fee')
   .controller('EditFeeMetaModalCtrl',
-    function($uibModalInstance, feeMeta) {
+    function($uibModalInstance, $scope, feeMeta) {
       var editFeeMetaModal = this;
       editFeeMetaModal.newFeeMeta = feeMeta.clone();
 
@@ -117,6 +118,7 @@ angular.module('Rent.Fee')
       };
 
       editFeeMetaModal.save = function(){
+        var editFeeMetaForm = $scope['editFeeMetaForm'];
         if (confirm("确认修改费用信息")) {
           feeMeta.name = editFeeMetaModal.newFeeMeta.name;
           feeMeta.fee = editFeeMetaModal.newFeeMeta.fee;
@@ -126,9 +128,9 @@ angular.module('Rent.Fee')
           feeMeta.fee_end_date = editFeeMetaModal.newFeeMeta.fee_end_date;
           feeMeta.fee_alert_date = editFeeMetaModal.newFeeMeta.fee_alert_date;
           feeMeta.save();
-        }
 
-        $uibModalInstance.close();
+          $uibModalInstance.close();
+        }
       };
     }
 );

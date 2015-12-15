@@ -16,7 +16,7 @@ class CreateFeeMetasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->tinyInteger('type');
-            $table->decimal('fee');
+            $table->unsignedInteger('fee');
             $table->tinyInteger('alert');
             $table->date('fee_start_date');
             $table->date('fee_end_date');

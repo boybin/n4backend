@@ -54,7 +54,7 @@ angular.module('Rent.Lease')
 
 angular.module('Rent.Lease')
   .controller('LeaseRoomSignModalCtrl',
-    function($uibModalInstance, room, LeaseModel) {
+    function($uibModalInstance, $scope, room, LeaseModel) {
       var leaseRoomSignModal = this;
       leaseRoomSignModal.room = room;
 
@@ -91,14 +91,15 @@ angular.module('Rent.Lease')
         $uibModalInstance.close();
       };
       leaseRoomSignModal.save = function(){
-        if(confirm("确定租户信息?")) {
+        var signRoomForm = $scope['signRoomForm'];
+        if($scope.rentCommonUtils.validateForm($scope, signRoomForm) && confirm("确定租户信息?")) {
             LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
             leaseRoomSignModal.room['contract'] = aContract;
             leaseRoomSignModal.room['hasContract'] = 1;
           });
-        }
 
-        $uibModalInstance.close();
+          $uibModalInstance.close();
+        }
       }
     }
   );
