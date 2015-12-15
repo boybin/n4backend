@@ -70,6 +70,7 @@
             <li><a href="/rent/fee/feemetaboard">收费项目管理</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/rent/fee/feeboard">缴费大厅</a></li>
+            <li><a href="/rent/fee/feeboard">催费清单</a></li>
           </ul>
         </li>
       </ul>

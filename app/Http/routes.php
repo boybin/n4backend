@@ -23,6 +23,7 @@ Route::get('/hotel', function () {
     return view('hotel.index');
 });
 
+/*
 Route::get('/rent/building/{id}/roomboard',function (){
   return view(join('.',['rent', 'building', 'roomboard']));
 });
@@ -33,7 +34,7 @@ Route::get('/rent/{module}/{action}',function ($module, $action){
 Route::get('/hotel/{module}/{action}',function ($module, $action){
   return view(join('.',['hotel', $module, $action]));
 });
-
+*/
 Route::get('/auth/login', function () {
     return view('auth.login');
 });
@@ -56,6 +57,12 @@ Route::group(['prefix' => 'api'], function()
       Route::resource('contracts', 'ContractController');
     });
 });
+
+//Rent redirect to root view
+Route::any('/rent/{undefinedRoute}', function ($undefinedRoute) {
+    return view('rent.index');
+})->where('undefinedRoute', '([A-z\d-\/_.]+)?');
+
 // Using different syntax for Blade to avoid conflicts with AngularJS.
 // You are well-advised to go without any Blade at all.
 // Blade::setContentTags('<%', '%>'); // For variables and all things Blade.
