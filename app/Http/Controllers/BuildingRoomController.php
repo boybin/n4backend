@@ -41,6 +41,16 @@ class BuildingRoomController extends Controller
     public function store(Request $request, $buildingId)
     {
         //
+        $this->validate($request,
+            [
+              'name'=>'required|max:255',
+            ],
+            [
+              'required'=>'The :attribute field is required',
+              'max'=>'The length of :attribute can not bigger than 255',
+            ]
+         );
+
         $room = new Room($request->all());
         $room->building_id = $buildingId;
         if (!$room->save()) {

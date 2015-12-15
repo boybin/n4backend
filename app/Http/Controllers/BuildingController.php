@@ -38,6 +38,16 @@ class BuildingController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+            [
+              'name'=>'required|max:255',
+            ],
+            [
+              'required'=>'The :attribute field is required',
+              'max'=>'The length of :attribute can not bigger than 255',
+            ]
+         );
+
         $building = new Building($request->all());
         if (!$building->save()) {
           abort(500, 'Could not save building');

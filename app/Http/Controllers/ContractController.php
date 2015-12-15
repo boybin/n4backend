@@ -39,6 +39,27 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
+          $this->validate($request,
+            [
+              'room_name'=>'required|max:255',
+              'contractor_name'=>'required|max:255',
+              'contractor_number'=>'required|max:255',
+              'contractor_location'=>'max:255',
+              'id_number'=>'required|max:255',
+              'user_id'=>'required|numeric',
+              'room_id'=>'required|numeric',
+              'phone'=>'required|numeric',
+              'building_id' =>'required|numeric',
+              'start_time' =>'required|date',
+              'end_time' =>'required|date',
+            ],
+            [
+              'required'=>'The :attribute field is required',
+              'numeric'=>'The :attribute field must be numeric',
+              'max'=>'The length of :attribute can not bigger than 255',
+              'date'=>'The :attribute field must be date format',
+            ]
+         );
         $contract = new Contract($request->all());
         if (!$contract->save()) {
           abort(500, 'Could not save contract');

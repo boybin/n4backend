@@ -38,6 +38,20 @@ class FeeMetaController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request,
+        [
+          'name'=>'required|max:255',
+          'type'=>'required|numeric',
+          'fee'=>'required|numeric',
+          'alert' =>'required|numeric',
+        ],
+        [
+          'required'=>'The :attribute field is required',
+          'numeric'=>'The :attribute field must be numeric',
+          'max'=>'The length of :attribute can not bigger than 255'
+        ]
+     );
+
       $feeMeta = new FeeMeta($request->all());
       if (!$feeMeta->save()) {
         abort(500, 'Could not save feeMeta');
