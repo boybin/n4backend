@@ -6,6 +6,7 @@
     'Rent.Building',
     'Rent.Lease',
     'angular-storage',
+    'ngMessages',
     'angular.filter',
     'ui.select',
     'ngSanitize',
