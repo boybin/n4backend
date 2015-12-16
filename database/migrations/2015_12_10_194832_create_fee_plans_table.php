@@ -19,7 +19,8 @@ class CreateFeePlansTable extends Migration
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('building_id');
             $table->string('fee_name');
-            $table->decimal('fee');
+            $table->unsignedInteger('fee');
+            $table->unsignedInteger('current_total_fee');
             $table->date('fee_start_date');
             $table->date('fee_end_date');
             $table->date('fee_alert_date');

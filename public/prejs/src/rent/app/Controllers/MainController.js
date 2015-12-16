@@ -20,7 +20,10 @@ angular.module('Rent.Common')
         }
         main.isFee = function () {
           return ($state.includes("feemetaboard")
-                    ||$state.includes("feeboard"));
+                    ||$state.includes("feeboard")
+                    ||$state.includes("feemetaplans")
+                    ||$state.includes("feeroomsboard")
+                  );
         }
         //---------------------------------//
 

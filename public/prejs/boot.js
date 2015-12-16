@@ -40,7 +40,8 @@ head.load(
 
   {file:'prejs/src/rent/fee/Fee.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeMetaBoard.js'},
-  {file:'prejs/src/rent/fee/Controllers/FeeBoard.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeeMetaPlans.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeeRoomsBoard.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeBoard.js'}
 
 );

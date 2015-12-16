@@ -43,6 +43,16 @@
           templateUrl:"/view/rent/fee/feemetaboard.html",
           controller:"FeeMetaboardCtrl as feemetaboard"
         })
+        .state('feemetaplans', {
+          url:"/rent/fee/feemetaplans",
+          templateUrl:"/view/rent/fee/feemetaplans.html",
+          controller:"FeeMetaPlansCtrl as feemetaplans"
+        })
+        .state('feeroomsboard', {
+          url:"/rent/fee/feeroomsboard",
+          templateUrl:"/view/rent/fee/feeroomsboard.html",
+          controller:"FeeRoomsboardCtrl as feeroomsboard"
+        })
         .state('feeboard', {
           url:"/rent/fee/feeboard",
           templateUrl:"/view/rent/fee/feeboard.html",
@@ -72,7 +82,7 @@
       // editableOptions.theme = 'bs3';
       $rootScope.globals = store.get('globals') || {};
       $rootScope.rentCommonUtils = CommonUtilService;
-      
+
       if ($rootScope.globals && $rootScope.globals.currentUser) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.token;
       }

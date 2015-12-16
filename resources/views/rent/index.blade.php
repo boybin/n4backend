@@ -68,8 +68,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="/rent/fee/feemetaboard">收费项目管理</a></li>
-            <li><a href="/rent/fee/feemetaboard">收费项目下发</a></li>
-            <li><a href="/rent/fee/feemetaboard">管理租户收费项目</a></li>
+            <li><a href="/rent/fee/feemetaplans">收费项目下发</a></li>
+            <li><a href="/rent/fee/feeroomsboard">管理租户收费项目</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/rent/fee/feeboard">缴费大厅</a></li>
             <li role="separator" class="divider"></li>

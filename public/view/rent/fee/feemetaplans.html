@@ -1,0 +1,17 @@
+<div class="jumbbotron">
+  <div class="row">
+  <div class="col-md-2" ng-repeat="feemeta in feemetaplans.feeMetas">
+    <div class='img-container'>
+      <div class='img-text-warning' ng-if="feemeta.warn"><span ng-bind="feemeta.warn"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="feemetaboard.openEditFeeMetaModal(feemeta)"></span>
+        <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="feemetaboard.deleteFeeMeta(feemeta)"></span>
+      </div>
+      <div class='img-text'><span ng-bind="feemeta.name"></span></div>
+      <a href="">
+        <img src='images/Money-green.png'/>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>

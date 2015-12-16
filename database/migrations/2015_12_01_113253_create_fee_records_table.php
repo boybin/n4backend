@@ -21,7 +21,7 @@ class CreateFeeRecordsTable extends Migration
             $table->unsignedInteger('fee_meta_id');
             $table->string('fee_name');
             $table->string('payor');
-            $table->decimal('inc_fee');
+            $table->unsignedInteger('inc_fee');
             $table->softDeletes();
             $table->timestamps();
         });
