@@ -8,7 +8,7 @@ angular.module('Rent.Lease')
 
       leaseboard.openBuildingLeaseInfo = function(aBuilding) {
         $uibModal.open({
-          templateUrl: "/view/rent/lease/LeaseBuildingDetailModal.html",
+          templateUrl: "/view/rent/lease/leaseBuildingDetailModal.html",
           controller: "LeaseBuildingDetailModalCtrl",
           controllerAs: "leaseBuildingModal",
           resolve: {
