@@ -68,10 +68,23 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="/rent/fee/feemetaboard">收费项目管理</a></li>
+            <li><a href="/rent/fee/feemetaboard">收费项目下发</a></li>
+            <li><a href="/rent/fee/feemetaboard">管理租户收费项目</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/rent/fee/feeboard">缴费大厅</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/fee/feeboard">催费清单</a></li>
+            <li><a href="/rent/fee/feeboard">催费大厅</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-class="{active:main.isUserManager()}">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user" aria-hidden="true">用户管理</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">用户角色管理</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">用户管理</a></li>
           </ul>
         </li>
       </ul>
