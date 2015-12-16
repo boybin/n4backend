@@ -60,7 +60,14 @@ class ContractController extends Controller
               'date'=>'The :attribute field must be date format',
             ]
          );
+
         $contract = new Contract($request->all());
+
+        //Just confirm no dirty data, a room can't contract with more than one user, so delete old ones.
+        Contract::where("room_id", $contract['room_id'])
+                  ->delete();
+
+        //Do the save action.
         if (!$contract->save()) {
           abort(500, 'Could not save contract');
         }

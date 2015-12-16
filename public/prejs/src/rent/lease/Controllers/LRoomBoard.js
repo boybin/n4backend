@@ -92,7 +92,7 @@ angular.module('Rent.Lease')
       };
       leaseRoomSignModal.save = function(){
         var signRoomForm = $scope['signRoomForm'];
-        if($scope.rentCommonUtils.validateForm($scope, signRoomForm) && confirm("确定租户信息?")) {
+        if($scope.rentCommonUtils.validateForm($scope, signRoomForm) && confirm("确定租户信息？ 确定该用户入驻,之前入驻将被替换!")) {
             LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
             leaseRoomSignModal.room['contract'] = aContract;
             leaseRoomSignModal.room['hasContract'] = 1;
