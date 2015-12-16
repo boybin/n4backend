@@ -1,11 +1,9 @@
 angular.module('Rent.Fee')
   .controller('FeeMetaPlansCtrl',
     function($uibModal, FeeModel) {
-      console.log("here");
       var feemetaplans = this;
       FeeModel.restResource.getList().then(function(feemetas){
         feemetaplans.feeMetas = feemetas
-        console.log(feemetaplans.feeMetas);
       });
 
       feemetaplans.openAddFeeMetaModal = function() {
