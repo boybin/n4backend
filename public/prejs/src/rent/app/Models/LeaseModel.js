@@ -4,6 +4,7 @@ angular.module('Rent.Common')
             var service = this;
             service.restResource = Restangular.service('rentbuildings');
             service.rentRoomsRestResource = Restangular.service('rentrooms');
-            service.contractRestResource = Restangular.service('contracts')
+            service.contractRestResource = Restangular.service('contracts');
+            service.ContractRoomsRestResource = Restangular.service('contractrooms');
 
     });

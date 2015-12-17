@@ -3,8 +3,8 @@ angular.module('Rent.Lease')
     function($uibModal, $stateParams, LeaseModel) {
       var feeroomsboard = this;
 
-      LeaseModel.rentRoomsRestResource
-        .getList("rooms")
+      LeaseModel.ContractRoomsRestResource
+        .getList()
         .then(function(rooms){
           feeroomsboard.AllRooms = rooms;
       });
@@ -35,11 +35,6 @@ angular.module('Rent.Lease')
             room:aRoom
           }
         });
-      }
-
-      feeroomsboard.filterContractStatus = "";
-      feeroomsboard.filterStatus = function(status){
-        feeroomsboard.filterContractStatus = status;
       }
 
     });

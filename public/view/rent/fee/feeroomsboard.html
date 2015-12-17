@@ -15,16 +15,10 @@
     </div>
   </div>
 
-  <ol class="breadcrumb">
-    <li><a href="#" ng-click="feeroomsboard.filterStatus('')">所有状态</a></li>
-    <li><a href="#" ng-click="feeroomsboard.filterStatus(1)">已租</a></li>
-    <li><a href="#" ng-click="feeroomsboard.filterStatus(0)">空置</a></li>
-    <li></li>
-  </ol>
 </div>
 <div class="jumbbotron">
   <div class="row">
-  <div class="col-md-2" ng-repeat="room in feeroomsboard.AllRooms|filterBy:['building_id']:feeroomsboard.selectedBuilding.id|filterBy:['hasContract']:feeroomsboard.filterContractStatus|fuzzyBy:'name':feeroomsboard.buildingName">
+  <div class="col-md-2" ng-repeat="room in feeroomsboard.AllRooms|filterBy:['building_id']:feeroomsboard.selectedBuilding.id|fuzzyBy:'name':feeroomsboard.buildingName">
     <div class='img-container'>
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
       <div class='img-text-edit'>
@@ -36,8 +30,7 @@
         <span ng-bind="room.name"></span>
       </div>
       <a href="#" ng-click="rentroomsboard.openEditRoomModal(room)">
-      <img ng-if="room.hasContract" src='/images/Apartment-red.png'/>
-      <img ng-if="!room.hasContract" src='/images/Apartment-purple.png'/>
+      <img src='/images/Apartment-red.png'/>
       </a>
     </div>
   </div>

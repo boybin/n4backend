@@ -15,6 +15,10 @@ class Room extends Model
       return $this->belongsTo('App\Building','building_id');
     }
 
+    public function contract() {
+      return $this->hasOne('App\Contract');
+    }
+
     public function user() {
       return $this->belongsTo('App\User');
     }
