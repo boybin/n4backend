@@ -20,6 +20,7 @@ class CreateFeePlansTable extends Migration
             $table->unsignedInteger('building_id');
             $table->string('fee_name');
             $table->unsignedInteger('fee');
+            $table->tinyInteger('type');
             $table->unsignedInteger('current_total_fee');
             $table->date('fee_start_date');
             $table->date('fee_end_date');

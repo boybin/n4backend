@@ -26,7 +26,4 @@ angular.module('Rent.Common')
                   );
         }
         //---------------------------------//
-
-        main.AllRoomsStatus = BuildingModel.AllBuildings();
-
     });

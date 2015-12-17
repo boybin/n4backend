@@ -1,0 +1,40 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="collectFeeMetaModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">征收年度费用</h4>
+    </div>
+    <div class="modal-body" ng-form="collectFeeMetaForm">
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">费用名称</span>
+        <span class="label label-info" ng-bind="collectFeeMetaModal.newFeeMeta.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">费用金额</span>
+        <span class="label label-info" ng-bind="collectFeeMetaModal.newFeeMeta.fee"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">征收楼栋</span>
+        <ui-select ng-model="collectFeeMetaModal.selectedBuilding">
+            <ui-select-match placeHolder="所有楼">
+              <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="building in (collectFeeMetaModal.AllBuildings | filter: $select.search) track by building.id">
+              <span ng-bind="building.name"></span>
+            </ui-select-choices>
+        </ui-select>
+      </div>
+      <div class="input-group" ng-class="{'has-error':collectFeeMetaForm.days.$touched && collectFeeMetaForm.days.$invalid}">
+          <span class="input-group-addon" id="basic-addon1">开始多少天后预警</span>
+          <input type="number" ng-model="collectFeeMetaModal.newFeeMeta.days" class="form-control" placeholder="开始提醒日期数(单位-天)" aria-describedby="basic-addon1" name="days" required>
+          <span ng-messages="collectFeeMetaForm.days.$error" ng-show="collectFeeMetaForm.days.$touched">
+            <span ng-message="required">*开始后多少天开始预警必填</span>
+            <span ng-message="number">*必须为数字</span>
+          </span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="collectFeeMetaModal.cancel()">关闭</button>
+      <button type="button" class="btn btn-primary" ng-click="collectFeeMetaModal.save()">征收</button>
+    </div>
+</div>

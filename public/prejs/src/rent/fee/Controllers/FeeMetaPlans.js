@@ -6,24 +6,22 @@ angular.module('Rent.Fee')
         feemetaplans.feeMetas = feemetas
       });
 
-      feemetaplans.openAddFeeMetaModal = function() {
-        $uibModal.open({
-          templateUrl: "/view/rent/fee/addFeeMetaModal.html",
-          controller: "AddFeeMetaModalCtrl",
-          controllerAs: "addFeeMetaModal",
-          resolve: {
-            feeMetas: function(){
-              return feemetaboard.feeMetas;
-            }
-          }
-        });
-      }
+      feemetaplans.openCollectFeeMetaModal = function(feeMeta, assign_type) {
+        var view = "/view/rent/fee/collectFeeMetaModal" + "-" + assign_type +"-"+ feeMeta.type + ".html";
+        feeMeta.assign_type = assign_type;
 
-      feemetaplans.openEditFeeMetaModal = function(feeMeta) {
+        if (feeMeta.type == 1) {
+          feeMeta.days = 100;
+        } else if(feeMeta.type == 2) {
+          feeMeta.days = 30;
+        } else if(feeMeta.type == 3) {
+          feeMeta.days = 15;
+        }
+
         $uibModal.open({
-          templateUrl: "/view/rent/fee/editFeeMetaModal.html",
-          controller: "EditFeeMetaModalCtrl",
-          controllerAs: "editFeeMetaModal",
+          templateUrl: view,
+          controller: "CollectFeeMetaModalCtrl",
+          controllerAs: "collectFeeMetaModal",
           resolve: {
             feeMeta: function(){
               return feeMeta;
@@ -35,89 +33,79 @@ angular.module('Rent.Fee')
     });
 
 angular.module('Rent.Fee')
-  .controller('AddFeeMetaModalCtrl',
-    function($uibModalInstance, $scope, feeMetas) {
-      var addFeeMetaModal = this;
-      addFeeMetaModal.newFeeMeta = {name:"",type:1, fee:0, alert:1};
-      var tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      var afterTomorrow = new Date();
-      afterTomorrow.setDate(tomorrow.getDate() + 365);
+  .controller('CollectFeeMetaModalCtrl',
+    function($uibModalInstance, $scope, FeeModel, LeaseModel, feeMeta) {
+      var collectFeeMetaModal = this;
+      collectFeeMetaModal.newFeeMeta = feeMeta.clone();
 
-      addFeeMetaModal.newFeeMeta.fee_start_date = tomorrow;
-      addFeeMetaModal.newFeeMeta.fee_end_date = afterTomorrow;
-      addFeeMetaModal.newFeeMeta.fee_alert_date = afterTomorrow;
-
-      addFeeMetaModal.minDate = new Date();
-      addFeeMetaModal.maxDate = new Date(2020, 5, 22);
-
-      addFeeMetaModal.startOpen = false;
-      addFeeMetaModal.openStartCal = function($event) {
-        addFeeMetaModal.startOpen = true;
-      }
-      addFeeMetaModal.endOpen = false;
-      addFeeMetaModal.openEndCal = function($event) {
-        addFeeMetaModal.endOpen = true;
-      }
-      addFeeMetaModal.alertOpen = false;
-      addFeeMetaModal.openAlertCal = function($event) {
-        addFeeMetaModal.alertOpen = true;
+      if(feeMeta.assign_type == 2) {
+        LeaseModel.restResource.getList().then(function(buildings){
+          collectFeeMetaModal.AllBuildings = buildings;
+          if (buildings.length > 0) {
+            collectFeeMetaModal.selectedBuilding = buildings[0];
+          }
+        });
       }
 
-      addFeeMetaModal.cancel = function(){
+      collectFeeMetaModal.minDate = new Date();
+      collectFeeMetaModal.maxDate = new Date(2020, 5, 22);
+
+      collectFeeMetaModal.startOpen = false;
+      collectFeeMetaModal.openStartCal = function($event) {
+        collectFeeMetaModal.startOpen = true;
+      }
+      collectFeeMetaModal.endOpen = false;
+      collectFeeMetaModal.openEndCal = function($event) {
+        collectFeeMetaModal.endOpen = true;
+      }
+      collectFeeMetaModal.alertOpen = false;
+      collectFeeMetaModal.openAlertCal = function($event) {
+        collectFeeMetaModal.alertOpen = true;
+      }
+
+      collectFeeMetaModal.cancel = function(){
         $uibModalInstance.close();
       };
 
-      addFeeMetaModal.save = function(){
-        var addFeeMetaForm = $scope['addFeeMetaForm'];
-        if ($scope.rentCommonUtils.validateForm($scope, addFeeMetaForm) && confirm("确定添加该费用?")) {
-          feeMetas.post(addFeeMetaModal.newFeeMeta).then(function(feeMeta){
-              feeMetas.push(feeMeta);
-          });
-          $uibModalInstance.close();
-        }
-      };
-    }
-);
+      collectFeeMetaModal.save = function(){
 
-
-angular.module('Rent.Fee')
-  .controller('EditFeeMetaModalCtrl',
-    function($uibModalInstance, $scope, feeMeta) {
-      var editFeeMetaModal = this;
-      editFeeMetaModal.newFeeMeta = feeMeta.clone();
-
-      editFeeMetaModal.minDate = new Date();
-      editFeeMetaModal.maxDate = new Date(2020, 5, 22);
-
-      editFeeMetaModal.startOpen = false;
-      editFeeMetaModal.openStartCal = function($event) {
-        editFeeMetaModal.startOpen = true;
-      }
-      editFeeMetaModal.endOpen = false;
-      editFeeMetaModal.openEndCal = function($event) {
-        editFeeMetaModal.endOpen = true;
-      }
-      editFeeMetaModal.alertOpen = false;
-      editFeeMetaModal.openAlertCal = function($event) {
-        editFeeMetaModal.alertOpen = true;
-      }
-
-      editFeeMetaModal.cancel = function(){
-        $uibModalInstance.close();
-      };
-
-      editFeeMetaModal.save = function(){
-        var editFeeMetaForm = $scope['editFeeMetaForm'];
+        var collectFeeMetaForm = $scope['collectFeeMetaForm'];
         if (confirm("确认修改费用信息")) {
-          feeMeta.name = editFeeMetaModal.newFeeMeta.name;
-          feeMeta.fee = editFeeMetaModal.newFeeMeta.fee;
-          feeMeta.type = editFeeMetaModal.newFeeMeta.type;
-          feeMeta.alert = editFeeMetaModal.newFeeMeta.alert;
-          feeMeta.fee_start_date = editFeeMetaModal.newFeeMeta.fee_start_date;
-          feeMeta.fee_end_date = editFeeMetaModal.newFeeMeta.fee_end_date;
-          feeMeta.fee_alert_date = editFeeMetaModal.newFeeMeta.fee_alert_date;
-          feeMeta.save();
+          feeMeta.name = collectFeeMetaModal.newFeeMeta.name;
+          feeMeta.fee = collectFeeMetaModal.newFeeMeta.fee;
+          feeMeta.type = collectFeeMetaModal.newFeeMeta.type;
+          feeMeta.days = collectFeeMetaModal.newFeeMeta.days;
+          feeMeta.fee_start_date = collectFeeMetaModal.newFeeMeta.fee_start_date;
+
+          if(feeMeta.type == 2) {
+            var endDate = new Date(collectFeeMetaModal.newFeeMeta.fee_start_date);
+            endDate.setMonth(endDate.getMonth() + 3);
+            feeMeta.fee_end_date = endDate;
+            var alertDate = new Date(collectFeeMetaModal.newFeeMeta.fee_start_date);
+            alertDate.setDate(alertDate.getDate() + feeMeta.days);
+            feeMeta.fee_alert_date = alertDate;
+          } else if(feeMeta.type == 3) {
+            var endDate = new Date(collectFeeMetaModal.newFeeMeta.fee_start_date);
+            endDate.setMonth(endDate.getMonth() + 1);
+            feeMeta.fee_end_date = endDate;
+            var alertDate = new Date(collectFeeMetaModal.newFeeMeta.fee_start_date);
+            alertDate.setDate(alertDate.getDate() + feeMeta.days);
+            feeMeta.fee_alert_date = alertDate;
+          }
+
+          if(feeMeta.assign_type == 2) {
+            feeMeta.building_id = collectFeeMetaModal.selectedBuilding.id;
+          }
+          // feeMeta.fee_end_date = collectFeeMetaModal.newFeeMeta.fee_end_date;
+          // feeMeta.fee_alert_date = collectFeeMetaModal.newFeeMeta.fee_alert_date;
+
+          FeeModel.feeMetaPlanRestResource.post(feeMeta).then(function(ret){
+              if(ret['status']) {
+                alert("发布成功");
+              } else {
+                alert("发布失败");
+              }
+          });
 
           $uibModalInstance.close();
         }

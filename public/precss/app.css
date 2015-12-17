@@ -51,7 +51,21 @@
     text-align: center;
 }
 
-.img-container:hover .img-text-edit {
+.img-text-edit-2 {
+    top: 30%;
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    background-color: #F5F5F5;
+    display: none;
+    text-align: center;
+}
+
+.img-container:hover .img-text-edit{
+  display: block;
+}
+
+.img-container:hover .img-text-edit-2 {
   display: block;
 }
 
@@ -60,6 +74,10 @@
 }
 
 .img-text-edit span:hover {
+  cursor: pointer;
+  cursor: pointer;
+}
+.img-text-edit-2 span:hover {
   cursor: pointer;
   cursor: pointer;
 }

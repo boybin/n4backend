@@ -4,12 +4,18 @@
     <div class='img-container'>
       <div class='img-text-warning' ng-if="feemeta.warn"><span ng-bind="feemeta.warn"></span></div>
       <div class='img-text-edit'>
-        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="feemetaboard.openEditFeeMetaModal(feemeta)"></span>
-        <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="feemetaboard.deleteFeeMeta(feemeta)"></span>
+        <span>全体征收</span>
+        <span class="pull-right glyphicon glyphicon-list-alt clickable_space" ng-click="feemetaplans.openCollectFeeMetaModal(feemeta, 1)"></span>
+      </div>
+      <div class='img-text-edit-2'>
+        <span>按楼栋征收</span>
+        <span class="pull-right glyphicon glyphicon-list-alt clickable_space" ng-click="feemetaplans.openCollectFeeMetaModal(feemeta, 2)"></span>
       </div>
       <div class='img-text'><span ng-bind="feemeta.name"></span></div>
       <a href="">
-        <img src='images/Money-green.png'/>
+        <img ng-if="feemeta.type==1" src='images/Money-green-year.png'/>
+        <img ng-if="feemeta.type==2" src='images/Money-green-season.png'/>
+        <img ng-if="feemeta.type==3" src='images/Money-green-month.png'/>
       </a>
     </div>
   </div>

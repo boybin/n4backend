@@ -16,7 +16,9 @@
         <span class="pull-left glyphicon glyphicon-remove clickable_space" ng-click="feemetaboard.deleteFeeMeta(feemeta)"></span></div>
       <div class='img-text'><span ng-bind="feemeta.name"></span></div>
       <a href="">
-        <img src='images/Money-green.png'/>
+        <img ng-if="feemeta.type==1" src='images/Money-green-year.png'/>
+        <img ng-if="feemeta.type==2" src='images/Money-green-season.png'/>
+        <img ng-if="feemeta.type==3" src='images/Money-green-month.png'/>
       </a>
     </div>
   </div>
