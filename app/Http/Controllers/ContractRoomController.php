@@ -19,7 +19,7 @@ class ContractRoomController extends Controller
      */
     public function index()
     {
-         return Room::with("building")->has('contract')->get();
+         return Room::with("building","contract","feeplans")->has('contract')->get();
     }
 
     /**

@@ -1,0 +1,72 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="assignFeeRoomModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">征收费用</h4>
+    </div>
+    <div class="modal-body">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">所在楼栋</span> &nbsp;
+        <span class="label label-info" ng-bind="assignFeeRoomModal.room.building.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">房间编号</span> &nbsp;
+        <span class="label label-info" ng-bind="assignFeeRoomModal.room.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">租房人姓名</span>&nbsp;
+        <span class="label label-info" ng-bind="assignFeeRoomModal.room.contract.contractor_name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">电话号码</span>&nbsp;
+        <span class="label label-info" ng-bind="assignFeeRoomModal.room.contract.phone"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>&nbsp;
+        <span class="label label-info" ng-bind="assignFeeRoomModal.room.contract.contractor_number"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同开始日期</span>&nbsp;
+          <span class="label label-info" ng-bind="assignFeeRoomModal.room.contract.start_time"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同截止日期</span>&nbsp;
+          <span class="label label-info" ng-bind="assignFeeRoomModal.room.contract.end_time"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">历史派发征收的费用项目</span>&nbsp;
+          <span ng-repeat="feeplan in assignFeeRoomModal.room.feeplans">
+            <span class="label label-danger" ng-bind="feeplan.fee_name" uib-tooltip="{{feeplan.fee_start_date}} ~  {{feeplan.fee_end_date}}"></span>
+          </span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">征收项目</span>
+        <ui-select ng-model="assignFeeRoomModal.selectedFeeMeta">
+            <ui-select-match placeHolder="所有楼">
+              <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="feemeta in (assignFeeRoomModal.AllFeeMetas | filter: $select.search) track by feemeta.id">
+              <span ng-bind="feemeta.name"></span>
+            </ui-select-choices>
+        </ui-select>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费开始日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="assignFeeRoomModal.fee_start_date" is-open="assignFeeRoomModal.startOpen" min-date="assignFeeRoomModal.room.contract.start_time" max-date="assignFeeRoomModal.maxDate" ng-required="true" close-text="Close"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="assignFeeRoomModal.openStartCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">预警开始日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="assignFeeRoomModal.fee_alert_date" is-open="assignFeeRoomModal.alertOpen" min-date="assignFeeRoomModal.fee_start_date" max-date="assignFeeRoomModal.maxDate" ng-required="true" close-text="Close"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="assignFeeRoomModal.openAlertCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="assignFeeRoomModal.assignFee()">征收</button>
+      <button type="button" class="btn btn-default" ng-click="assignFeeRoomModal.cancel()">关闭</button>
+    </div>
+</div>

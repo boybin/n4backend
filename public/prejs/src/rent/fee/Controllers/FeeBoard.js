@@ -3,5 +3,4 @@ angular.module('Rent.Fee')
     function($uibModal, FeeModel) {
       var feeboard = this;
       //当前的房间板块显示的数据
-      feeboard.AllBuildings = FeeModel.AllBuildings();
     });

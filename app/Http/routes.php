@@ -57,6 +57,7 @@ Route::group(['prefix' => 'api'], function()
       Route::resource('rentbuildings.rooms', 'RentBuildingRoomController');
       Route::resource('contracts', 'ContractController');
       Route::resource('contractrooms', 'ContractRoomController');
+      Route::resource('contractfeeplans', 'ContractFeePlanController');
     });
 });
 

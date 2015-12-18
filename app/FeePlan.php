@@ -9,7 +9,7 @@ class FeePlan extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [];
+    protected $guarded = ['id'];
 
     public function contract() {
       return $this->belongsTo('App\Contract','rent_id');
@@ -22,5 +22,9 @@ class FeePlan extends Model
                                 ->count();
 
       return $overlapCount < 1;
+    }
+
+    public function room() {
+      return $this->belongsTo('App\Room','room_id');
     }
 }

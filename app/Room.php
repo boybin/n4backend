@@ -23,4 +23,8 @@ class Room extends Model
       return $this->belongsTo('App\User');
     }
 
+    public function feeplans() {
+      return $this->hasMany('App\FeePlan');
+    }
+
 }

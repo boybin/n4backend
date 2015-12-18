@@ -22,14 +22,13 @@
     <div class='img-container'>
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
       <div class='img-text-edit'>
-        <span ng-if="room.hasContract" class="pull-right glyphicon glyphicon-user clickable_space" ng-click="rentroomsboard.viewSignModal(room)"></span>
-        <span ng-if="!room.hasContract" class="pull-right glyphicon glyphicon-book clickable_space" ng-click="rentroomsboard.openSignModal(room)"></span>
+        <span class="pull-right glyphicon glyphicon-usd clickable_space" ng-click="feeroomsboard.openSignModal(room)"></span>
       </div>
       <div class='img-text-board'>
         <span ng-bind="room.building.name" style="display:block"></span>
         <span ng-bind="room.name"></span>
       </div>
-      <a href="#" ng-click="rentroomsboard.openEditRoomModal(room)">
+      <a href="#" ng-click="feeroomsboard.openSignModal(room)">
       <img src='/images/Apartment-red.png'/>
       </a>
     </div>
