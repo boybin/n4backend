@@ -58,6 +58,11 @@
           templateUrl:"/view/rent/fee/feeboard.html",
           controller:"FeeboardCtrl as feeboard"
         })
+        .state('feestatisticboard', {
+          url:"/rent/fee/feestatisticboard",
+          templateUrl:"/view/rent/fee/feestatisticboard.html",
+          controller:"FeeStatisticboardCtrl as feestatisticboard"
+        })
         .state('leaseboard', {
           url:"/rent/lease/leaseboard",
           templateUrl:"/view/rent/lease/rentbuildings.html",

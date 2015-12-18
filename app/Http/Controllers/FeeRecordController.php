@@ -87,4 +87,30 @@ class FeeRecordController extends Controller
         //
     }
 
+    public function statisticFeeRecords(Request $request) {
+      $this->validate($request,
+        [
+          'start_date' => 'required|Date',
+          'end_date' => 'required|Date',
+        ],
+        [
+          'required'=>'The :attribute field is required',
+          'Date'=>'The :attribute field must be date format'
+        ]
+     );
+
+     $queryInput = $request->all();
+     $start_date_time = new \DateTime($queryInput['start_date']);
+     $end_date_time = new \DateTime($queryInput['end_date']);
+
+     $start_date = $start_date_time->format('Y-m-d').' 00:00:00';
+     $end_date = $end_date_time->format('Y-m-d').' 00:00:00';
+
+     $sum = FeeRecord::whereDate('created_at', '>=', $start_date)
+                        ->whereDate('created_at', '<', $end_date)
+                        ->sum('inc_fee');
+     return $sum;
+
+    }
+
 }

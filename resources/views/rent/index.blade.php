@@ -75,7 +75,7 @@
             <li role="separator" class="divider"></li>
             <li><a href="/rent/fee/feeboard">催费大厅</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">收费统计</a></li>
+            <li><a href="/rent/fee/feestatisticboard">收费统计</a></li>
           </ul>
         </li>
         <li class="dropdown" ng-class="{active:main.isUserManager()}">

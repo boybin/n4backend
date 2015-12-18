@@ -1,0 +1,28 @@
+<div ng-form="search_fee_form">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-3">
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费开始日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="feestatisticboard.start_date" is-open="feestatisticboard.startOpen" ng-required="true" close-text="Close" name="start_date" required/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="feestatisticboard.openStartCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">收费结束日期</span>
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="feestatisticboard.end_date" is-open="feestatisticboard.endOpen" min-date="feestatisticboard.start_date" ng-required="true" close-text="Close" name="end_date" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="feestatisticboard.openEndCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <input class="btn btn-primary" ng-click="feestatisticboard.search()" type="submit" value="搜索">
+    </div>
+  </div>
+</div>
+<div class="jumbbotron">
+  <h2>总共收入: <small>{{feestatisticboard.totalIncomes}}</small>元</h2>  
+</div>
