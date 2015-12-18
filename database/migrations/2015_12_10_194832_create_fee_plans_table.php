@@ -15,6 +15,7 @@ class CreateFeePlansTable extends Migration
         Schema::create('fee_plans', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('feemeta_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('rent_id');
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('building_id');

@@ -1,0 +1,81 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="payFeeRoomModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">征收费用</h4>
+    </div>
+    <div class="modal-body" ng-form="payFeeRoomModalForm">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">所在楼栋</span> &nbsp;
+        <span class="label label-info" ng-bind="payFeeRoomModal.room.building.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">房间编号</span> &nbsp;
+        <span class="label label-info" ng-bind="payFeeRoomModal.room.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">租房人姓名</span>&nbsp;
+        <span class="label label-info" ng-bind="payFeeRoomModal.room.contract.contractor_name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">电话号码</span>&nbsp;
+        <span class="label label-info" ng-bind="payFeeRoomModal.room.contract.phone"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>&nbsp;
+        <span class="label label-info" ng-bind="payFeeRoomModal.room.contract.contractor_number"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同开始日期</span>&nbsp;
+          <span class="label label-info" ng-bind="payFeeRoomModal.room.contract.start_time"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同截止日期</span>&nbsp;
+          <span class="label label-info" ng-bind="payFeeRoomModal.room.contract.end_time"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">征收项目</span>
+        <ui-select ng-model="payFeeRoomModal.selectedFeePlan">
+            <ui-select-match placeHolder="选择项目">
+              <span ng-bind="$select.selected.fee_name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="feeplan in (payFeeRoomModal.room.feeplans | filter: $select.search |filterBy:['status']:0) track by feeplan.id">
+              <span ng-bind="feeplan.fee_name"></span>
+            </ui-select-choices>
+        </ui-select>
+      </div>
+
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">该项目应缴总费用</span>&nbsp;
+          <span class="label label-info" ng-bind="payFeeRoomModal.selectedFeePlan.fee"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">该项目已缴费用</span>&nbsp;
+          <span class="label label-info" ng-bind="payFeeRoomModal.selectedFeePlan.current_total_fee"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">目前还欠费用</span>&nbsp;
+          <span class="label label-info" ng-bind="payFeeRoomModal.selectedFeePlan.fee-payFeeRoomModal.selectedFeePlan.current_total_fee"></span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':payFeeRoomModalForm.payor.$touched && payFeeRoomModalForm.payor.$invalid}">
+        <span class="input-group-addon" id="basic-addon1">交款人</span>
+        <input type="text" ng-model="payFeeRoomModal.payor" class="form-control" placeholder="交款人" aria-describedby="basic-addon1" name="payor" required>
+        <span ng-messages="payFeeRoomModalForm.payor.$error" ng-show="payFeeRoomModalForm.payor.$touched">
+          <span ng-message="required">*交款人必填</span>
+        </span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':payFeeRoomModalForm.inc_fee.$touched && payFeeRoomModalForm.inc_fee.$invalid}">
+        <span class="input-group-addon" id="basic-addon1">费用金额</span>
+        <input type="number" min="0" max="{{payFeeRoomModal.selectedFeePlan.fee-payFeeRoomModal.selectedFeePlan.current_total_fee}}" ng-model="payFeeRoomModal.inc_fee" class="form-control" placeholder="费用金额" aria-describedby="basic-addon1" name="inc_fee" required>
+        <span ng-messages="payFeeRoomModalForm.inc_fee.$error" ng-show="payFeeRoomModalForm.inc_fee.$touched">
+          <span ng-message="required">*费用数额必填</span>
+          <span ng-message="number">*必须为数字</span>
+          <span ng-message="max">*超过最大数</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="payFeeRoomModal.payFee()">缴费</button>
+      <button type="button" class="btn btn-default" ng-click="payFeeRoomModal.cancel()">关闭</button>
+    </div>
+</div>

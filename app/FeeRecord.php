@@ -9,5 +9,5 @@ class FeeRecord extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['room_id', 'building_id','fee_plan_id','fee_meta_id','fee_name','inc_fee','payor'];
+    protected $guarded = ['id'];
 }

@@ -41,7 +41,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">征收项目</span>
         <ui-select ng-model="assignFeeRoomModal.selectedFeeMeta">
-            <ui-select-match placeHolder="所有楼">
+            <ui-select-match placeHolder="所有征收项目">
               <span ng-bind="$select.selected.name"></span>
             </ui-select-match>
             <ui-select-choices repeat="feemeta in (assignFeeRoomModal.AllFeeMetas | filter: $select.search) track by feemeta.id">

@@ -15,10 +15,11 @@ class CreateFeeRecordsTable extends Migration
         Schema::create('fee_records', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('fee_plan_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('rent_id');
             $table->unsignedInteger('building_id');
             $table->unsignedInteger('room_id');
-            $table->unsignedInteger('fee_meta_id');
+            $table->unsignedInteger('feemeta_id');
             $table->string('fee_name');
             $table->string('payor');
             $table->unsignedInteger('inc_fee');

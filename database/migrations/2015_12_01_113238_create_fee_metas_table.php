@@ -14,6 +14,7 @@ class CreateFeeMetasTable extends Migration
     {
         Schema::create('fee_metas', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->tinyInteger('type');
             $table->unsignedInteger('fee');
