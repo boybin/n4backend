@@ -23,16 +23,6 @@ class FeeMetaPlansController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -122,45 +112,11 @@ class FeeMetaPlansController extends Controller
       // return FeeMeta::find($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function searchFeePlans()
     {
-        //
+      return FeePlan::with('contract','building')
+                ->where('status',0)
+                ->get();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-      // $feeMeta = FeeMeta::find($id);
-      // $input = $request->all();
-      // $feeMeta->fill($input);
-      //
-      // if (!$feeMeta->save()) {
-      //   abort(500, 'Could not save fee meta');
-      // }
-      //
-      // return $feeMeta;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-      // return FeeMeta::destroy($id);
-    }
 }

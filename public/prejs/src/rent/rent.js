@@ -7,6 +7,7 @@
     'Rent.Lease',
     'angular-storage',
     'ngMessages',
+    'ngFileSaver',
     'angular.filter',
     'ui.select',
     'ngSanitize',
@@ -62,6 +63,11 @@
           url:"/rent/fee/feestatisticboard",
           templateUrl:"/view/rent/fee/feestatisticboard.html",
           controller:"FeeStatisticboardCtrl as feestatisticboard"
+        })
+        .state('feeplanboard', {
+          url:"/rent/fee/feeplanboard",
+          templateUrl:"/view/rent/fee/feeplanboard.html",
+          controller:"FeePlanboardCtrl as feeplanboard"
         })
         .state('leaseboard', {
           url:"/rent/lease/leaseboard",

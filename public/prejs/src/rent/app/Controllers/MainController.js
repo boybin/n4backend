@@ -3,6 +3,7 @@ angular.module('Rent.Common')
       function ($scope, $rootScope, store, BuildingModel,$state) {
         //Tab hightlight
         var main = this;
+        main.$state = $state;
 
         //----Fucntions for navigation-----//
         main.isBuilding = function(){
@@ -23,6 +24,9 @@ angular.module('Rent.Common')
                     ||$state.includes("feeboard")
                     ||$state.includes("feemetaplans")
                     ||$state.includes("feeroomsboard")
+                    ||$state.includes("feeboard")
+                    ||$state.includes("feestatisticboard")
+                    ||$state.includes("feeplanboard")
                   );
         }
         //---------------------------------//

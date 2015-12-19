@@ -30,7 +30,7 @@
           <a href="/rent/lease/rentroomsboard">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 出租房屋大厅
             <!-- <span class="badge" ng-bind="main.AllRoomsStatus.rentable"></span> -->
-            <span class="badge">19</span>
+            <!-- <span class="badge">19</span> -->
           </a>
         </li>
         <!-- <li ng-class="{'active':buildboard.$state.includes('buildingboard')}"> -->
@@ -41,7 +41,7 @@
           </a>
           <ul class="dropdown-menu">
             <!-- <li><a href="/rent/building/buildingboard">房屋大厅</a></li> -->
-            <li><a href="/rent/building/buildingboard">房屋大厅</a></li>
+            <li ng-class="{active: main.$state.includes('buildingboard')}"><a href="/rent/building/buildingboard">房屋大厅</a></li>
             <!--
             <li role="separator" class="divider"></li>
             <li><a href="#/addBuild">添加楼栋</a></li>
@@ -56,9 +56,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/rent/lease/leaseboard">出租楼栋大厅</a></li>
+            <li  ng-class="{active: main.$state.includes('leaseboard')}"><a href="/rent/lease/leaseboard">出租楼栋大厅</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/lease/rentroomsboard">出租房屋大厅</a></li>
+            <li  ng-class="{active: main.$state.includes('rentroomsboard')}"><a href="/rent/lease/rentroomsboard">出租房屋大厅</a></li>
           </ul>
         </li>
         <li class="dropdown" ng-class="{active:main.isFee()}">
@@ -67,15 +67,15 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/rent/fee/feemetaboard">收费项目管理</a></li>
-            <li><a href="/rent/fee/feemetaplans">收费项目下发</a></li>
-            <li><a href="/rent/fee/feeroomsboard">管理租户收费项目</a></li>
+            <li ng-class="{active: main.$state.includes('feemetaboard')}"><a href="/rent/fee/feemetaboard">收费项目管理</a></li>
+            <li ng-class="{active: main.$state.includes('feemetaplans')}"><a href="/rent/fee/feemetaplans">收费项目下发</a></li>
+            <li ng-class="{active: main.$state.includes('feeroomsboard')}"><a href="/rent/fee/feeroomsboard">管理租户收费项目</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/fee/feeboard">缴费大厅</a></li>
+            <li ng-class="{active: main.$state.includes('feeboard')}"><a href="/rent/fee/feeboard">缴费大厅</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/fee/feeboard">催费大厅</a></li>
+            <li ng-class="{active: main.$state.includes('feeplanboard')}"><a href="/rent/fee/feeplanboard">催费查询</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/rent/fee/feestatisticboard">收费统计</a></li>
+            <li ng-class="{active: main.$state.includes('feestatisticboard')}"><a href="/rent/fee/feestatisticboard">收费统计</a></li>
           </ul>
         </li>
         <li class="dropdown" ng-class="{active:main.isUserManager()}">

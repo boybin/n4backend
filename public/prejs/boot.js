@@ -5,6 +5,9 @@ head.load(
   // {file:'node_modules/angular-route/angular-route.min.js'},
   {file:'node_modules/angular-ui-router/release/angular-ui-router.min.js'},
   {file:'node_modules/angular-filter/dist/angular-filter.min.js'},
+  {file:'node_modules/angular-file-saver/dist/angular-file-saver.min.js'},
+  {file:'node_modules/angular-file-saver/dist/FileSaver.min.js'},
+  {file:'node_modules/angular-file-saver/dist/Blob.js'},
   {file:'node_modules/angular-messages/angular-messages.min.js'},
   {file:'node_modules/angular-xeditable/xeditable.min.js'},
   {file:'node_modules/angular-sanitize/angular-sanitize.min.js'},
@@ -41,6 +44,7 @@ head.load(
   {file:'prejs/src/rent/fee/Fee.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeMetaBoard.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeMetaPlans.js'},
+  {file:'prejs/src/rent/fee/Controllers/FeePlanBoard.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeRoomsBoard.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeStatisticBoard.js'},
   {file:'prejs/src/rent/fee/Controllers/FeeBoard.js'}

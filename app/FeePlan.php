@@ -27,4 +27,8 @@ class FeePlan extends Model
     public function room() {
       return $this->belongsTo('App\Room','room_id');
     }
+
+    public function building() {
+      return $this->belongsTo('App\Building','building_id');
+    }
 }

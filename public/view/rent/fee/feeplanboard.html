@@ -1,0 +1,38 @@
+<div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-3">
+      <input class="btn btn-primary" ng-click="feeplanboard.export()" value="导出">
+    </div>
+  </div>
+</div>
+<div class="jumbbotron">
+  <h2>当前所有欠款名单列表</h2>
+  <div id="exportable">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>欠费项目</th>
+          <th>楼栋</th>
+          <th>房间号</th>
+          <th>租房人姓名</th>
+          <th>电话</th>
+          <th>总共应缴</th>
+          <th>总共已缴</th>
+          <th>目前还欠</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="plan in feeplanboard.feeplans">
+          <td>{{plan.fee_name}}</td>
+          <td>{{plan.building.name}}</td>
+          <td>{{plan.contract.room_name}}</td>
+          <td>{{plan.contract.contractor_name}}</td>
+          <td>{{plan.contract.phone}}</td>
+          <td>{{plan.fee}}</td>
+          <td>{{plan.current_total_fee}}</td>
+          <td>{{plan.fee-plan.current_total_fee}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
