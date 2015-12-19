@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\FeeMeta;
 
-class FeeMetaController extends Controller
+class FeeMetaController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

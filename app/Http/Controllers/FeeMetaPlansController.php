@@ -10,7 +10,7 @@ use App\FeePlan;
 use App\Contract;
 use App\FeeMeta;
 
-class FeeMetaPlansController extends Controller
+class FeeMetaPlansController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

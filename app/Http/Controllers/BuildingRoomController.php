@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Room;
 
-class BuildingRoomController extends Controller
+class BuildingRoomController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

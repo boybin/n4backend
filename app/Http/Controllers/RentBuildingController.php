@@ -10,7 +10,7 @@ use App\Room;
 use App\Building;
 use App\Contract;
 
-class RentBuildingController extends Controller
+class RentBuildingController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

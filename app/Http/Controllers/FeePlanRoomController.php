@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Room;
 use App\Contract;
 
-class FeePlanRoomController extends Controller
+class FeePlanRoomController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

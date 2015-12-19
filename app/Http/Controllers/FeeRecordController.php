@@ -11,7 +11,7 @@ use App\FeeRecord;
 use App\FeePlan;
 use DB;
 
-class FeeRecordController extends Controller
+class FeeRecordController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.

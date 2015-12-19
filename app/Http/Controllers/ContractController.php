@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Contract;
 
-class ContractController extends Controller
+class ContractController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.
