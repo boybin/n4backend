@@ -5,7 +5,7 @@ return [
   'roles' => [
         '1' => [
           'forbids'=>[
-            'api.rent.buildings'
+            'api.rent.buildings.xxxxx'
           ]
         ],
         '2' => [
