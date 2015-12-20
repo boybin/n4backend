@@ -96,16 +96,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $input = $request->all();
-        $user->fill($input);
-        $user['password'] = Hash::make($user['password']);
+      $this->validate($request,
+          [
+            'password'=>'required|max:255||min:6',
+          ],
+          [
+            'required'=>'The :attribute field is required',
+            'min'=>'The length of :attribute can not small than 6',
+          ]
+       );
 
-        if (!$user->save()) {
-          abort(500, 'Could not update user');
-        }
+      $user = User::find($id);
+      $input = $request->all();
+      $input['password'] = \Hash::make($input['password']);
+      $user->fill($input);
 
-        return $user;
+      if (!$user->save()) {
+        abort(500, 'Could not update user');
+      }
+
+      return $user;
     }
 
     /**

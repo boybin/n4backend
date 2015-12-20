@@ -21,6 +21,17 @@
               });
             }
 
+            vm.changePassword = function(aUser) {
+              $uibModal.open({
+                templateUrl: "/view/user/updatepasswordmodal.html",
+                controller: "updatePasswordModalCtrl",
+                controllerAs: "updatePasswordModal",
+                resolve: {
+                  user:aUser
+                }
+              });
+            }
+
             vm.openAddUserModal = function() {
               $uibModal.open({
                 templateUrl: "/view/user/addusermodal.html",
@@ -64,6 +75,31 @@ angular.module('Rent.Common')
             $uibModalInstance.close();
           }, function(){
             alert("保存失败!");
+          });
+        }
+      };
+
+    });
+
+angular.module('Rent.Common')
+  .controller('updatePasswordModalCtrl',
+    function($uibModalInstance, $scope, UserModel, user) {
+      var vm = this;
+      vm.user = user.clone();
+
+      vm.cancel = function(){
+        $uibModalInstance.close();
+      };
+
+      vm.save = function(){
+        var updatepasswordForm = $scope['updatepasswordForm'];
+        if ($scope.rentCommonUtils.validateForm($scope, updatepasswordForm) && confirm("修改密码?")) {
+          user.password = vm.user.password;
+          user.save().then(function() {
+            alert("密码修改成功!");
+            $uibModalInstance.close();
+          }, function(){
+            alert("密码修改失败!");
           });
         }
       };
