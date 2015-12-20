@@ -14,10 +14,10 @@ abstract class AuthBaseController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $user;
-    
+
     public function __construct(JWTAuth $auth) {
-      $this->middleware('jwt.auth');
-      $auth->parseToken();
-      $this->user = $auth->toUser();
+      // $this->middleware('jwt.auth');
+      // $auth->parseToken();
+      // $this->user = $auth->toUser();
     }
 }

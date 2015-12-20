@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="editUserModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">用户基本信息</h4>
+    </div>
+    <div class="modal-body" ng-form="editUserForm">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">用户名</span>&nbsp;
+        <span class="label label-info" ng-bind="editUserModal.user.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">邮箱</span>&nbsp;
+        <span class="label label-info" ng-bind="editUserModal.user.email"></span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':editUserForm.nickname.$touched && editUserForm.nickname.$invalid}">
+        <span class="input-group-addon" id="basic-addon1">用户昵称</span>
+        <input type="text" ng-model="editUserModal.user.nick" class="form-control" placeholder="用户昵称" aria-describedby="basic-addon1" required name="nickname">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">用户角色</span>
+        <ui-select ng-model="editUserModal.selectedRole">
+            <ui-select-match placeHolder="选择角色">
+              <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="role in (editUserModal.AllRoles | filter: $select.search) track by role.id">
+              <span ng-bind="role.name"></span>
+            </ui-select-choices>
+        </ui-select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="editUserModal.cancel()">关闭</button>
+      <button type="button" class="btn btn-primary" ng-click="editUserModal.save()">保存</button>
+    </div>
+</div>

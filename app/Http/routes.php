@@ -62,7 +62,12 @@ Route::group(['prefix' => 'api'], function()
       Route::resource('contracts', 'ContractController');
       Route::resource('contractrooms', 'ContractRoomController');
       Route::resource('contractfeeplans', 'ContractFeePlanController');
+
+      Route::group(['namespace' => 'User'], function(){
+        Route::resource('users', 'UserController');
+      });
     });
+
 });
 
 //Rent redirect to root view

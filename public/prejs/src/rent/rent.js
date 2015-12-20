@@ -25,6 +25,14 @@
     $urlRouterProvider.otherwise("/rent");
 
     $stateProvider
+        .state('auth', {
+            url: "/auth/login"
+        })
+        .state('userboard', {
+            url: "/auth/userboard",
+            templateUrl: "/view/user/userboard.html",
+            controller:"UserboardCtrl as userboard"
+        })
         .state('rent', {
           url: "/rent",
           templateUrl: "/view/rent/default.html"

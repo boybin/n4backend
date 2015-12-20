@@ -33,7 +33,6 @@
             <!-- <span class="badge">19</span> -->
           </a>
         </li>
-        <!-- <li ng-class="{'active':buildboard.$state.includes('buildingboard')}"> -->
         <li class="dropdown" ng-class="{active:main.isBuilding()}">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-home" aria-hidden="true">楼房管理</span>
@@ -84,9 +83,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">用户角色管理</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">用户管理</a></li>
+            <!-- <li><a href="#">用户角色管理</a></li> -->
+            <!-- <li role="separator" class="divider"></li> -->
+            <li ng-class="{active: main.$state.includes('userboard')}"><a href="/auth/userboard">用户管理</a></li>
           </ul>
         </li>
       </ul>

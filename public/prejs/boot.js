@@ -25,9 +25,10 @@ head.load(
   {file:'prejs/src/rent/app/App.js'},
   {file:'prejs/src/rent/app/Controllers/MainController.js'},
   {file:'prejs/src/rent/app/Controllers/AuthController.js'},
-  {file:'prejs/src/rent/app/Controllers/UserController.js'},
+  {file:'prejs/src/rent/app/Controllers/UserBoardController.js'},
   {file:'prejs/src/rent/app/Models/FeeModel.js'},
   {file:'prejs/src/rent/app/Models/LeaseModel.js'},
+  {file:'prejs/src/rent/app/Models/UserModel.js'},
   {file:'prejs/src/rent/app/Models/BuildingModel.js'},
   {file:'prejs/src/rent/app/Services/CommonUtilService.js'},
 

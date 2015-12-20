@@ -1,0 +1,26 @@
+<div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-3">
+      <input type="text" class="form-control input-md" placeholder="用户姓名" ng-model="userboard.nick"></input>
+    </div>
+  </div>
+
+</div>
+<div class="jumbbotron">
+  <div class="row">
+  <div class="col-md-2" ng-repeat="user in userboard.AllUser|fuzzyBy:'nick':userboard.nick">
+    <div class='img-container'>
+      <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>
+      <div class='img-text-edit'>
+        <span class="pull-right glyphicon glyphicon-pencil clickable_space" ng-click="userboard.openUser(user)"></span>
+      </div>
+      <div class='img-text-board' style="height:20px;">
+        <span ng-bind="user.nick"></span>
+      </div>
+      <a href="#" ng-click="userboard.openUser(user)">
+      <img src='/images/User.png'/>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>

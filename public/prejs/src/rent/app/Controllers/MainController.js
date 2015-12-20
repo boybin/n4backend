@@ -29,5 +29,9 @@ angular.module('Rent.Common')
                     ||$state.includes("feeplanboard")
                   );
         }
+
+        main.isUserManager = function() {
+          return ($state.includes("userboard"));
+        }
         //---------------------------------//
     });
