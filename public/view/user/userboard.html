@@ -7,7 +7,15 @@
 
 </div>
 <div class="jumbbotron">
-  <div class="row">
+<div class="row">
+  <div class="col-md-2">
+    <div class='img-container'>
+      <a href="#" ng-click="userboard.openAddUserModal()">
+        <img src='images/Add-User.png'/>
+      </a>
+      <div class='img-text'><span>点击添加用户</span></div>
+    </div>
+  </div>
   <div class="col-md-2" ng-repeat="user in userboard.AllUser|fuzzyBy:'nick':userboard.nick">
     <div class='img-container'>
       <div class='img-text-warning' ng-if="room.warn"><span ng-bind="room.warn"></span></div>

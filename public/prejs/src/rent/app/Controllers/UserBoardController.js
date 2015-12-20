@@ -20,6 +20,19 @@
                 }
               });
             }
+
+            vm.openAddUserModal = function() {
+              $uibModal.open({
+                templateUrl: "/view/user/addusermodal.html",
+                controller: "addUserModalCtrl",
+                controllerAs: "addUserModal",
+                resolve:{
+                  users:function() {
+                    return vm.AllUser;
+                  }
+                }
+              });
+            }
         }
 })();
 
@@ -56,3 +69,36 @@ angular.module('Rent.Common')
       };
 
     });
+
+    angular.module('Rent.Common')
+      .controller('addUserModalCtrl',
+        function($uibModalInstance, $scope, UserModel, users) {
+          var vm = this;
+          vm.cancel = function() {
+            $uibModalInstance.close();
+          };
+          vm.AllRoles = UserModel.AllRoles;
+
+          vm.newUser = {
+            email:"",
+            name:"",
+            nick:"",
+            role:1,
+            password:""
+          }
+
+          vm.save = function() {
+            vm.newUser.role = vm.selectedRole.value;
+            var addUserForm = $scope['addUserForm'];
+            if ($scope.rentCommonUtils.validateForm($scope, addUserForm) && confirm("添加用户?")) {
+              UserModel.restResource.post(vm.newUser).then(function(user){
+                alert("保存成功!");
+                users.push(user);
+                $uibModalInstance.close();
+              }, function() {
+                alert("保存失败!");
+              });
+            }
+          };
+
+        });

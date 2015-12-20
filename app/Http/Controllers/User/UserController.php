@@ -40,7 +40,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+            [
+              'name'=>'required|max:255|unique:users',
+              'nick'=>'required|max:255',
+              'email'=>'required|email:255|unique:users',
+              'password'=>'required|max:255||min:6',
+              'role'=>'required|numeric',
+            ],
+            [
+              'required'=>'The :attribute field is required',
+              'number'=>'The :attribute field must be number',
+              'email'=>'The :attribute must be a valid email',
+              'max'=>'The length of :attribute can not bigger than 255',
+            ]
+         );
+
+        $user = new User($request->all());
+        $user['password'] = \Hash::make($user['password']);
+        if (!$user->save()) {
+          abort(500, 'Could not save user');
+        }
+
+        return $user;
     }
 
     /**
@@ -77,6 +99,7 @@ class UserController extends Controller
         $user = User::find($id);
         $input = $request->all();
         $user->fill($input);
+        $user['password'] = Hash::make($user['password']);
 
         if (!$user->save()) {
           abort(500, 'Could not update user');
