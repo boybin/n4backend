@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthBaseController;
 
 use App\User;
 
-class UserController extends Controller
+class UserController extends AuthBaseController
 {
     /**
      * Display a listing of the resource.
