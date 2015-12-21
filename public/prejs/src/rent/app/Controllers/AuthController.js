@@ -4,7 +4,7 @@
         .module('Rent.Common')
         .controller('AuthController', AuthController);
 
-  function AuthController($auth) {
+  function AuthController($auth, $rootScope, $state, store, $http) {
       var vm = this;
       vm.login = function() {
           var credentials = {
@@ -13,10 +13,21 @@
           }
           // Use Satellizer's $auth service to login
           $auth.login(credentials).then(function(data) {
-              // If login is successful, redirect to the users state
-              console.log("Yes");
-              console.log(data);
-          });
+               return $http.get('api/authenticate/user');
+          },function(error) {
+                vm.loginError = true;
+                vm.loginErrorText = error.data.error;
+            }).then(function(response){
+              if(response){
+                var user = response.data.user;
+                store.set('user', user);
+                $rootScope.authenticated = true;
+                $rootScope.currentUser = user;
+                $state.go("rent.building.buildingboard");
+              }
+            },function(error){
+              console.log('error');
+            });
       }
   }
 })();

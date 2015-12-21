@@ -15,9 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/rent', function () {
-    return view('rent.index');
-});
+Route::get('/rent','IndexController@index');
+Route::get('/rent/nav','NavController@nav');
 
 Route::get('/hotel', function () {
     return view('hotel.index');
@@ -46,6 +45,7 @@ Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
+    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
     // Route::resource('rent/building','BuildingController');
     Route::group(['prefix' => 'rent'], function() {
       Route::resource('buildings', 'BuildingController');
@@ -71,9 +71,7 @@ Route::group(['prefix' => 'api'], function()
 });
 
 //Rent redirect to root view
-Route::any('/rent/{undefinedRoute}', function ($undefinedRoute) {
-    return view('rent.index');
-})->where('undefinedRoute', '([A-z\d-\/_.]+)?');
+Route::any('/rent/{undefinedRoute}', 'IndexController@index')->where('undefinedRoute', '([A-z\d-\/_.]+)?');
 
 // Using different syntax for Blade to avoid conflicts with AngularJS.
 // You are well-advised to go without any Blade at all.

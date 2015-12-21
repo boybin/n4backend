@@ -8,26 +8,45 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use Tymon\JWTAuth\JWTAuth;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 abstract class AuthBaseController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $user;
+    private $request;
 
-    public function __construct(JWTAuth $auth, Request $request) {
-      // $this->middleware('jwt.auth');
-      $auth->parseToken();
-      $this->user = $auth->toUser();
-      $accessConfig = \Config::get('rolesconfig.roles');
-      $routes = $request->route();
-      $actions = $routes->getAction();
-      $currentActionAs = $actions['as'];
-      $userForbidArr = $accessConfig[$this->user['role']]['forbids'];
-      if ($this->forbidVisit($currentActionAs, $userForbidArr)) {
-        abort(401,'access not allowed');
-      }
+    public function __construct(Request $request) {
+      $this->request = $request;
+      $this->beforeFilter(function(){
+        try {
+            if (!$this->user=JWTAuth::parseToken()->authenticate()) {
+              return response()->json(['token_invalid'], 401);
+            }
+            $accessConfig = \Config::get('rolesconfig.roles');
+            $routes = $this->request->route();
+            $actions = $routes->getAction();
+            if (isset($actions['as'])) {
+              $currentActionAs = $actions['as'];
+              if ($currentActionAs) {
+                $userForbidArr = $accessConfig[$this->user['role']]['forbids'];
+                if ($this->forbidVisit($currentActionAs, $userForbidArr)) {
+                  return response()->json(['error','access_not_allowed'], 401);
+                }
+              }
+            }
+          } catch (TokenExpiredException $e) {
+            return response()->json(['error','token_expired'], $e->getStatusCode());
+          } catch (TokenInvalidException $e) {
+            return response()->json(['error','token_invalid'], $e->getStatusCode());
+          } catch (JWTException $e) {
+            return response()->json(['error'=>'token_absent'], $e->getStatusCode());
+          }
+       });
     }
 
     protected function forbidVisit($accessAs, $forbidsArr) {
