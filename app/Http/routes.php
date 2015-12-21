@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/rent','IndexController@index');
+Route::get('/rent/status/{statusType}','IndexController@status');
 Route::get('/rent/nav','NavController@nav');
 
 Route::get('/hotel', function () {

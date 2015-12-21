@@ -1,0 +1,24 @@
+<div class="jumbotron" style="padding:10px;">
+<!--系统客房状态显示栏-->
+  <div class="panel panel-default" style="margin-bottom:10px;">
+    <div class="panel-body n4-panel-status-body">
+    <ul class="list-inline">
+      <li>
+        <h3>可租用房屋:
+          <span class="label label-info" ng-bind="main.AllRoomsStatus.rentable"></span>
+        </h3>
+      </li>
+      <li>
+        <h3>当前欠费房屋:
+          <span class="label label-info" ng-bind="main.AllRoomsStatus.rented"></span>
+        </h3>
+      </li>
+      <li>
+        <h3>已租用房屋:
+          <span class="label label-info" ng-bind="main.AllRoomsStatus.needclean"></span>
+        </h3>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
