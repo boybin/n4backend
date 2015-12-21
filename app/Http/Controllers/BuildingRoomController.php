@@ -53,6 +53,7 @@ class BuildingRoomController extends AuthBaseController
 
         $room = new Room($request->all());
         $room->building_id = $buildingId;
+        $room['user_id'] = $this->user['id'];
         if (!$room->save()) {
           abort(500, 'Could not save room');
         }

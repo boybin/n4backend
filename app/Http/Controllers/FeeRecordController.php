@@ -53,6 +53,7 @@ class FeeRecordController extends AuthBaseController
 
        $feePlan = FeePlan::find($feeRecordInput['fee_plan_id']);
        $feeRecord = new FeeRecord($feeRecordInput);
+       $feeRecord['user_id'] = $this->user['id'];
        try{
          DB::beginTransaction();
          if(!$feeRecord->save()) {

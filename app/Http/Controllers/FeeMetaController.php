@@ -53,6 +53,7 @@ class FeeMetaController extends AuthBaseController
      );
 
       $feeMeta = new FeeMeta($request->all());
+      $feeMeta['user_id'] = $this->user['id'];
       if (!$feeMeta->save()) {
         abort(500, 'Could not save feeMeta');
       }

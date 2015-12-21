@@ -65,7 +65,6 @@ angular.module('Rent.Lease')
 
       leaseRoomSignModal.room.contract =
       {
-        user_id:1,
         room_id:room.id,
         building_id:room.building_id,
         room_name:room.name,

@@ -6,7 +6,7 @@
     <div class="modal-body" ng-form="addRoomForm">
       <div class="input-group" ng-class="{'has-error':addRoomForm.roomName.$touched && addRoomForm.roomName.$invalid}">
         <span class="input-group-addon" id="basic-addon1">房间名称</span>
-        <input type="text" ng-model="addRoomModal.newRoom.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1" required name="roomName">
+        <input type="text" ng-model="addRoomModal.newRoom.name" class="form-control" placeholder="房间名称" aria-describedby="basic-addon1" required name="roomName">
         <span ng-messages="addRoomForm.roomName.$error" ng-show="addRoomForm.roomName.$touched">
           <span ng-message="required">*房间名称必须填写</span>
         </span>

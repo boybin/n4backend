@@ -63,6 +63,7 @@ class ContractFeePlanController extends AuthBaseController
 
      if(FeePlan::checkNotExistPlanned($feePlanInput)) {
         $feePlan = new FeePlan($feePlanInput);
+        $feePlan['user_id'] = $this->user['id'];
         if (!$feePlan->save()) {
           abort(500, 'Could not save fee plan');
         }

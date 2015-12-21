@@ -67,6 +67,7 @@ class FeeMetaPlansController extends AuthBaseController
        $feePlan['fee_name'] = $feePlanInput['name'];
        $feePlan['fee'] = $feePlanInput['fee'];
        $feePlan['status'] = 0;
+       $feePlan['user_id'] = $this->user['id'];
        $feePlan['type'] = $feePlanInput['type'];
        if (FeeMeta::isYearlyType($feePlan['type'])) {
          $feePlan['fee_start_date'] = $contract['start_time'];

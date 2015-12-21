@@ -53,6 +53,7 @@ class BuildingController extends AuthBaseController
          );
 
         $building = new Building($request->all());
+        $building['user_id'] = $this->user['id'];
         if (!$building->save()) {
           abort(500, 'Could not save building');
         }

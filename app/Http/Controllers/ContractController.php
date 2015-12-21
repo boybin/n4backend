@@ -46,7 +46,6 @@ class ContractController extends AuthBaseController
               'contractor_number'=>'required|max:255',
               'contractor_location'=>'max:255',
               'id_number'=>'required|max:255',
-              'user_id'=>'required|numeric',
               'room_id'=>'required|numeric',
               'phone'=>'required|numeric',
               'building_id' =>'required|numeric',
@@ -62,6 +61,7 @@ class ContractController extends AuthBaseController
          );
 
         $contract = new Contract($request->all());
+        $contract['user_id'] = $this->user['id'];
 
         //Just confirm no dirty data, a room can't contract with more than one user, so delete old ones.
         Contract::where("room_id", $contract['room_id'])
