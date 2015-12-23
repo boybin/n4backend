@@ -21,8 +21,40 @@
     <div class="col-md-3">
       <input class="btn btn-primary" ng-click="feestatisticboard.search()" type="submit" value="搜索">
     </div>
+    <div class="col-md-3">
+      <input class="btn btn-primary" ng-click="feestatisticboard.export()" value="导出">
+    </div>
   </div>
 </div>
 <div class="jumbbotron">
-  <h2>总共收入: <small>{{feestatisticboard.totalIncomes}}</small>元</h2>  
+  <h2>总共收入: <small>{{feestatisticboard.totalIncomes}}</small>元</h2>
+
+  <div id="exportable">
+    <table  ng-table="feestatisticboard.tableParams" class="table table-hover">
+      <thead>
+        <tr>
+          <th>缴费项目</th>
+          <th>楼栋</th>
+          <th>房间号</th>
+          <th>租房人姓名</th>
+          <th>缴费人姓名</th>
+          <th>本次缴费</th>
+          <th>缴费时间</th>
+          <th>收费人</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="feerecord in $data">
+          <td>{{feerecord.fee_name}}</td>
+          <td>{{feerecord.building.name}}</td>
+          <td>{{feerecord.contract.room_name}}</td>
+          <td>{{feerecord.contract.contractor_name}}</td>
+          <td>{{feerecord.payor}}</td>
+          <td>{{feerecord.inc_fee}}</td>
+          <td>{{feerecord.created_at}}</td>
+          <td>{{feerecord.user.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

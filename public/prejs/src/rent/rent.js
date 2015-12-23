@@ -15,7 +15,8 @@
     'ui.router',
     'satellizer',
     'AngularPrint',
-    'restangular'
+    'restangular',
+    'ngTable'
     // 'xeditable'
   ]);
 

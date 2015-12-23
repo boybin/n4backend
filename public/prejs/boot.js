@@ -13,6 +13,7 @@ head.load(
   {file:'node_modules/angular-sanitize/angular-sanitize.min.js'},
   {file:'node_modules/angularPrint/angularPrint.js'},
   {file:'node_modules/restangular/dist/restangular.min.js'},
+  {file:'node_modules/ng-table/dist/ng-table.min.js'},
   // {file:'node_modules/angular-resource/angular-resource.min.js'},
   {file:'node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js'},
   {file:'node_modules/ui-select/dist/select.min.js'},

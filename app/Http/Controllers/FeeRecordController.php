@@ -110,8 +110,28 @@ class FeeRecordController extends AuthBaseController
      $sum = FeeRecord::whereDate('created_at', '>=', $start_date)
                         ->whereDate('created_at', '<', $end_date)
                         ->sum('inc_fee');
-     return $sum;
 
+     $records = FeeRecord::with([
+                                  "building" => function($query){
+                                    $query->select('name','id');
+                                  },
+                                  "contract" => function($query) {
+                                    $query->select('room_name','contractor_name','id');
+                                  },
+                                  "user" => function($query) {
+                                    $query->select('name','id');
+                                  }
+                                ]
+                                )
+                          ->whereDate('created_at', '>=', $start_date)
+                          ->whereDate('created_at', '<', $end_date)
+                          ->get();
+     $ret = [
+       "sums" => $sum,
+       "records" => $records
+     ];
+
+     return $ret;
     }
 
 }

@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/ui-select/dist/select.min.css">
-  <link rel="stylesheet" href="node_modules/angularPrint/angularPrint.css">
+  <!-- <link rel="stylesheet" href="node_modules/angularPrint/angularPrint.css"> -->
+  <link rel="stylesheet" href="node_modules/ng-table/dist/ng-table.min.css">
   <link rel="stylesheet" href="precss/app.css">
   <!-- <link rel="stylesheet" href="<% elixir('css/all.css') %>"/> -->
 </head>
