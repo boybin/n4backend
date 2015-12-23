@@ -83,9 +83,10 @@ angular.module('Rent.Lease')
       {
         room_id:room.id,
         building_id:room.building_id,
+        building_sn:room.building.building_sn,
+        room_sn:room.room_sn,
         room_name:room.name,
         contractor_name:"",
-        contractor_number:"",
         start_time:tomorrow,
         end_time:afterYear,
         id_number:"",
@@ -113,9 +114,11 @@ angular.module('Rent.Lease')
             LeaseModel.contractRestResource.post(leaseRoomSignModal.room.contract).then(function(aContract){
             leaseRoomSignModal.room['contract'] = aContract;
             leaseRoomSignModal.room['hasContract'] = 1;
+            $uibModalInstance.close();
+          },function(){
+            alert('入驻失败!');
           });
 
-          $uibModalInstance.close();
         }
       }
     }

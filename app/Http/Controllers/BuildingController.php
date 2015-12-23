@@ -45,6 +45,7 @@ class BuildingController extends AuthBaseController
         $this->validate($request,
             [
               'name'=>'required|max:255',
+              'building_sn'=>'required|max:255',
             ],
             [
               'required'=>'The :attribute field is required',
@@ -92,6 +93,17 @@ class BuildingController extends AuthBaseController
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,
+            [
+              'name'=>'required|max:255',
+              'building_sn'=>'required|max:255',
+            ],
+            [
+              'required'=>'The :attribute field is required',
+              'max'=>'The length of :attribute can not bigger than 255',
+            ]
+         );
+
         $building = Building::find($id);
         $input = $request->all();
         $building->fill($input);

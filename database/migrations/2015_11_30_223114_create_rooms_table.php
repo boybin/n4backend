@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->integer('building_id');
             $table->integer('user_id');
             $table->string('name');
+            $table->string('room_sn');
             $table->string('desc');
             $table->float('water_degree');
             $table->float('electric_degree');

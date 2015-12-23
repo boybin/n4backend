@@ -44,8 +44,9 @@ class ContractController extends AuthBaseController
           $this->validate($request,
             [
               'room_name'=>'required|max:255',
+              'room_sn'=>'required|max:255',
+              'building_sn'=>'required|max:255',
               'contractor_name'=>'required|max:255',
-              'contractor_number'=>'required|max:255',
               'contractor_location'=>'max:255',
               'id_number'=>'required|max:255',
               'room_id'=>'required|numeric',
@@ -64,8 +65,15 @@ class ContractController extends AuthBaseController
             ]
          );
 
-        $contract = new Contract($request->all());
+        $contractInput = $request->all();
+        $startTime = new \DateTime($contractInput['start_time']);
+        $contract_number = $startTime->format('Ymd').'-'.$contractInput['building_sn'].$contractInput['room_sn'];
+        unset($contractInput['building_sn']);
+        unset($contractInput['room_sn']);
+        $contract = new Contract($contractInput);
         $contract['user_id'] = $this->user['id'];
+        $contract['contractor_number'] = $contract_number;
+
 
         //Just confirm no dirty data, a room can't contract with more than one user, so delete old ones.
         Contract::where("room_id", $contract['room_id'])
@@ -136,7 +144,7 @@ class ContractController extends AuthBaseController
      $deleteInput = $request->all();
      $room = Room::find($deleteInput['room_id']);
      $contract = Contract::find($id);
-     
+
      try {
        DB::beginTransaction();
        $room['water_degree'] = $deleteInput['water_degree'];

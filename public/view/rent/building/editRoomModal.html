@@ -5,10 +5,17 @@
     </div>
     <div class="modal-body" ng-form="editRoomForm">
       <div class="input-group" ng-class="{'has-error':editRoomForm.roomName.$touched && editRoomForm.roomName.$invalid}">
-        <span class="input-group-addon" id="basic-addon1">房间编号</span>
-        <input type="text" ng-model="editRoomModal.room.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1" required name="roomName">
+        <span class="input-group-addon" id="basic-addon1">房间名称</span>
+        <input type="text" ng-model="editRoomModal.room.name" class="form-control" placeholder="房间名称" aria-describedby="basic-addon1" required name="roomName">
         <span ng-messages="editRoomForm.roomName.$error" ng-show="editRoomForm.roomName.$touched">
           <span ng-message="required">*房间名称必须填写</span>
+        </span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':editRoomForm.room_sn.$touched && editRoomForm.room_sn.$invalid}">
+        <span class="input-group-addon" id="basic-addon1">房间编号</span>
+        <input type="text" ng-model="editRoomModal.room.room_sn" class="form-control" placeholder="房间编号" aria-describedby="basic-addon1" required name="room_sn">
+        <span ng-messages="editRoomForm.room_sn.$error" ng-show="editRoomForm.room_sn.$touched">
+          <span ng-message="required">*房间编号必须填写</span>
         </span>
       </div>
       <div class="input-group">

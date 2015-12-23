@@ -49,6 +49,7 @@
         <span class="input-group-addon" id="basic-addon1">家庭住址</span>
         <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_location" class="form-control" aria-describedby="basic-addon1">
       </div>
+      <!--
       <div class="input-group" ng-class="{'has-error':signRoomForm.contractorNumber.$touched && signRoomForm.contractorNumber.$invalid}">
         <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>
         <input type="text" ng-model="leaseRoomSignModal.room.contract.contractor_number" class="form-control" aria-describedby="basic-addon1" name="contractorNumber" required>
@@ -56,6 +57,7 @@
           <span ng-message="required">*纸质合同必须填写</span>
         </span>
       </div>
+      -->
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">合同开始日期</span>
           <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="leaseRoomSignModal.room.contract.start_time" is-open="leaseRoomSignModal.startOpen" ng-required="true" close-text="Close" />

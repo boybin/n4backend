@@ -61,8 +61,13 @@ angular.module('Rent.Building')
               building.name = buildingModal.building.name;
               building.rooms_count = buildingModal.building.rooms_count;
               building.desc = buildingModal.building.desc;
-              building.save();
-              $uibModalInstance.close();
+              building.building_sn = buildingModal.building.building_sn;
+              building.save().then(function(){
+                alert('编辑成功');
+                $uibModalInstance.close();
+              },function(){
+                alert('编辑失败');
+              });
             }
           };
         }
@@ -72,7 +77,7 @@ angular.module('Rent.Building')
         .controller('BuildingAddModalCtrl',
           function($uibModalInstance, $scope, buildings) {
             var buildingAddModal = this;
-            buildingAddModal.newbuilding = {name:"", rooms_count:0, desc:""};
+            buildingAddModal.newbuilding = {name:"", rooms_count:0, desc:"", building_sn:""};
 
             buildingAddModal.cancel = function(){
               $uibModalInstance.close();
@@ -83,9 +88,12 @@ angular.module('Rent.Building')
               if ($scope.rentCommonUtils.validateForm($scope, addBuildingForm) && confirm("添加楼?")) {
                 buildings.post(buildingAddModal.newbuilding).then(function(building){
                   buildings.push(building);
+                  alert('添加成功');
+                  $uibModalInstance.close();
+                },function(){
+                  alert('添加失败!');
                 });
 
-                $uibModalInstance.close();
               }
             };
           }

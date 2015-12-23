@@ -19,7 +19,9 @@ class RentRoomController extends AuthBaseController
      */
     public function index()
     {
-         $rooms = Room::with("building")->get();
+         $rooms = Room::with(["building" => function($query){
+           $query->select('name','id','building_sn');
+         }])->get();
          $today = new \DateTime('today');
          foreach ($rooms as &$room) {
            $contract = Contract::where('room_id',$room['id'])

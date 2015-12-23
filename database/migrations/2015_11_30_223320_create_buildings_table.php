@@ -16,6 +16,7 @@ class CreateBuildingsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name')->uinique();
+            $table->string('building_sn')->uinique();
             $table->string('desc')->nullable();
             $table->integer('rooms_count', false, true);
             $table->softDeletes();

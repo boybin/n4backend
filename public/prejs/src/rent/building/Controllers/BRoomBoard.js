@@ -72,8 +72,13 @@ angular.module('Rent.Building')
             room.desc = editRoomModal.room.desc;
             room.water_degree = editRoomModal.room.water_degree;
             room.electric_degree = editRoomModal.room.electric_degree;
-            room.save();
-            $uibModalInstance.close();
+            room.room_sn = editRoomModal.room.room_sn;
+            room.save().then(function(ret){
+              alert('修改成功!')
+              $uibModalInstance.close();
+            },function(){
+              alert('修改失败!');
+            });
           }
         };
       }
@@ -83,7 +88,7 @@ angular.module('Rent.Building')
     .controller('RoomAddModalCtrl',
       function($uibModalInstance, $scope, rooms) {
         var addRoomModal = this;
-        addRoomModal.newRoom = {name:"", desc:"", water_degree:0, electric_degree:0};
+        addRoomModal.newRoom = {name:"", desc:"", water_degree:0, electric_degree:0, room_sn:""};
 
         addRoomModal.cancel = function(){
             $uibModalInstance.close();
@@ -94,9 +99,12 @@ angular.module('Rent.Building')
           if ($scope.rentCommonUtils.validateForm($scope, addRoomForm) && confirm("添加房间?")) {
             rooms.post(addRoomModal.newRoom).then(function(aRoom) {
               rooms.push(aRoom);
+              alert('添加成功!')
+              $uibModalInstance.close();
+            },function(){
+              alert('添加失败!');
             });
 
-            $uibModalInstance.close();
           }
         };
     }

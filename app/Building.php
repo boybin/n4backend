@@ -9,7 +9,7 @@ class Building extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['user_id', 'name', 'desc','rooms_count'];
+    protected $fillable = ['user_id', 'name', 'desc','rooms_count','building_sn'];
 
     public function rooms() {
       return $this->hasMany('App\Room','building_id');
