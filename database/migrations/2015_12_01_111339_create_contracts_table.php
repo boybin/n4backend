@@ -26,6 +26,10 @@ class CreateContractsTable extends Migration
             $table->string('id_number');
             $table->string('phone');
             $table->string('contractor_location');
+            $table->float('water_degree');
+            $table->float('end_water_degree');
+            $table->float('electric_degree');
+            $table->float('end_electric_degree');
             $table->softDeletes();
             $table->timestamps();
         });

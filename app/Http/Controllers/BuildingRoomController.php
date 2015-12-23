@@ -44,9 +44,12 @@ class BuildingRoomController extends AuthBaseController
         $this->validate($request,
             [
               'name'=>'required|max:255',
+              'water_degree'=>'required|numeric',
+              'electric_degree'=>'required|numeric',
             ],
             [
               'required'=>'The :attribute field is required',
+              'numeric'=>'The :attribute field must be numeric',
               'max'=>'The length of :attribute can not bigger than 255',
             ]
          );

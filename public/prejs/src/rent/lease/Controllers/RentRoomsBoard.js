@@ -20,6 +20,7 @@ angular.module('Rent.Lease')
           templateUrl: "/view/rent/lease/signRoomModal.html",
           controller: "LeaseRoomSignModalCtrl",
           controllerAs: "leaseRoomSignModal",
+          backdrop: "static",
           resolve: {
             room:aRoom
           }
@@ -33,6 +34,20 @@ angular.module('Rent.Lease')
           controllerAs: "leaseViewRoomSignModal",
           resolve: {
             room:aRoom
+          }
+        });
+      }
+
+      rentroomsboard.terminalSignModal = function(aRoom){
+        $uibModal.open({
+          templateUrl: "/view/rent/lease/terminalSignRoomModal.html",
+          controller: "TerminalViewRoomSignModalCtrl",
+          controllerAs: "terminalViewRoomSignModal",
+          backdrop: "static",
+          resolve: {
+            room: function(){
+              return aRoom;
+            }
           }
         });
       }

@@ -1,0 +1,73 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" ng-click="terminalViewRoomSignModal.cancel()">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">房间基本信息</h4>
+    </div>
+    <div class="modal-body" ng-form="terminalSignForm">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">所在楼栋</span> &nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.building.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">房间编号</span> &nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">租房人姓名</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.contractor_name"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">身份证号码</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.id_number"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">电话号码</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.phone"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">家庭住址</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.contractor_location"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.contractor_number"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">合同开始时水度数</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.water_degree"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">合同开始时电度数</span>&nbsp;
+        <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.electric_degree"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同开始日期</span>&nbsp;
+          <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.start_time"></span>
+      </div>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">合同截止日期</span>&nbsp;
+          <span class="label label-info" ng-bind="terminalViewRoomSignModal.room.contract.end_time"></span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':terminalSignForm.water_degree.$touched && terminalSignForm.water_degree.$invalid}">
+          <span class="input-group-addon" id="basic-addon1">合同结束水度数</span>
+          <input type="number" ng-model="terminalViewRoomSignModal.water_degree" class="form-control" placeholder="当前水度数(单位-度)" aria-describedby="basic-addon1" ng-min="terminalViewRoomSignModal.room.contract.water_degree" name="water_degree" required>
+          <span ng-messages="terminalSignForm.water_degree.$error" ng-show="terminalSignForm.water_degree.$touched">
+            <span ng-message="required">*当前房间剩余的水度数必填</span>
+            <span ng-message="min">*最小值不能小于合同开始的值</span>
+            <span ng-message="number">*必须为数字</span>
+          </span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':terminalSignForm.electric_degree.$touched && terminalSignForm.electric_degree.$invalid}">
+          <span class="input-group-addon" id="basic-addon1">合同结束电度数</span>
+          <input type="number" ng-model="terminalViewRoomSignModal.electric_degree" class="form-control" placeholder="当前电度数(单位-度)" aria-describedby="basic-addon1" ng-min="terminalViewRoomSignModal.room.contract.electric_degree" name="electric_degree" required>
+          <span ng-messages="terminalSignForm.electric_degree.$error" ng-show="terminalSignForm.electric_degree.$touched">
+            <span ng-message="required">*当前房间电的度数必填</span>
+            <span ng-message="min">*最小值不能小于合同开始的值</span>
+            <span ng-message="number">*必须为数字</span>
+          </span>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" ng-click="terminalViewRoomSignModal.removeContract()">终止合同</button>
+      <button type="button" class="btn btn-default" ng-click="terminalViewRoomSignModal.cancel()">关闭</button>
+    </div>
+</div>

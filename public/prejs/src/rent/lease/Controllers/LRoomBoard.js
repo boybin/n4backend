@@ -22,6 +22,7 @@ angular.module('Rent.Lease')
           templateUrl: "/view/rent/lease/signRoomModal.html",
           controller: "LeaseRoomSignModalCtrl",
           controllerAs: "leaseRoomSignModal",
+          backdrop: "static",
           resolve: {
             room: function(){
               aRoom['building'] = leaseroomboard.building;
@@ -36,6 +37,21 @@ angular.module('Rent.Lease')
           templateUrl: "/view/rent/lease/viewSignRoomModal.html",
           controller: "LeaseViewRoomSignModalCtrl",
           controllerAs: "leaseViewRoomSignModal",
+          resolve: {
+            room: function(){
+              aRoom['building'] = leaseroomboard.building;
+              return aRoom;
+            }
+          }
+        });
+      }
+
+      leaseroomboard.terminalSignModal = function(aRoom){
+        $uibModal.open({
+          templateUrl: "/view/rent/lease/terminalSignRoomModal.html",
+          controller: "TerminalViewRoomSignModalCtrl",
+          controllerAs: "terminalViewRoomSignModal",
+          backdrop: "static",
           resolve: {
             room: function(){
               aRoom['building'] = leaseroomboard.building;
@@ -74,6 +90,8 @@ angular.module('Rent.Lease')
         end_time:afterYear,
         id_number:"",
         phone:"",
+        water_degree:room.water_degree,
+        electric_degree:room.electric_degree,
         contractor_location:""
       };
 
@@ -121,16 +139,30 @@ angular.module('Rent.Lease')
       leaseViewRoomSignModal.cancel = function(){
         $uibModalInstance.close();
       };
-      leaseViewRoomSignModal.removeContract = function(){
-        if(confirm("终止该租户合同? 此操作不可回滚")) {
-          LeaseModel.contractRestResource.one(room.contract['id']).remove().then(function(){
+
+    }
+);
+
+
+angular.module('Rent.Lease')
+  .controller('TerminalViewRoomSignModalCtrl',
+    function($uibModalInstance, $scope, room, LeaseModel) {
+      var vm = this;
+      vm.room = room.clone();
+
+      vm.cancel = function(){
+        $uibModalInstance.close();
+      };
+
+      vm.removeContract = function(){
+        var ternminalRoomForm = $scope['terminalSignForm'];
+        if($scope.rentCommonUtils.validateForm($scope, ternminalRoomForm) && confirm("终止该租户合同? 此操作不可回滚")) {
+          LeaseModel.contractRestResource.one(room.contract['id']).remove({room_id:room.id, water_degree:vm.water_degree, electric_degree:vm.electric_degree}).then(function(){
             room['hasContract'] = 0;
             delete room['contract'];
+            $uibModalInstance.close();
           });
         }
-
-        $uibModalInstance.close();
       }
-
     }
 );

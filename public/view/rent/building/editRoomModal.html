@@ -15,6 +15,22 @@
         <span class="input-group-addon" id="basic-addon1">房间描述</span>
         <input type="text" ng-model="editRoomModal.room.desc" class="form-control" aria-describedby="basic-addon1">
       </div>
+      <div class="input-group" ng-class="{'has-error':editRoomForm.water_degree.$touched && editRoomForm.water_degree.$invalid}">
+          <span class="input-group-addon" id="basic-addon1">房间当前水度数</span>
+          <input type="number" ng-model="editRoomModal.room.water_degree" class="form-control" placeholder="当前水度数(单位-度)" aria-describedby="basic-addon1" name="water_degree" required>
+          <span ng-messages="editRoomForm.water_degree.$error" ng-show="editRoomForm.water_degree.$touched">
+            <span ng-message="required">*当前房间剩余的水度数必填</span>
+            <span ng-message="number">*必须为数字</span>
+          </span>
+      </div>
+      <div class="input-group" ng-class="{'has-error':editRoomForm.electric_degree.$touched && editRoomForm.electric_degree.$invalid}">
+          <span class="input-group-addon" id="basic-addon1">房间当前电度数</span>
+          <input type="number" ng-model="editRoomModal.room.electric_degree" class="form-control" placeholder="当前电度数(单位-度)" aria-describedby="basic-addon1" name="electric_degree" required>
+          <span ng-messages="editRoomForm.electric_degree.$error" ng-show="editRoomForm.electric_degree.$touched">
+            <span ng-message="required">*当前房间电的度数必填</span>
+            <span ng-message="number">*必须为数字</span>
+          </span>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" ng-click="editRoomModal.cancel()">关闭</button>

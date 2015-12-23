@@ -11,37 +11,38 @@
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">房间编号</span> &nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.name"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.name" class="form-control" placeholder="楼号" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">房间描述</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.desc"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.desc" class="form-control" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">租房人姓名</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.contractor_name"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.contract.contractor_name" class="form-control" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">身份证号码</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.id_number"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.contract.id_number" class="form-control" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">电话号码</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.phone"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.contract.phone" class="form-control" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">家庭住址</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.contractor_location"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.contract.contractor_location" class="form-control" aria-describedby="basic-addon1"> -->
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">纸质合同编号</span>&nbsp;
         <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.contractor_number"></span>
-        <!-- <input type="text" ng-model="leaseViewRoomSignModal.room.contract.contractor_number" class="form-control" aria-describedby="basic-addon1"> -->
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">合同开始时水度数</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.water_degree"></span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">合同开始时电度数</span>&nbsp;
+        <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.electric_degree"></span>
       </div>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">合同开始日期</span>&nbsp;
@@ -52,7 +53,6 @@
           <span class="label label-info" ng-bind="leaseViewRoomSignModal.room.contract.end_time"></span>
       </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" ng-click="leaseViewRoomSignModal.removeContract()">终止合同</button>
       <button type="button" class="btn btn-default" ng-click="leaseViewRoomSignModal.cancel()">关闭</button>
     </div>
 </div>

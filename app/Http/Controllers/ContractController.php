@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Contract;
+use App\Room;
+use DB;
 
 class ContractController extends AuthBaseController
 {
@@ -48,6 +50,8 @@ class ContractController extends AuthBaseController
               'id_number'=>'required|max:255',
               'room_id'=>'required|numeric',
               'phone'=>'required|numeric',
+              'water_degree'=>'required|numeric',
+              'electric_degree'=>'required|numeric',
               'building_id' =>'required|numeric',
               'start_time' =>'required|date',
               'end_time' =>'required|date',
@@ -115,8 +119,42 @@ class ContractController extends AuthBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-      return Contract::destroy($id);
+      $this->validate($request,
+        [
+          'room_id'=>'required|numeric',
+          'water_degree'=>'required|numeric',
+          'electric_degree'=>'required|numeric',
+        ],
+        [
+          'required'=>'The :attribute field is required',
+          'numeric'=>'The :attribute field must be numeric',
+        ]
+     );
+
+     $deleteInput = $request->all();
+     $room = Room::find($deleteInput['room_id']);
+     $contract = Contract::find($id);
+     
+     try {
+       DB::beginTransaction();
+       $room['water_degree'] = $deleteInput['water_degree'];
+       $room['electric_degree'] = $deleteInput['electric_degree'];
+       if (!$room->save()) {
+         abort(500, 'Destroy failed');
+       }
+       $contract['end_water_degree'] = $deleteInput['water_degree'];
+       $contract['end_electric_degree'] = $deleteInput['electric_degree'];
+       if (!$contract->save()) {
+         abort(500, 'Destroy failed');
+       }
+       DB::commit();
+     } catch(Exception $exception) {
+       DB::rollBack();
+       abort(500, 'Destroy failed');
+     }
+
+     return Contract::destroy($id);
     }
 }

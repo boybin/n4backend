@@ -21,6 +21,7 @@ angular.module('Rent.Building')
           templateUrl: "/view/rent/building/addRoomModal.html",
           controller: "RoomAddModalCtrl",
           controllerAs: "addRoomModal",
+          backdrop: "static",
           resolve: {
             rooms: function(){
               return roomboard.AllRooms;
@@ -45,6 +46,7 @@ angular.module('Rent.Building')
           templateUrl: "/view/rent/building/editRoomModal.html",
           controller: "RoomEditModalCtrl",
           controllerAs: "editRoomModal",
+          backdrop: "static",
           resolve: {
             room:aRoom
           }
@@ -68,6 +70,8 @@ angular.module('Rent.Building')
           if ($scope.rentCommonUtils.validateForm($scope, editRoomForm) && confirm("修改房间?")) {
             room.name = editRoomModal.room.name;
             room.desc = editRoomModal.room.desc;
+            room.water_degree = editRoomModal.room.water_degree;
+            room.electric_degree = editRoomModal.room.electric_degree;
             room.save();
             $uibModalInstance.close();
           }
@@ -79,7 +83,7 @@ angular.module('Rent.Building')
     .controller('RoomAddModalCtrl',
       function($uibModalInstance, $scope, rooms) {
         var addRoomModal = this;
-        addRoomModal.newRoom = {name:"", desc:""};
+        addRoomModal.newRoom = {name:"", desc:"", water_degree:0, electric_degree:0};
 
         addRoomModal.cancel = function(){
             $uibModalInstance.close();

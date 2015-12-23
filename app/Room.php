@@ -9,7 +9,7 @@ class Room extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['building_id', 'user_id', 'name', 'desc'];
+    protected $fillable = ['building_id', 'user_id', 'name', 'desc', 'electric_degree', 'water_degree'];
 
     public function building() {
       return $this->belongsTo('App\Building','building_id');
