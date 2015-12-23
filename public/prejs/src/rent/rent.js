@@ -147,6 +147,11 @@
           templateUrl:"/view/rent/lease/rentroomsboard.html",
           controller:"RentRoomsboardCtrl as rentroomsboard"
         })
+        .state('rent.lease.rentroomstatsboard', {
+          url:"/rentroomstats",
+          templateUrl:"/view/rent/lease/rentroomstatsboard.html",
+          controller:"RentRoomStatsboardCtrl as rentroomstatsboard"
+        })
 
     $locationProvider.html5Mode(true);
   });

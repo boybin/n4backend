@@ -1,0 +1,51 @@
+<div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-3">
+      <ui-select ng-model="rentroomstatsboard.selectedBuilding">
+          <ui-select-match placeHolder="所有楼">
+            <span ng-bind="$select.selected.name"></span>
+          </ui-select-match>
+          <ui-select-choices repeat="building in (rentroomstatsboard.AllBuildings | filter: $select.search) track by building.id">
+            <span ng-bind="building.name"></span>
+          </ui-select-choices>
+      </ui-select>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control input-md" placeholder="房间名字" ng-model="rentroomstatsboard.buildingName"></input>
+    </div>
+    <div class="col-md-3">
+      <input class="btn btn-primary" ng-click="rentroomstatsboard.export()" value="导出">
+    </div>
+  </div>
+
+  <ol class="breadcrumb">
+    <li><a href="#" ng-click="rentroomstatsboard.filterStatus('')">所有状态</a></li>
+    <li><a href="#" ng-click="rentroomstatsboard.filterStatus(1)">已租</a></li>
+    <li><a href="#" ng-click="rentroomstatsboard.filterStatus(0)">空置</a></li>
+    <li></li>
+  </ol>
+</div>
+<div class="jumbbotron">
+    <div id="exportable">
+      <table  ng-table="rentroomstatsboard.tableParams" class="table table-hover">
+        <thead>
+          <tr>
+            <th>楼栋名称</th>
+            <th>房间号</th>
+            <th>房间状态</th>
+            <th>租房人姓名</th>
+            <th>合同开始时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="room in $data |filterBy:['building_id']:rentroomstatsboard.selectedBuilding.id|filterBy:['hasContract']:rentroomstatsboard.filterContractStatus|fuzzyBy:'name':rentroomstatsboard.buildingName">
+            <td>{{room.building.name}}</td>
+            <td>{{room.name}}</td>
+            <td>{{room.hasContract?'已租':'空置'}}</td>
+            <td>{{room.contract?room.contract.contractor_name:''}}</td>
+            <td>{{room.contract?room.contract.start_time:''}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

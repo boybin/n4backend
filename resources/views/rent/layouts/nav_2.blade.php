@@ -19,7 +19,7 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li  ng-class="{active: main.$state.includes('rent.lease.rentroomstats')}"><a href="/rent/lease/rentroomstats">房屋情况统计</a></li>
+          <li  ng-class="{active: main.$state.includes('rent.lease.rentroomstatsboard')}"><a href="/rent/lease/rentroomstats">房屋情况统计</a></li>
         </ul>
       </li>
       <li class="dropdown" ng-class="{active:main.$state.includes('rent.fee')}">
