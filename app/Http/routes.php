@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/rent','IndexController@index');
-Route::get('/rent/status/{statusType}','IndexController@status');
-Route::get('/rent/nav','NavController@nav');
+// Route::get('/rent/status/{statusType}','IndexController@status');
+Route::get('/rent/nav/{randonValue}','NavController@nav');
 
 Route::get('/hotel', function () {
     return view('hotel.index');
@@ -63,6 +63,7 @@ Route::group(['prefix' => 'api'], function()
       Route::resource('contracts', 'ContractController');
       Route::resource('contractrooms', 'ContractRoomController');
       Route::resource('contractfeeplans', 'ContractFeePlanController');
+      Route::get('status/{statusType}', 'IndexController@status');
 
       Route::group(['namespace' => 'User'], function(){
         Route::resource('users', 'UserController');

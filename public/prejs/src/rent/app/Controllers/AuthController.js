@@ -23,7 +23,15 @@
                 store.set('user', user);
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = user;
-                $state.go("rent.building.buildingboard");
+
+                $rootScope.$broadcast('userLoggedIn',{user:user});
+                if(user.role == 1) {
+                  $state.go("rent.lease.rentroomsboard");
+                } else if(user.role == 2) {
+                  $state.go("rent.fee.feestatisticboard");
+                } else if(user.role == 3) {
+                  $state.go("rent.lease.rentroomsboard");
+                }
               }
             },function(error){
               console.log('error');

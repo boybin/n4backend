@@ -4,7 +4,7 @@
 <head>
   <base href="/">
   <meta charset="UTF-8">
-  <title>@yield('title')</title>
+  <title>@{{title}}</title>
   <!-- <script type="application/javascript" src="<% elixir('js/all.js') %>"></script> -->
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">

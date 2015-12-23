@@ -7,6 +7,6 @@ angular.module('Rent.Common')
             service.AllRoles = [
               {id:1, name:"管理员", value:1},
               {id:2, name:"财务人员", value:2},
-              {id:3, name:"文员", value:3},
+              {id:3, name:"操作人员", value:3},
             ];
     });

@@ -6,7 +6,7 @@
   </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-      <li ng-class="{active:main.$state.includes('rent.lease.rentroomsboard')}">
+      <li>
         <a href="/rent/lease/rentroomsboard">
           <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 出租房屋大厅
           <!-- <span class="badge" ng-bind="main.AllRoomsStatus.rentable"></span> -->
@@ -31,6 +31,8 @@
           <li  ng-class="{active: main.$state.includes('rent.lease.leaseboard')}"><a href="/rent/lease/leaseboard">出租楼栋大厅</a></li>
           <li role="separator" class="divider"></li>
           <li  ng-class="{active: main.$state.includes('rent.lease.rentroomsboard')}"><a href="/rent/lease/rentroomsboard">出租房屋大厅</a></li>
+          <li role="separator" class="divider"></li>
+          <li  ng-class="{active: main.$state.includes('rent.lease.rentroomstats')}"><a href="/rent/lease/rentroomstats">房屋情况统计</a></li>
         </ul>
       </li>
       <li class="dropdown" ng-class="{active:main.$state.includes('rent.fee')}">

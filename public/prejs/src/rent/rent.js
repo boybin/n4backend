@@ -58,7 +58,7 @@
           url: "/user",
           abstract: true,
           views:{
-              'status':{templateUrl:'/rent/status/4'},
+              'status':{templateUrl:'/view/rent/layout/userstatus.html', controller:"UserStatusCtrl as userstatus"},
               '':{template: '<ui-view/>'}
           }
         })
@@ -66,7 +66,7 @@
           url: "/building",
           abstract: true,
           views:{
-              'status':{templateUrl:'/rent/status/1'},
+              'status':{templateUrl:'/view/rent/layout/buildingstatus.html', controller:"BuildingStatusCtrl as buildingstatus"},
               '':{template: '<ui-view/>'}
           }
         })
@@ -74,7 +74,7 @@
           url:"/fee",
           abstract: true,
           views:{
-              'status':{templateUrl:'/rent/status/3'},
+              'status':{templateUrl:'/view/rent/layout/feestatus.html', controller:"FeeStatusCtrl as feestatus"},
               '':{template: '<ui-view/>'}
           }
         })
@@ -82,7 +82,7 @@
           url:"/lease",
           abstract: true,
           views:{
-              'status':{templateUrl:'/rent/status/2'},
+              'status':{templateUrl:'/view/rent/layout/leasestatus.html', controller:"LeaseStatusCtrl as leasestatus"},
               '':{template: '<ui-view/>'}
           }
         })
