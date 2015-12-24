@@ -31,7 +31,9 @@
         <thead>
           <tr>
             <th>楼栋名称</th>
-            <th>房间号</th>
+            <th>楼栋编号</th>
+            <th>房间名称</th>
+            <th>房间编号</th>
             <th>房间状态</th>
             <th>租房人姓名</th>
             <th>合同开始时间</th>
@@ -40,7 +42,9 @@
         <tbody>
           <tr ng-repeat="room in $data |filterBy:['building_id']:rentroomstatsboard.selectedBuilding.id|filterBy:['hasContract']:rentroomstatsboard.filterContractStatus|fuzzyBy:'name':rentroomstatsboard.buildingName">
             <td>{{room.building.name}}</td>
+            <td>{{room.building.building_sn}}</td>
             <td>{{room.name}}</td>
+            <td>{{room.room_sn}}</td>
             <td>{{room.hasContract?'已租':'空置'}}</td>
             <td>{{room.contract?room.contract.contractor_name:''}}</td>
             <td>{{room.contract?room.contract.start_time:''}}</td>
