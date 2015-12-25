@@ -23,18 +23,6 @@ Route::get('/hotel', function () {
     return view('hotel.index');
 });
 
-/*
-Route::get('/rent/building/{id}/roomboard',function (){
-  return view(join('.',['rent', 'building', 'roomboard']));
-});
-
-Route::get('/rent/{module}/{action}',function ($module, $action){
-  return view(join('.',['rent', $module, $action]));
-});
-Route::get('/hotel/{module}/{action}',function ($module, $action){
-  return view(join('.',['hotel', $module, $action]));
-});
-*/
 Route::get('/auth/login', function () {
     return view('auth.login');
 });
@@ -51,7 +39,6 @@ Route::group(['prefix' => 'api'], function()
     Route::get('images/upload/{model_id}/{r_id}', 'ImageController@uploadFile');
     Route::post('images/upload/{model_id}/{r_id}', 'ImageController@uploadFile');
 
-    // Route::resource('rent/building','BuildingController');
     Route::group(['prefix' => 'rent'], function() {
       Route::resource('buildings', 'BuildingController');
       Route::resource('buildings.rooms', 'BuildingRoomController');

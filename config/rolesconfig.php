@@ -10,12 +10,18 @@ return [
         ],
         '2' => [
           'forbids'=>[
-
+            'api.rent.buildings',
+            'api.rent.contracts',
+            'api.rent.feerecords',
+            'api.rent.users'
           ]
         ],
         '3' => [
           'forbids'=>[
-            
+            'api.rent.buildings',
+            'api.rent.feemetas',
+            'api.rent.feerecordstatistics',
+            'api.rent.users'
           ]
         ]
     ]
