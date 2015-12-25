@@ -27,4 +27,10 @@ class Room extends Model
       return $this->hasMany('App\FeePlan');
     }
 
+    public function images()
+    {
+      return $this->morphMany(\App\Image::class, 'imageable');
+    }
+
+
 }

@@ -13,6 +13,7 @@
           }
           // Use Satellizer's $auth service to login
           $auth.login(credentials).then(function(data) {
+               store.set('query_token',data.data.token);
                return $http.get('api/authenticate/user');
           },function(error) {
                 vm.loginError = true;

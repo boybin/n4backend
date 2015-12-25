@@ -6,5 +6,6 @@ angular.module('Rent.Common')
             service.rentRoomsRestResource = Restangular.service('rentrooms');
             service.contractRestResource = Restangular.service('contracts');
             service.ContractRoomsRestResource = Restangular.service('contractrooms');
-
+            service.ContractImagesRestResource = Restangular.service('contractimages');
+            service.RoomHistoryRestResource = Restangular.service('roomhistory');
     });

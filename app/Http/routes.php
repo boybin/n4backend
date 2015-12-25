@@ -47,6 +47,10 @@ Route::group(['prefix' => 'api'], function()
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
     Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
+
+    Route::get('images/upload/{model_id}/{r_id}', 'ImageController@uploadFile');
+    Route::post('images/upload/{model_id}/{r_id}', 'ImageController@uploadFile');
+
     // Route::resource('rent/building','BuildingController');
     Route::group(['prefix' => 'rent'], function() {
       Route::resource('buildings', 'BuildingController');
@@ -64,6 +68,8 @@ Route::group(['prefix' => 'api'], function()
       Route::resource('contractrooms', 'ContractRoomController');
       Route::resource('contractfeeplans', 'ContractFeePlanController');
       Route::get('status/{statusType}', 'IndexController@status');
+      Route::get('contractimages/{contract_id}', 'ContractRoomController@contactImages');
+      Route::get('roomhistory/{room_id}', 'ContractRoomController@roomHistory');
 
       Route::group(['namespace' => 'User'], function(){
         Route::resource('users', 'UserController');

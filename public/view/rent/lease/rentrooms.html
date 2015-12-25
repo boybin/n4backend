@@ -18,9 +18,11 @@
         <span ng-if="!room.hasContract" class="pull-right glyphicon glyphicon-book clickable_space" ng-click="leaseroomboard.openSignModal(room)"></span>
       </div>
       <div class='img-text'><span ng-bind="room.name"></span></div>
-      <a href="#" ng-click="leaseroomboard.openEditRoomModal(room)">
-      <img ng-if="room.hasContract" src='/images/Apartment-red.png'/>
-      <img ng-if="!room.hasContract" src='/images/Apartment-purple.png'/>
+      <a ng-if="room.hasContract" href="/rent/lease/contractdetail/{{room.contract.id}}/{{room.id}}">
+        <img src='/images/Apartment-red.png'/>
+      </a>
+      <a ng-if="!room.hasContract" href="/rent/lease/roomdetail/{{room.id}}">
+        <img src='/images/Apartment-purple.png'/>
       </a>
     </div>
   </div>

@@ -21,6 +21,10 @@ head.load(
   {file:'node_modules/underscore/underscore-min.js'},
   {file:'node_modules/satellizer/satellizer.min.js'},
 
+  {file:'bower_components/ng-flow/dist/ng-flow-standalone.min.js'},
+  {file:'bower_components/ng-flow/dist/ng-flow.min.js'},
+  {file:'bower_components/flow.js/dist/flow.min.js'},
+  {file:'bower_components/ngGallery/src/js/ngGallery.js'},
 
   {file:'prejs/src/rent/rent.js'},
   {file:'prejs/src/rent/app/App.js'},
@@ -40,6 +44,8 @@ head.load(
   {file:'prejs/src/rent/lease/Controllers/LeaseBoard.js'},
   {file:'prejs/src/rent/lease/Controllers/RentRoomsBoard.js'},
   {file:'prejs/src/rent/lease/Controllers/RentRoomStatsBoard.js'},
+  {file:'prejs/src/rent/lease/Controllers/RentRoomDetail.js'},
+  {file:'prejs/src/rent/lease/Controllers/RentContractDetail.js'},
   {file:'prejs/src/rent/lease/Controllers/LRoomBoard.js'},
 
   {file:'prejs/src/rent/building/Building.js'},

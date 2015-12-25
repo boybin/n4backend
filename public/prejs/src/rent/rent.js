@@ -16,14 +16,20 @@
     'satellizer',
     'AngularPrint',
     'restangular',
-    'ngTable'
+    'ngTable',
+    'flow',
+    'jkuri.gallery'
     // 'xeditable'
   ]);
 
-  rentModule.config(function($stateProvider, $httpProvider, $urlRouterProvider, $authProvider, $locationProvider, RestangularProvider, $provide) {
+  rentModule.config(function($stateProvider, $httpProvider, $urlRouterProvider, $authProvider, $locationProvider, RestangularProvider, $provide, flowFactoryProvider) {
     $authProvider.loginUrl = '/api/authenticate';
     RestangularProvider.setBaseUrl('/api/rent');
     $urlRouterProvider.otherwise("/rent/login");
+
+    // flowFactoryProvider.on('catchAll', function (event) {
+    //   // console.log('catchAll', arguments);
+    // });
 
     $provide.factory('redirectWhenLoggedOut', function($q, $injector) {
       return {
@@ -146,6 +152,16 @@
           url:"/rentroomsboard",
           templateUrl:"/view/rent/lease/rentroomsboard.html",
           controller:"RentRoomsboardCtrl as rentroomsboard"
+        })
+        .state('rent.lease.contractdetail', {
+          url:"/contractdetail/{contract_id}/{room_id}",
+          templateUrl:"/view/rent/lease/contractdetail.html",
+          controller:"RentContractDetailCtrl as contractdetail"
+        })
+        .state('rent.lease.roomdetail', {
+          url:"/roomdetail/{room_id}",
+          templateUrl:"/view/rent/lease/roomdetail.html",
+          controller:"RentRoomDetailCtrl as roomdetail"
         })
         .state('rent.lease.rentroomstatsboard', {
           url:"/rentroomstats",

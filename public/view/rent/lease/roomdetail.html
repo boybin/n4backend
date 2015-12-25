@@ -1,0 +1,18 @@
+<div class="jumbbotron">
+  <div class ng-repeat="contract in roomdetail.contracts">
+    <div class="row">
+      <h4 class="col-md-3">租赁人<span class="label label-info">{{contract.contractor_name}}</span></h4>
+      <h4 class="col-md-3">开始时间<span class="label label-info">{{contract.start_time}}</span></h4>
+      <h4 class="col-md-3">结束时间<span class="label label-info">{{contract.end_time}}</span></h4>
+      <h4 class="col-md-3">结束水度数<span class="label label-info">{{contract.end_water_degree}}</span></h4>
+      <h4 class="col-md-3">结束电度数<span class="label label-info">{{contract.end_electric_degree}}</span></h4>
+       <ng-gallery images="contract.images" thumbs-num="contract.images.length">
+       </ng-gallery>
+       <hr>
+    </div>
+  </div>
+  
+  <div ng-show="roomdetail.contracts.length==0">
+    该房间还未出租过!
+  </div>
+</div>

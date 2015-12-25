@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/ui-select/dist/select.min.css">
+  <link rel="stylesheet" href="bower_components/ngGallery/src/css/ngGallery.css">
   <!-- <link rel="stylesheet" href="node_modules/angularPrint/angularPrint.css"> -->
   <link rel="stylesheet" href="node_modules/ng-table/dist/ng-table.min.css">
   <link rel="stylesheet" href="precss/app.css">

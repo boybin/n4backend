@@ -19,5 +19,8 @@ class Contract extends Model
       return $this->hasMany('App\FeePlan','rent_id');
     }
 
+    public function images() {
+      return $this->hasMany('App\Image','r_id');
+    }
 
 }

@@ -1,0 +1,36 @@
+<div class="jumbbotron">
+  <ng-gallery images="contractdetail.images" thumbs-num="contractdetail.imageNumbers">
+  </ng-gallery>
+
+  <div flow-init="contractdetail.flowConfig"
+  flow-files-submitted="$flow.upload()"
+  flow-file-added="contractdetail.fileAdded($file, $event, $flow )"
+  flow-files-added="contractdetail.filesAdded($files, $event, $flow )"
+  flow-file-success="contractdetail.fileSuccess($file, $event, $flow )"
+  flow-files-success="contractdetail.filesSuccess($files, $event, $flow )"
+  flow-error="contractdetail.fileFailed($file, $message, $flow)"
+  class="ng-scope">
+    <div class="drop" flow-drop="" ng-class="dropClass">
+      <span class="btn btn-default" flow-btn="" flow-attrs="{accept:'image/png,image/jpg,image/jpeg'}">上传图片
+        <input type="file" multiple="multiple" style="visibility: hidden; position: absolute;">
+      </span>
+      <!-- <span class="btn btn-default" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Upload Folder of Images
+        <input type="file" multiple="multiple" webkitdirectory="webkitdirectory" style="visibility: hidden; position: absolute;">
+      </span> -->
+    </div>
+    <div>
+      <span ng-show="contractdetail.maxSizeShow">文件最大不能超过5M</span>
+      <span ng-show="contractdetail.filesMaxNumShow">一次选择不能超过5张</span>
+      <span ng-show="contractdetail.failedShow">上传失败</span>
+      <span ng-show="contractdetail.successShow">上传成功</span>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2" ng-repeat="image in $flow.files">
+        <img class="thumbnail" flow-img="image" />
+        <span ng-bind="image.name"></span>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
