@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Contract;
 use App\Room;
 use DB;
+use App\FeePlan;
 
 class ContractController extends AuthBaseController
 {
@@ -145,24 +146,34 @@ class ContractController extends AuthBaseController
      $room = Room::find($deleteInput['room_id']);
      $contract = Contract::find($id);
 
-     try {
-       DB::beginTransaction();
-       $room['water_degree'] = $deleteInput['water_degree'];
-       $room['electric_degree'] = $deleteInput['electric_degree'];
-       if (!$room->save()) {
+     $feeplancount = FeePlan::where("rent_id",$id)->count();
+     if($feeplancount>0){
+       $ret['status'] = -1;
+       $ret['desc'] = '该租户还有欠款为付清，无法终止合同。如中途退出,请联系主管，先走特殊费用终止流程!';
+       return $ret;
+     } else {
+       try {
+         DB::beginTransaction();
+         $room['water_degree'] = $deleteInput['water_degree'];
+         $room['electric_degree'] = $deleteInput['electric_degree'];
+         if (!$room->save()) {
+           abort(500, 'Destroy failed');
+         }
+         $contract['end_water_degree'] = $deleteInput['water_degree'];
+         $contract['end_electric_degree'] = $deleteInput['electric_degree'];
+         if (!$contract->save()) {
+           abort(500, 'Destroy failed');
+         }
+         DB::commit();
+       } catch(Exception $exception) {
+         DB::rollBack();
          abort(500, 'Destroy failed');
        }
-       $contract['end_water_degree'] = $deleteInput['water_degree'];
-       $contract['end_electric_degree'] = $deleteInput['electric_degree'];
-       if (!$contract->save()) {
-         abort(500, 'Destroy failed');
-       }
-       DB::commit();
-     } catch(Exception $exception) {
-       DB::rollBack();
-       abort(500, 'Destroy failed');
+
+       $ret['status'] = Contract::destroy($id);
+
+       return $ret;
      }
 
-     return Contract::destroy($id);
     }
 }
