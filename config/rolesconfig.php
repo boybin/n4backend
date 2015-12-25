@@ -19,7 +19,6 @@ return [
         '3' => [
           'forbids'=>[
             'api.rent.buildings',
-            'api.rent.feemetas',
             'api.rent.feerecordstatistics',
             'api.rent.users'
           ]
