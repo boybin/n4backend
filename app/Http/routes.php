@@ -57,6 +57,7 @@ Route::group(['prefix' => 'api'], function()
       Route::get('status/{statusType}', 'IndexController@status');
       Route::get('contractimages/{contract_id}', 'ContractRoomController@contactImages');
       Route::get('roomhistory/{room_id}', 'ContractRoomController@roomHistory');
+      Route::delete('terminalcontractplans/{rent_id}','FeeRecordController@forceTerminalFeePlan');
 
       Route::group(['namespace' => 'User'], function(){
         Route::resource('users', 'UserController');

@@ -75,6 +75,7 @@
     </div>
 
     <div class="modal-footer">
+      <button ng-show="currentUser.role==1" type="button" class="pull-left btn btn-danger" ng-click="payFeeRoomModal.terminalAll()">终止所有费用</button>
       <button type="button" class="btn btn-danger" ng-click="payFeeRoomModal.payFee()">缴费</button>
       <button type="button" class="btn btn-default" ng-click="payFeeRoomModal.cancel()">关闭</button>
     </div>

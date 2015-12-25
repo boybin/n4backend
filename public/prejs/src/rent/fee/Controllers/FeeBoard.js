@@ -71,6 +71,18 @@ angular.module('Rent.Fee')
 
           };
 
+
+          payFeeRoomModal.terminalAll = function() {
+            FeeModel.terminalcontractplansRestResource.one(payFeeRoomModal.room.contract.id).remove().then(function(ret){
+              if(ret['status'] == 1){
+                  alert('终止所有费用成功! 您可以终止合同了');
+                  $uibModalInstance.close();
+              }
+            },function(ret){
+                alert('终止失败');
+            })
+          }
+
           payFeeRoomModal.cancel = function(){
             $uibModalInstance.close();
           };

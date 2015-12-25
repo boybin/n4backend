@@ -88,6 +88,47 @@ class FeeRecordController extends AuthBaseController
         //
     }
 
+    public function forceTerminalFeePlan($rent_id) {
+      $ret = [];
+      $ret['status'] = 1;
+
+      $feePlans = FeePlan::where('rent_id', $rent_id)->where('status', 0)->get();
+      try {
+        DB::beginTransaction();
+          foreach ($feePlans as $feeplan) {
+            $feerecord = [];
+            $feerecord['feemeta_id'] = $feeplan['feemeta_id'];
+            $feerecord['rent_id'] = $feeplan['rent_id'];
+            $feerecord['room_id'] = $feeplan['room_id'];
+            $feerecord['building_id'] = $feeplan['building_id'];
+            $feerecord['fee_plan_id'] = $feeplan['id'];
+            $feerecord['fee_name'] = $feeplan['fee_name'].'-终止费用';
+            $feerecord['payor'] = $this->user['nick'];
+            $feerecord['user_id'] = $this->user['id'];
+            $feerecord['inc_fee'] = 0;
+            $feerecord = new FeeRecord($feerecord);
+
+            if(!$feerecord->save()) {
+                DB::rollBack();
+               abort(500, 'Could not save feeRecord');
+             }
+
+            $feeplan['status'] = 1;
+            if (!$feeplan->save()){
+              DB::rollBack();
+              abort(500, 'Could not save feePlan');
+            }
+         }
+
+        DB::commit();
+      } catch(Exception $exception){
+        DB::rollBack();
+        abort(500, 'Save failed');
+      }
+
+      return $ret;
+    }
+
     public function statisticFeeRecords(Request $request) {
       $this->validate($request,
         [
@@ -116,10 +157,10 @@ class FeeRecordController extends AuthBaseController
                                     $query->select('name','id');
                                   },
                                   "contract" => function($query) {
-                                    $query->select('room_name','contractor_name','id');
+                                    $query->withTrashed()->select('room_name','contractor_name','id');
                                   },
                                   "user" => function($query) {
-                                    $query->select('name','id');
+                                    $query->select('name','nick','id');
                                   }
                                 ]
                                 )

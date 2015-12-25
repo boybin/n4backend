@@ -146,7 +146,7 @@ class ContractController extends AuthBaseController
      $room = Room::find($deleteInput['room_id']);
      $contract = Contract::find($id);
 
-     $feeplancount = FeePlan::where("rent_id",$id)->count();
+     $feeplancount = FeePlan::where("rent_id",$id)->where('status',0)->count();
      if($feeplancount>0){
        $ret['status'] = -1;
        $ret['desc'] = '该租户还有欠款为付清，无法终止合同。如中途退出,请联系主管，先走特殊费用终止流程!';
