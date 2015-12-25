@@ -35,7 +35,7 @@ angular.module('Rent.Lease')
       vm.maxSizeShow = false;
       vm.fileAdded = function($file, $event, $flow) {
         var ret = true;
-        if ($file.size > 50000) {
+        if ($file.size>5500000) {
           ret = false;
           vm.maxSizeShow = true;
         } else {
@@ -57,7 +57,7 @@ angular.module('Rent.Lease')
         if(ret) {
           for (var fileIdx in $files) {
             if ($files.hasOwnProperty(fileIdx)) {
-              if($files[fileIdx].size>50000) {
+              if($files[fileIdx].size>5500000) {
                 ret = false;
                 vm.maxSizeShow = true;
                 break;

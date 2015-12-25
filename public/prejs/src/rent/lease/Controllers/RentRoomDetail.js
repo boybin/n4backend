@@ -7,7 +7,6 @@ angular.module('Rent.Lease')
         .one($stateParams.room_id)
         .getList()
         .then(function(ret){
-          console.log(ret);
           vm.contracts = ret;
           for(contract of vm.contracts) {
               for(image of contract.images) {
