@@ -13,9 +13,10 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => Hash::make('secret'),
+        'name' => 'gjm007',
+        'nick' => '郭建民',
+        'email' => '390331494@qq.com',
+        'password' => Hash::make('passw0rd'),
         'remember_token' => str_random(10),
     ];
 });
