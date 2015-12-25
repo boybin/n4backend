@@ -30,7 +30,7 @@ class ContractRoomController extends AuthBaseController
     }
 
     public function roomHistory($room_id) {
-      $room_contracts = Contract::withTrashed()->where('room_id', $room_id)->select('id','contractor_name', 'phone', 'end_water_degree','end_electric_degree', 'start_time', 'end_time')->get();
+      $room_contracts = Contract::withTrashed()->where('room_id', $room_id)->select('id','contractor_name', 'phone', 'end_water_degree','end_electric_degree', 'start_time', 'end_time', 'real_end_time')->get();
 
       foreach ($room_contracts as &$contract) {
         $images = Image::where('r_id', $contract['id'])->select('path as img','imageable_id','r_id')->get();

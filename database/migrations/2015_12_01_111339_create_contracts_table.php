@@ -23,6 +23,7 @@ class CreateContractsTable extends Migration
             $table->string('contractor_number');
             $table->date('start_time');
             $table->date('end_time');
+            $table->date('real_end_time');
             $table->string('id_number');
             $table->string('phone');
             $table->string('contractor_location');

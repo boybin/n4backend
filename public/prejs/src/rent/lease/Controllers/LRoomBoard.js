@@ -162,6 +162,7 @@ angular.module('Rent.Lease')
         if($scope.rentCommonUtils.validateForm($scope, ternminalRoomForm) && confirm("终止该租户合同? 此操作不可回滚")) {
           LeaseModel.contractRestResource.one(room.contract['id']).remove({room_id:room.id, water_degree:vm.water_degree, electric_degree:vm.electric_degree}).then(function($ret){
             if($ret['status'] == 1) {
+              alert('终止成功!');
               room['hasContract'] = 0;
               delete room['contract'];
               $uibModalInstance.close();

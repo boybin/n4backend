@@ -161,6 +161,9 @@ class ContractController extends AuthBaseController
          }
          $contract['end_water_degree'] = $deleteInput['water_degree'];
          $contract['end_electric_degree'] = $deleteInput['electric_degree'];
+         $realendtime = new \DateTime();
+         $realEndTimeStr = $realendtime->format('Y-m-d');
+         $contract['real_end_time'] = $realEndTimeStr;
          if (!$contract->save()) {
            abort(500, 'Destroy failed');
          }
