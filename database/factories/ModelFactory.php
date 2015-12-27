@@ -17,7 +17,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'nick' => '郭建民',
         'email' => '390331494@qq.com',
         'role' => 1,
-        'password' => Hash::make('passw0rd'),
+        'password' => Hash::make('gjmpassw0rd'),
         'remember_token' => str_random(10),
     ];
 });
