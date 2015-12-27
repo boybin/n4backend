@@ -53,7 +53,8 @@ angular.module('Rent.Fee')
               feemeta_id:payFeeRoomModal.selectedFeePlan.feemeta_id,
               fee_name:payFeeRoomModal.selectedFeePlan.fee_name,
               payor:payFeeRoomModal.payor,
-              inc_fee:payFeeRoomModal.inc_fee
+              inc_fee:payFeeRoomModal.inc_fee,
+              note:payFeeRoomModal.note
             };
 
             if ($scope.rentCommonUtils.validateForm($scope, payFeeRoomModalForm) && confirm("确定缴费?")) {
