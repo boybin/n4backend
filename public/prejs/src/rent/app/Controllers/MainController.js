@@ -9,10 +9,11 @@ angular.module('Rent.Common')
         main.logout = function() {
             $auth.logout().then(function() {
                 store.remove('user');
+                store.remove('query_token');
                 $rootScope.authenticated = false;
                 $rootScope.currentUser = null;
                 $rootScope.title = "物流房屋出租管理系统";
-                
+
                 $state.go('login');
             });
           };
