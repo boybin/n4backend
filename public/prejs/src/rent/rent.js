@@ -38,9 +38,21 @@
           var store = $injector.get('store');
           var rejectionReasons = ['token_not_provided', 'token_expired', 'token_absent', 'token_invalid'];
 
+          if (rejection.status == 400 || rejection.status==401) {
+              store.remove('user');
+              store.remove('query_token');
+              $rootScope.authenticated = false;
+              $rootScope.currentUser = null;
+              $rootScope.title = "物流房屋出租管理系统";
+              $state.go('login');
+          }
+
           angular.forEach(rejectionReasons, function(value, key) {
             if (rejection.data.error === value) {
               store.remove('user');
+              store.remove('query_token');
+              $rootScope.authenticated = false;
+              $rootScope.currentUser = null;
               $state.go('login');
             }
           });
